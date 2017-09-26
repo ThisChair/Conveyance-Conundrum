@@ -1,6 +1,6 @@
 extends "kinematic.gd"
 
-export(float) var max_spd = 100
+export(float) var max_spd = 50
 var steer = SteeringBehavior.new()
 var rot = 0
 func _ready():

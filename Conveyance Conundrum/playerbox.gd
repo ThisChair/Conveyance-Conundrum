@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # Constants
-const WALK_SPEED = 5
+const WALK_SPEED = 100
 const MAX_SPEED = 200
 const GRAVITY = 100
 var velocity = Vector2()
