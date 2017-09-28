@@ -170,10 +170,40 @@ class KinematicWander:
 		var steer = SteeringBehavior.new()
 		
 		# Get velocity from the vector form of the orientation
-		steer.velocity = maxSpeed * steer.velocity
+		var dir = Vector2(sin(character.orientation), cos(character.orientation))
+		steer.velocity = maxSpeed * dir
 		
 		# Change our orientation randomly
 		steer.rotation = randomBinomial() * maxRot
 		
 		return steer
+
+class Seek:
+	# Character and target data
+	var character
+	var target
 	
+	# Maximum allowed acceleration
+	export(float) var maxAcceleration = 50
+	
+	# Intialization parameters for the class
+	func _init(ch, tg):
+		self.target = tg
+		self.character = ch 
+	
+	# Function that calculates and returns the wanted steering
+	func getSteering():
+		
+		# Output structure
+		var steer = SteeringBehavior.new()
+		
+		# Get direction to target
+		steer.linear = target.get_pos() - character.get_pos()
+		
+		# Normalize and get to max speed
+		steer.linear = steer.linear.normalized()
+		steer.linear *= maxAcceleration
+		
+		steer.velocity = character.steering.velocity
+		
+		return steer

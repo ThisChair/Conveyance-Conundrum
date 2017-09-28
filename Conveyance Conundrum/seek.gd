@@ -8,7 +8,8 @@ func _ready():
 func _fixed_process(delta):
 	
 	# Instantiation of new kinematic seek class
-	var seek = KinematicSeek.new(get_parent(),get_node("/root/level/player"))
+	var seek = Seek.new(get_parent(),get_node("/root/level/player"))
 	
 	# Calculate the new steering and give it to the parent
 	get_parent().steering = seek.getSteering()
+	#print(get_parent().steering.linear)
