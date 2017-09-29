@@ -34,6 +34,7 @@ texture = ExtResource( 3 )
 
 [node name="seeking box" type="KinematicBody2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 193.85, 244.201 )
 input/pickable = false
 collision/layers = 1
@@ -84,7 +85,6 @@ texture = ExtResource( 3 )
 
 [node name="arriving box" type="KinematicBody2D" parent="."]
 
-visibility/visible = false
 transform/pos = Vector2( 471.451, 567.215 )
 input/pickable = false
 collision/layers = 1

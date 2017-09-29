@@ -8,7 +8,7 @@ func _ready():
 func _fixed_process(delta):
 	
 	# Instantiation of new kinematic flee class
-	var flee = KinematicFlee.new(get_parent(),get_node("/root/level/player"))
+	var flee = Flee.new(get_parent(),get_node("/root/level/player"))
 	
 	# Calculate the new steering and give it to the parent
 	get_parent().steering = flee.getSteering()

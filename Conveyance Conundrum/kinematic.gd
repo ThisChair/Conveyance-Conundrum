@@ -7,6 +7,14 @@ class SteeringBehavior:
 	var rotation = 0.0
 	var linear = Vector2(0,0)
 	var angular= 0
+	
+	# Function that adds two steerings.
+	func add_steering(steer):
+		self.velocity += steer.velocity
+		self.rotation += steer.rotation
+		self.linear += steer.linear
+		self.angular += steer.angular
+		
 
 export(float) var maxSpeed = 50
 var position = self.get_pos()
