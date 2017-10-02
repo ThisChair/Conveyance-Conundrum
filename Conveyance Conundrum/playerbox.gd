@@ -1,9 +1,7 @@
 extends KinematicBody2D
 
 # Constants
-const WALK_SPEED = 100
-const MAX_SPEED = 200
-const GRAVITY = 100
+const WALK_SPEED = 1
 var velocity = Vector2()
 
 func _ready():
@@ -23,12 +21,6 @@ func _fixed_process(delta):
 	if (Input.is_action_pressed("ui_right")):
 		velocity.x += WALK_SPEED
 
-	var motion = velocity * delta
-	self.get_parent().move(motion)
+	get_parent().steering.velocity = velocity
+	get_parent().steering.rotation = atan2(-velocity.x,velocity.y)
 	
-	# Slide on terrain collisions
-	if (is_colliding()):
-		var n = get_collision_normal()
-		motion = n.slide(motion)
-		velocity = n.slide(velocity)
-		self.get_parent().move(motion)

@@ -7,7 +7,7 @@ func _ready():
 	
 func _fixed_process(delta):
 	
-	# Instantiation of new kinematic arrive class
+	# Instantiation of new arrive class
 	var arrive = Arrive.new(get_parent(),get_node("/root/level/player"))
 	
 	# Calculate the new steering and give it to the parent 

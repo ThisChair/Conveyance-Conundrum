@@ -94,7 +94,7 @@ class KinematicArrive:
 	export(float) var maxSpeed = 50
 	
 	# Satisfaction radius
-	var radius = 100
+	export(float) var radius = 200
 	
 	# Time to target
 	
@@ -299,5 +299,41 @@ class Arrive:
 			
 		# Output
 		steer.velocity = character.steering.velocity
+		
 		return steer
 		
+class VelocityMatching:
+	
+	# Character and target data
+	var character
+	var target
+	
+	# Max acceleration of the character
+	export(float) var maxAcceleration = 100
+	
+	# Time over which to achieve target speed
+	var timeToTarget = 0.1
+	
+	func _init(ch,tg):
+		self.character = ch
+		self.target = tg
+	
+	func getSteering(target):
+		
+		# Output structure
+		var steer = SteeringBehavior.new()
+		
+		# Acceleration tries to get to the target velocity
+		steer.linear = target.steering.velocity - character.steering.velocity
+		steer.linear /= timeToTarget
+
+		# Check if the acceleration is too fast
+		if (steer.linear.length() > maxAcceleration):
+			steer.linear = steer.linear.normalized()
+			steer.linear *= maxAcceleration
+			
+		# Output the steering
+		steer.velocity = character.steering.velocity
+		steer.angular = 0
+		
+		return steer
