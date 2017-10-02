@@ -38,7 +38,9 @@ class KinematicSeek:
 		character.set_rot(getNewOrientation(character.orientation, steer.velocity))
 		
 		# We set the rotation to 0
-		steer.rotation = 0
+		steer.rotation = character.steer.rotation
+		steer.linear = character.steer.linear
+		steer.angular = character.steer.angular
 		
 		return steer
 		
@@ -80,7 +82,10 @@ class KinematicFlee:
 		character.set_rot(getNewOrientation(character.orientation, steer.velocity))
 		
 		# We set the rotation to 0
-		steer.rotation = 0
+		steer.rotation = character.steer.rotation
+		steer.linear = character.steer.linear
+		steer.angular = character.steer.angular
+		
 		
 		return steer
 	
@@ -205,6 +210,8 @@ class Seek:
 		steer.linear *= maxAcceleration
 		
 		steer.velocity = character.steering.velocity
+		steer.rotation = character.steer.rotation
+		steer.angular = character.steer.angular
 		
 		return steer
 		
@@ -235,6 +242,8 @@ class Flee:
 		steer.linear *= maxAcceleration
 		
 		steer.velocity = character.steering.velocity
+		steer.rotation = character.steer.rotation
+		steer.angular = character.steer.angular
 		
 		return steer
 		
@@ -299,5 +308,17 @@ class Arrive:
 			
 		# Output
 		steer.velocity = character.steering.velocity
+		steer.rotation = character.steer.rotation
+		steer.angular = character.steer.angular
 		return steer
-		
+
+class Align:
+	# Character and target dada
+	var character
+	var target
+	
+	
+		# Intialization parameters for the class
+	func _init(ch, tg):
+		self.target = tg
+		self.character = ch 
