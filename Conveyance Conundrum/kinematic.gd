@@ -28,13 +28,15 @@ func _fixed_process(delta):
 	# Update character position and orientation
 	position += steering.velocity * delta
 	orientation += steering.rotation * delta
+	
 	# and the velocity and rotation
 	steering.velocity += steering.linear * delta
 	steering.rotation += steering.angular * delta
+	
 	# limit speed
 	if ((steering.velocity.length() > maxSpeed) and 
 		(steering.linear.length() != 0)):
 		steering.velocity = steering.velocity.normalized()
 		steering.velocity *= maxSpeed
-	self.set_pos(position)
-	self.set_rot(orientation)
+	set_pos(position)
+	set_rot(orientation)
