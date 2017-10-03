@@ -20,6 +20,7 @@ func _fixed_process(delta):
 		velocity.x += -WALK_SPEED
 	if (Input.is_action_pressed("ui_right")):
 		velocity.x += WALK_SPEED
+	velocity -= velocity / 100
 	if velocity.length() > 0:
 		get_parent().set_rot(velocity.angle())
 	get_parent().steering.velocity = velocity

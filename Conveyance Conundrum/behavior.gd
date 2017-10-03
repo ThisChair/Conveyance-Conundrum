@@ -317,13 +317,13 @@ class Align:
 	var character
 	var target
 	
-	export(float) var maxAngularAcceleration = 50.0
-	export(float) var maxRotation = 50.0
+	export(float) var maxAngularAcceleration = 20
+	export(float) var maxRotation = 5
 	
-	export(float) var targetRadius = 0.1
+	export(float) var targetRadius = 45
 	
 	
-	export(float) var slowRadius = PI
+	export(float) var slowRadius = 180
 	
 	export(float) var timeToTarget = 0.1 
 	
@@ -336,10 +336,9 @@ class Align:
 			# Output structure
 		var steer = SteeringBehavior.new()
 		
-		
 		var rotation = target.get_rotd() - character.get_rotd()
 		
-		rotation = rotation + fmod(rotation, (360))
+		rotation = fmod(rotation, (360))
 		
 		if abs(rotation) > 180:
 			if (rotation < 0):
@@ -350,7 +349,7 @@ class Align:
 		var rotationSize = abs(rotation)
 		
 		if rotationSize < targetRadius:
-			return character.steering
+			return steer
 		
 		var targetRotation
 		if rotationSize < slowRadius:
@@ -368,11 +367,10 @@ class Align:
 		if angularAcceleration > maxAngularAcceleration:
 			steer.angular /= angularAcceleration
 			steer.angular *= maxAngularAcceleration
-		steer.angular = deg2rad(steer.angular)
 		steer.linear = character.steering.linear
 		steer.velocity = character.steering.velocity
 		steer.rotation = character.steering.rotation
-		
+		steer.angular = deg2rad(steer.angular)
 		return steer
 class VelocityMatching:
 	
