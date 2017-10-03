@@ -38,6 +38,7 @@ texture = ExtResource( 3 )
 [node name="seeking box" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 839.499, 206.518 )
 input/pickable = false
 collision/layers = 1
@@ -163,7 +164,6 @@ texture = ExtResource( 3 )
 
 [node name="pursuing box" type="KinematicBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 842.071, 295.201 )
 input/pickable = false
 collision/layers = 1

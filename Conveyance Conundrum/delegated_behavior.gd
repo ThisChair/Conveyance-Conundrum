@@ -45,5 +45,3 @@ class DummyObject:
 	func _init(pos,vel):
 		self.position = pos
 		self.steering.velocity = vel
-	
-	
