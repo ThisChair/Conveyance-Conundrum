@@ -198,7 +198,7 @@ class Seek:
 		var steer = SteeringBehavior.new()
 		
 		# Get direction to target
-		steer.linear = target.get_pos() - character.get_pos()
+		steer.linear = target.position - character.position
 		
 		# Normalize and get to max speed
 		steer.linear = steer.linear.normalized()
@@ -337,3 +337,5 @@ class VelocityMatching:
 		steer.angular = 0
 		
 		return steer
+		
+	

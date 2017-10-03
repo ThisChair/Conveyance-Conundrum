@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://kinematic.gd" type="Script" id=1]
 [ext_resource path="res://playerbox.gd" type="Script" id=2]
@@ -8,11 +8,13 @@
 [ext_resource path="res://arrive.gd" type="Script" id=6]
 [ext_resource path="res://wander.gd" type="Script" id=7]
 [ext_resource path="res://vel_matching.gd" type="Script" id=8]
+[ext_resource path="res://pursue.gd" type="Script" id=9]
 
 [node name="level" type="Node2D"]
 
 [node name="player" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 473.676, 293.228 )
 input/pickable = false
 collision/layers = 1
@@ -36,14 +38,13 @@ texture = ExtResource( 3 )
 [node name="seeking box" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 193.85, 244.201 )
+transform/pos = Vector2( 839.499, 206.518 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-maxSpeed = 200.0
+maxSpeed = 55.0
 
 [node name="seek" type="KinematicBody2D" parent="seeking box"]
 
@@ -53,7 +54,7 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 4 )
-maxSpeed = 50
+maxSpeed = 55
 
 [node name="Sprite" type="Sprite" parent="seeking box"]
 
@@ -80,7 +81,7 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 5 )
-maxSpeed = 50
+maxSpeed = 55
 
 [node name="Sprite" type="Sprite" parent="fleeing box"]
 
@@ -105,7 +106,7 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 6 )
-maxSpeed = 50
+maxSpeed = 55
 
 [node name="Sprite" type="Sprite" parent="arriving box"]
 
@@ -114,6 +115,7 @@ texture = ExtResource( 3 )
 
 [node name="wandering box" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 transform/pos = Vector2( 697.355, 471.451 )
 input/pickable = false
@@ -121,7 +123,7 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-maxSpeed = 50
+maxSpeed = 55
 
 [node name="wander" type="KinematicBody2D" parent="wandering box"]
 
@@ -130,7 +132,7 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 7 )
-maxSpeed = 50
+maxSpeed = 55
 
 [node name="Sprite" type="Sprite" parent="wandering box"]
 
@@ -138,6 +140,8 @@ texture = ExtResource( 3 )
 
 [node name="vel_matching box" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 798.54, 443.482 )
 input/pickable = false
 collision/layers = 1
@@ -157,6 +161,30 @@ maxSpeed = 50.0
 
 [node name="Sprite" type="Sprite" parent="vel_matching box"]
 
+texture = ExtResource( 3 )
+
+[node name="pursuing box" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 842.071, 295.201 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+maxSpeed = 55
+
+[node name="pursue" type="KinematicBody2D" parent="pursuing box"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 9 )
+maxSpeed = 55
+
+[node name="Sprite" type="Sprite" parent="pursuing box"]
+
+transform/pos = Vector2( -3.01465, 1.50735 )
 texture = ExtResource( 3 )
 
 

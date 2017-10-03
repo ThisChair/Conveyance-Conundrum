@@ -2,6 +2,9 @@ extends Node2D
 
 # Class for manually updating the character's attributes
 
+class DummyObject:
+	var position = Vector2(0,0)
+
 class SteeringBehavior:
 	var velocity = Vector2(0,0)
 	var rotation = 0.0
@@ -16,7 +19,7 @@ class SteeringBehavior:
 		self.angular += steer.angular
 		
 
-export(float) var maxSpeed = 50
+export(float) var maxSpeed = 55
 var position = self.get_pos()
 var orientation = self.get_rot()
 var steering = SteeringBehavior.new()
@@ -38,5 +41,6 @@ func _fixed_process(delta):
 		(steering.linear.length() != 0)):
 		steering.velocity = steering.velocity.normalized()
 		steering.velocity *= maxSpeed
+		
 	set_pos(position)
 	set_rot(orientation)
