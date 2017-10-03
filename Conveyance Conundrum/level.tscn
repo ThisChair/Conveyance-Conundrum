@@ -89,6 +89,7 @@ texture = ExtResource( 3 )
 
 [node name="arriving box" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 471.451, 567.215 )
 input/pickable = false
 collision/layers = 1
@@ -137,6 +138,7 @@ texture = ExtResource( 3 )
 
 [node name="vel_matching box" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 transform/pos = Vector2( 798.54, 443.482 )
 input/pickable = false
@@ -153,7 +155,7 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 8 )
-maxSpeed = 50
+maxSpeed = 55
 
 [node name="Sprite" type="Sprite" parent="vel_matching box"]
 
@@ -161,6 +163,7 @@ texture = ExtResource( 3 )
 
 [node name="pursuing box" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 842.071, 295.201 )
 input/pickable = false
 collision/layers = 1
