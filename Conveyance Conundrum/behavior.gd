@@ -210,8 +210,8 @@ class Seek:
 		steer.linear *= maxAcceleration
 		
 		steer.velocity = character.steering.velocity
-		steer.rotation = character.steer.rotation
-		steer.angular = character.steer.angular
+		steer.rotation = character.steering.rotation
+		steer.angular = character.steering.angular
 		
 		return steer
 		
@@ -242,8 +242,8 @@ class Flee:
 		steer.linear *= maxAcceleration
 		
 		steer.velocity = character.steering.velocity
-		steer.rotation = character.steer.rotation
-		steer.angular = character.steer.angular
+		steer.rotation = character.steering.rotation
+		steer.angular = character.steering.angular
 		
 		return steer
 		
@@ -308,9 +308,8 @@ class Arrive:
 			
 		# Output
 		steer.velocity = character.steering.velocity
-<<<<<<< HEAD
-		steer.rotation = character.steer.rotation
-		steer.angular = character.steer.angular
+		steer.rotation = character.steering.rotation
+		steer.angular = character.steering.angular
 		return steer
 
 class Align:
@@ -318,15 +317,63 @@ class Align:
 	var character
 	var target
 	
+	export(float) var maxAngularAcceleration = 50.0
+	export(float) var maxRotation = 50.0
 	
-		# Intialization parameters for the class
+	export(float) var targetRadius = 0.1
+	
+	
+	export(float) var slowRadius = PI
+	
+	export(float) var timeToTarget = 0.1 
+	
+	# Intialization parameters for the class
 	func _init(ch, tg):
 		self.target = tg
 		self.character = ch 
-=======
+	
+	func getSteering():
+			# Output structure
+		var steer = SteeringBehavior.new()
+		
+		
+		var rotation = target.get_rotd() - character.get_rotd()
+		
+		rotation = rotation + fmod(rotation, (360))
+		
+		if abs(rotation) > 180:
+			if (rotation < 0):
+				rotation += 360
+			if (rotation > 0):
+				rotation -= 360
+		
+		var rotationSize = abs(rotation)
+		
+		if rotationSize < targetRadius:
+			return character.steering
+		
+		var targetRotation
+		if rotationSize < slowRadius:
+			targetRotation = maxRotation
+		else:
+			targetRotation = maxRotation * rotationSize / slowRadius
+		
+		targetRotation *= rotation / rotationSize
+		
+		steer.angular = targetRotation - character.get_rot()
+		
+		steer.angular /= timeToTarget
+		
+		var angularAcceleration = abs(steer.angular)
+		if angularAcceleration > maxAngularAcceleration:
+			steer.angular /= angularAcceleration
+			steer.angular *= maxAngularAcceleration
+		steer.angular = deg2rad(steer.angular)
+		steer.linear = character.steering.linear
+		steer.velocity = character.steering.velocity
+		steer.rotation = character.steering.rotation
 		
 		return steer
-		
 class VelocityMatching:
 	
 	# Character and target data
@@ -362,4 +409,3 @@ class VelocityMatching:
 		steer.angular = 0
 		
 		return steer
->>>>>>> origin/master

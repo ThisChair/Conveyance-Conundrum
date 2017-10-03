@@ -20,7 +20,8 @@ func _fixed_process(delta):
 		velocity.x += -WALK_SPEED
 	if (Input.is_action_pressed("ui_right")):
 		velocity.x += WALK_SPEED
-
+	if velocity.length() > 0:
+		get_parent().set_rot(velocity.angle())
 	get_parent().steering.velocity = velocity
-	get_parent().steering.rotation = atan2(-velocity.x,velocity.y)
+#	get_parent().steering.rotation = atan2(-velocity.x,velocity.y)
 	
