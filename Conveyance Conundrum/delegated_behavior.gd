@@ -68,7 +68,7 @@ class Face:
 		var explicitTarget = Node2D.new()
 		
 		explicitTarget.set_pos(character.get_pos())
-		explicitTarget.set_rot(atan2(-direction.x,-direction.y))
+		explicitTarget.set_rot(atan2(direction.x,direction.y))
 		
 		
 		align = Align.new(character,explicitTarget)
@@ -76,4 +76,22 @@ class Face:
 		
 		return align.getSteering()
 	
-
+	
+class LookWhereYoureGoing:
+	
+	var character
+	
+	# Instantiation of delegated seek class
+	var align
+	
+	func _init(ch):
+		self.character = ch 
+		
+	func getSteering():
+		if character.steering.velocity.length() == 0:
+			return character.steering
+		var explicitTarget = Node2D.new()
+		explicitTarget.set_rot(atan2(-character.velocity.x, character.velocity.z))
+		explicitTarget.set_pos(character.get_pos())
+		align = Align.new(character, explicitTarget)
+		return align.getSteering()

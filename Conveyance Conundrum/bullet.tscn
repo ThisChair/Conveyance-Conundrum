@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://bullet.tex" type="Texture" id=1]
+[ext_resource path="res://kinematic.gd" type="Script" id=2]
+
+[node name="bullet" type="Sprite"]
+
+transform/pos = Vector2( 10.1147, -22.3753 )
+texture = ExtResource( 1 )
+script/script = ExtResource( 2 )
+maxSpeed = 55
+
+

@@ -26,23 +26,8 @@ func _fixed_process(delta):
 	if (Input.is_action_pressed("ui_right")):
 		velocity.x += WALK_SPEED
 
-	if (Input.is_action_pressed("ui_select") and not state_fall):
-		get_parent().set_z(original_z * 2)
-		state_jump = true
-	var actual_scale = get_parent().get_scale()
-	if state_jump:
-		get_parent().set_scale(actual_scale + original_scale/20)
-		if actual_scale >= original_scale * 1.5:
-			state_fall = true
-			state_jump = false
-			get_parent().set_scale(original_scale * 1.5)
-	else:
-		if (actual_scale > original_scale):
-			get_parent().set_scale(actual_scale - original_scale/30)
-		if (actual_scale < original_scale):
-			get_parent().set_scale(original_scale)
-			get_parent().set_z(original_z)
-			state_fall = false
+	if (Input.is_action_pressed("ui_select")):
+		get_parent().flight.force = 1.5
 
 	
 	velocity -= velocity / 100
