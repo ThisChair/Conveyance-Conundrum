@@ -1,5 +1,12 @@
 extends "kinematic.gd"
 
+class DummyObject:
+	
+	extends "kinematic.gd"
+	
+	func _init(pos):
+		self.set_pos(pos)
+
 class KinematicSeek:
 	
 	# Character and target data
@@ -203,7 +210,7 @@ class Seek:
 		var steer = SteeringBehavior.new()
 		
 		# Get direction to target
-		steer.linear = target.position - character.position
+		steer.linear = target.get_pos() - character.get_pos()
 		
 		# Normalize and get to max speed
 		steer.linear = steer.linear.normalized()
@@ -318,12 +325,12 @@ class Align:
 	var target
 	
 	export(float) var maxAngularAcceleration = 20
-	export(float) var maxRotation = 5
+	export(float) var maxRotation = 10
 	
-	export(float) var targetRadius = 45
+	export(float) var targetRadius = 1
 	
 	
-	export(float) var slowRadius = 180
+	export(float) var slowRadius = 90
 	
 	export(float) var timeToTarget = 0.1 
 	
@@ -348,7 +355,7 @@ class Align:
 		
 		var rotationSize = abs(rotation)
 		
-		if rotationSize < targetRadius:
+		if rotationSize <= targetRadius:
 			return steer
 		
 		var targetRotation
@@ -371,6 +378,7 @@ class Align:
 		steer.velocity = character.steering.velocity
 		steer.rotation = character.steering.rotation
 		steer.angular = deg2rad(steer.angular)
+		
 		return steer
 		
 class VelocityMatching:

@@ -2,9 +2,6 @@ extends Node2D
 
 # Class for manually updating the character's attributes
 
-class DummyObject:
-	var position = Vector2(0,0)
-
 class SteeringBehavior:
 	var velocity = Vector2(0,0)
 	var rotation = 0.0
