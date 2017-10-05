@@ -374,6 +374,7 @@ class Align:
 		if angularAcceleration > maxAngularAcceleration:
 			steer.angular /= angularAcceleration
 			steer.angular *= maxAngularAcceleration
+			
 		steer.linear = character.steering.linear
 		steer.velocity = character.steering.velocity
 		steer.rotation = character.steering.rotation
@@ -393,6 +394,7 @@ class VelocityMatching:
 	# Time over which to achieve target speed
 	var timeToTarget = 0.1
 	
+	# Initialization parameters for the class
 	func _init(ch,tg):
 		self.character = ch
 		self.target = tg
