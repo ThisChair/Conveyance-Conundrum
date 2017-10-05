@@ -380,6 +380,8 @@ class Align:
 		steer.rotation = character.steering.rotation
 		steer.angular = deg2rad(steer.angular)
 		
+		
+		
 		return steer
 		
 class VelocityMatching:

@@ -68,11 +68,12 @@ class Face:
 		var explicitTarget = Node2D.new()
 		
 		explicitTarget.set_pos(character.get_pos())
-		explicitTarget.set_rot(atan2(-direction.x,direction.y))
+		explicitTarget.set_rot(atan2(-direction.x,-direction.y))
 		
 		
 		align = Align.new(character,explicitTarget)
+		var ste = align.getSteering()
 		
-		return Align.getSteering()
+		return align.getSteering()
 	
 
