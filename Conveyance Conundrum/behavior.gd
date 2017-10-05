@@ -222,6 +222,46 @@ class Seek:
 		
 		return steer
 		
+class RadiusSeek:
+	# Character and target data
+	var character
+	var target
+	
+	# Maximum allowed acceleration
+	export(float) var maxAcceleration = 50
+	
+	# Seek radius
+	export(float) var seekRadius = 200
+	
+	# Intialization parameters for the class
+	func _init(ch, tg):
+		self.target = tg
+		self.character = ch 
+	
+	# Function that calculates and returns the wanted steering
+	func getSteering():
+		
+		# Output structure
+		var steer = SteeringBehavior.new()
+		
+		# Get direction to target
+		steer.linear = target.get_pos() - character.get_pos()
+		var distance = steer.linear.length()
+		
+		# Check if target is within seek radius
+		if (distance > seekRadius):
+			return steer
+		
+		# Normalize and get to max speed
+		steer.linear = steer.linear.normalized()
+		steer.linear *= maxAcceleration
+		
+		steer.velocity = character.steering.velocity
+		steer.rotation = character.steering.rotation
+		steer.angular = character.steering.angular
+		
+		return steer
+		
 class Flee:
 	# Character and target data
 	var character

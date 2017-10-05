@@ -10,5 +10,5 @@ func _fixed_process(delta):
 	# Instantiation of new pursue class
 	#var seek = Seek.new(get_parent(),get_node("/root/level/player"))
 	
-	var pursue = Face.new(get_parent(),get_node("/root/level/player"))
+	var pursue = Pursue.new(get_parent(),get_node("/root/level/player"))
 	get_parent().steering = pursue.getSteering()

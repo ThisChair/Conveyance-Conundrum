@@ -7,7 +7,7 @@ export(int) var CD = 400
 var bullet_scene = load("res://bullet.tscn")
 var count = CD
 func _ready():
-	set_fixed_process(true)
+	set_fixed_process(false)
 
 func _fixed_process(delta):
 	if count == CD:
