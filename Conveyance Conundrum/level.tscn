@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://kinematic.gd" type="Script" id=2]
@@ -11,12 +11,11 @@
 [ext_resource path="res://vel_matching.gd" type="Script" id=9]
 [ext_resource path="res://pursue.gd" type="Script" id=10]
 [ext_resource path="res://turret.gd" type="Script" id=11]
+[ext_resource path="res://separate.gd" type="Script" id=12]
 
 [node name="level" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-
-maxSpeed = 70.0
 
 [node name="seeking box" type="KinematicBody2D" parent="."]
 
@@ -181,5 +180,28 @@ collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 11 )
 CD = 400
+
+[node name="separating box" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 161.773, 290.306 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 2 )
+maxSpeed = 55
+
+[node name="separate" type="KinematicBody2D" parent="separating box"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 12 )
+maxSpeed = 55
+
+[node name="Sprite" type="Sprite" parent="separating box"]
+
+texture = ExtResource( 6 )
 
 

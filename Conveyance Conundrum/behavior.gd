@@ -460,3 +460,51 @@ class VelocityMatching:
 		steer.angular = 0
 		
 		return steer
+		
+class Separation:
+	
+	# Character and target data, target is a list of potential targets
+	var character
+	var targets
+	
+	# Threshold to take action
+	var threshold = 200
+	
+	# Constant coefficient of decay for the inverse square law force
+	var decay_coefficient = -400
+	
+	# Maximum acceleration for the character
+	export (float) var maxAcceleration = 1000
+	
+	# Strength of repulsion
+	var strength = 100
+	
+	# Initialization parameters for the class
+	func _init(ch,tg):
+		self.character = ch
+		self.targets = tg
+	
+	func getSteering():
+		
+		# Output structure
+		var steer = SteeringBehavior.new()
+		
+		# Loop through each target
+		for target in targets:
+			
+			# Check if the target is too close
+			var direction = target.get_pos() - character.get_pos()
+			var distance = direction.length()
+			
+			if distance < threshold:
+				# Calculate the strength of repulsion
+				strength = min(decay_coefficient / (distance * distance), maxAcceleration)
+				
+				# Add the acceleration
+				direction.normalized()
+				steer.velocity = character.steering.velocity
+				steer.linear += strength * direction
+			
+		# We've gone through all the targets, return the resultç
+
+		return steer

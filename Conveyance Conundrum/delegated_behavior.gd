@@ -34,14 +34,12 @@ class Pursue:
 			prediction = distance / speed
 		
 		# Put the target together
-		#var explicitTarget = DummyObject.new(target.position)
 		var explicitTarget = Node2D.new()
 		explicitTarget.set_pos(
 			target.get_pos() + target.steering.velocity * prediction
 		)
 		
 		seek = Seek.new(character,explicitTarget)
-		#seek.target.position += seek.target.steering.velocity * prediction
 		
 		# 2. Delegate to seek
 		return seek.getSteering()
@@ -66,16 +64,13 @@ class Face:
 			return character.steer
 			
 		var explicitTarget = Node2D.new()
-		
 		explicitTarget.set_pos(character.get_pos())
 		explicitTarget.set_rot(atan2(direction.x,direction.y))
-		
 		
 		align = Align.new(character,explicitTarget)
 		var ste = align.getSteering()
 		
 		return align.getSteering()
-	
 	
 class LookWhereYoureGoing:
 	
@@ -88,10 +83,20 @@ class LookWhereYoureGoing:
 		self.character = ch 
 		
 	func getSteering():
+		
 		if character.steering.velocity.length() == 0:
 			return character.steering
+			
 		var explicitTarget = Node2D.new()
 		explicitTarget.set_rot(atan2(-character.velocity.x, character.velocity.z))
 		explicitTarget.set_pos(character.get_pos())
+		
 		align = Align.new(character, explicitTarget)
+		
 		return align.getSteering()
+		
+class ObstacleAvoidance:
+	
+	# Holds a collision detector
+	var collisionDetector
+	

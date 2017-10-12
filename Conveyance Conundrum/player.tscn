@@ -6,7 +6,6 @@
 
 [node name="player" type="KinematicBody2D"]
 
-editor/display_folded = true
 transform/pos = Vector2( 473.676, 293.228 )
 input/pickable = false
 collision/layers = 1
