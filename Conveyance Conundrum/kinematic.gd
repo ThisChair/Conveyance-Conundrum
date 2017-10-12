@@ -17,11 +17,14 @@ class SteeringBehavior:
 		
 
 class Flight:
-	var force = 0.0
+	var velocity = 0.0
+	var acceleration = 0.0
 	var state_jump = false
 	var state_fall = false
 	var original_scale
 	var original_z
+	export(float) var gravity = 10.0
+
 
 export(float) var maxSpeed = 55
 var position = self.get_pos()
@@ -57,21 +60,21 @@ func _fixed_process(delta):
 	set_rot(orientation)
 	
 	# Flight data
-	if flight.force > 0 and not flight.state_fall:
-		flight.state_jump = true
-		set_z(flight.original_z * 2)
 	var actual_scale = get_scale()
+	if flight.state_fall or flight.state_jump:
+		flight.velocity += (flight.acceleration - flight.gravity) * delta
+		set_scale(actual_scale + Vector2(1,1) * flight.velocity * delta)
+	if flight.velocity > 0 and not flight.state_fall:
+		flight.state_jump = true
+		set_z(flight.original_z + 100)
 	if flight.state_jump:
-		set_scale(actual_scale + flight.original_scale/(20 * flight.force))
-		if actual_scale >= flight.original_scale * flight.force:
+		if flight.velocity < 0.0:
 			flight.state_fall = true
 			flight.state_jump = false
-			set_scale(flight.original_scale * flight.force)
-	else:
-		if (actual_scale > flight.original_scale):
-			set_scale(actual_scale - flight.original_scale/(30 * flight.force))
+	elif flight.state_fall:
 		if (actual_scale < flight.original_scale):
+			flight.velocity = 0.0
+			flight.state_fall = false
+			flight.acceleration = 0.0
 			set_scale(flight.original_scale)
 			set_z(flight.original_z)
-			flight.state_fall = false
-			flight.force = 0

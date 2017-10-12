@@ -27,7 +27,9 @@ func _fixed_process(delta):
 		velocity.x += WALK_SPEED
 
 	if (Input.is_action_pressed("ui_select")):
-		get_parent().flight.force = 1.5
+		if not (get_parent().flight.state_jump or get_parent().flight.state_fall):
+			get_parent().flight.velocity = 3
+			get_parent().flight.acceleration = 1
 
 	
 	velocity -= velocity / 100

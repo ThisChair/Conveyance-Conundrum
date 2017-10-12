@@ -27,7 +27,7 @@ func _fixed_process(delta):
 		bullet.set_global_pos(spawn_point)
 		bullet.set_global_pos(spawn_point)
 		bullet.steering.linear = direction * 10
-		bullet.flight.force = 10
+		bullet.flight.acceleration = 10
 	count -= 1
 	if count == 0:
 		count = CD
