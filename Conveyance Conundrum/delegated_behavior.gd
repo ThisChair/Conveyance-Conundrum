@@ -35,9 +35,7 @@ class Pursue:
 		
 		# Put the target together
 		var explicitTarget = Node2D.new()
-		explicitTarget.set_pos(
-			target.get_pos() + target.steering.velocity * prediction
-		)
+		explicitTarget.set_pos(target.get_pos() + target.steering.velocity * prediction)
 		
 		seek = Seek.new(character,explicitTarget)
 		
@@ -79,6 +77,7 @@ class LookWhereYoureGoing:
 	# Instantiation of delegated seek class
 	var align
 	
+	# Initialization parameters for the class
 	func _init(ch):
 		self.character = ch 
 		
@@ -97,6 +96,50 @@ class LookWhereYoureGoing:
 		
 class ObstacleAvoidance:
 	
-	# Holds a collision detector
-	var collisionDetector
+	# Minimum distance to a wall
+	var avoid_distance = 40
 	
+	# Distance to look ahead for a collision
+	var lookahead = 50
+	
+	# Character data
+	var character
+	
+	# Raycast
+	var raycast_query
+	
+	# Collision data
+	var collision_normal
+	var collision_position
+	
+	var steer = SteeringBehavior.new()
+	
+	# Initialization parameters for the class
+	func _init(ch,ray):
+		self.character = ch
+		self.raycast_query = ray
+		self.steer.velocity = Vector2(0,0)
+		self.steer.rotation = 0
+		self.steer.linear = Vector2(0,0)
+		self.steer.angular = 0
+		
+	func getSteering():
+		
+		# 1. Calculate the target to delegate to seek
+		
+		# Check for collisions
+		if (!raycast_query.empty()):
+			collision_normal = raycast_query.normal
+			collision_position = raycast_query.position
+		# if no collision, do nothing
+		else:
+			return steer
+			
+		# Otherwise create a target
+		var target = Node2D.new()
+		target.set_global_pos(collision_position + collision_normal * avoid_distance)
+		
+		# 2. Delegate to seek
+		var seek = Seek.new(character,target)
+		
+		return seek.getSteering()

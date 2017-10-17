@@ -14,6 +14,13 @@ class SteeringBehavior:
 		self.rotation += steer.rotation
 		self.linear += steer.linear
 		self.angular += steer.angular
+	
+	# Function to set a steering to 0
+	func nullify():
+		self.velocity = Vector2(0,0)
+		self.rotation = 0.0
+		self.linear = Vector2(0,0)
+		self.angular = 0
 		
 
 class Flight:

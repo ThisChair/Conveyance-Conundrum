@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://kinematic.gd" type="Script" id=2]
@@ -12,17 +12,33 @@
 [ext_resource path="res://pursue.gd" type="Script" id=10]
 [ext_resource path="res://turret.gd" type="Script" id=11]
 [ext_resource path="res://separate.gd" type="Script" id=12]
+[ext_resource path="res://tilemap.tres" type="TileSet" id=13]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 30, -30, 0, 0, -30, 30, 0 )
 
 [node name="level" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 
+transform/pos = Vector2( 540, 390 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
+
+build_mode = 0
+polygon = Vector2Array( -30, -30, 30, -30, 30, 30, -30, 30 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
 [node name="seeking box" type="KinematicBody2D" parent="."]
 
-editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 839.499, 206.518 )
+transform/pos = Vector2( 860, 210 )
 input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
@@ -45,11 +61,18 @@ transform/rot = 179.655
 texture = ExtResource( 4 )
 flip_v = true
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="seeking box"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 30, -30, 0, 0, -30, 30, 0 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
 [node name="fleeing box" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
 visibility/visible = false
-transform/pos = Vector2( 712, 241 )
+transform/pos = Vector2( 250, 640 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -74,7 +97,7 @@ texture = ExtResource( 6 )
 
 editor/display_folded = true
 visibility/visible = false
-transform/pos = Vector2( 471.451, 567.215 )
+transform/pos = Vector2( 250, 640 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -100,7 +123,7 @@ texture = ExtResource( 6 )
 
 editor/display_folded = true
 visibility/visible = false
-transform/pos = Vector2( 697.355, 471.451 )
+transform/pos = Vector2( 250, 630 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -125,7 +148,7 @@ texture = ExtResource( 6 )
 
 editor/display_folded = true
 visibility/visible = false
-transform/pos = Vector2( 798.54, 443.482 )
+transform/pos = Vector2( 250, 630 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -150,7 +173,7 @@ texture = ExtResource( 6 )
 
 editor/display_folded = true
 visibility/visible = false
-transform/pos = Vector2( 842.071, 295.201 )
+transform/pos = Vector2( 250, 640 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -183,7 +206,9 @@ CD = 400
 
 [node name="separating box" type="KinematicBody2D" parent="."]
 
-transform/pos = Vector2( 161.773, 290.306 )
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 250, 640 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -203,5 +228,25 @@ maxSpeed = 55
 [node name="Sprite" type="Sprite" parent="separating box"]
 
 texture = ExtResource( 6 )
+
+[node name="TileMap" type="TileMap" parent="."]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 1, 1 )
+mode = 0
+tile_set = ExtResource( 13 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray(  )
 
 

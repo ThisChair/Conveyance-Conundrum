@@ -6,6 +6,51 @@ class DummyObject:
 	
 	func _init(pos):
 		self.set_pos(pos)
+		
+class BehaviorAndWeight:
+	var behavior
+	var weight
+	
+	func _init(b,w):
+		self.behavior = b
+		self.weight = w
+
+class BlendedSteering:
+	
+	# List of BehaviorAndWeight instances
+	var behaviors
+	
+	# Maximum acceleration and rotation
+	var maxAcceleration = 100
+	var maxRotation = 100
+	
+	# Initialization parameters for the class
+	func _init(b_list):
+		self.behaviors = b_list
+	
+	# Returns the acceleration required
+	func getSteering():
+		
+		# New output steering for accumulation
+		var steer = SteeringBehavior.new()
+		var placeholder_steer
+		
+		# Accumulate all accelerations
+		for behavior in behaviors:
+			placeholder_steer = behavior.behavior.getSteering()
+			steer.velocity += behavior.weight * placeholder_steer.velocity
+			steer.rotation += behavior.weight * placeholder_steer.rotation
+			steer.linear += behavior.weight * placeholder_steer.linear
+			steer.angular += behavior.weight * placeholder_steer.angular
+		
+		# Crop the result and return
+		if (steer.linear.length() > maxAcceleration):
+			steer.linear.normalized()
+			steer.linear *= maxAcceleration
+		if (steer.angular > maxRotation):
+			steer.angular = maxRotation
+		
+		return steer
 
 class KinematicSeek:
 	
@@ -250,6 +295,7 @@ class RadiusSeek:
 		
 		# Check if target is within seek radius
 		if (distance > seekRadius):
+			steer.nullify()
 			return steer
 		
 		# Normalize and get to max speed
