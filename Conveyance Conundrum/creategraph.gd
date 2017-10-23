@@ -114,6 +114,7 @@ func A_Star(start,goal,graph):
 	var fScore = []
 	
 	var a = 0
+	# Initialization of gScore and fScore values for all nodes
 	while a < graph.size():
 		gScore.append(INFINITY)
 		fScore.append(INFINITY)
@@ -201,6 +202,8 @@ func reconstruct_path(cameFrom,current):
 
 # Heuristic function to predict the optimal path
 # Current heuristic in use: Euclidean Distance
+# from : source node
+# to : destination node
 func heuristic_cost_estimate(from,to):
 	
 	var vector0 = centroid_list[from]
