@@ -74,7 +74,7 @@ class LookWhereYoureGoing:
 	
 	var character
 	
-	# Instantiation of delegated seek class
+	# Instantiation of delegated align class
 	var align
 	
 	# Initialization parameters for the class
@@ -87,7 +87,7 @@ class LookWhereYoureGoing:
 			return character.steering
 			
 		var explicitTarget = Node2D.new()
-		explicitTarget.set_rot(atan2(-character.velocity.x, character.velocity.z))
+		explicitTarget.set_rot(atan2(-character.steering.velocity.x, character.steering.velocity.y))
 		explicitTarget.set_pos(character.get_pos())
 		
 		align = Align.new(character, explicitTarget)
@@ -97,7 +97,7 @@ class LookWhereYoureGoing:
 class ObstacleAvoidance:
 	
 	# Minimum distance to a wall
-	var avoid_distance = 40
+	var avoid_distance = 150
 	
 	# Distance to look ahead for a collision
 	var lookahead = 50
@@ -107,6 +107,9 @@ class ObstacleAvoidance:
 	
 	# Raycast
 	var raycast_query
+	
+	# Direction to which to cast the raycast
+	var cast_direction
 	
 	# Collision data
 	var collision_normal
@@ -126,11 +129,15 @@ class ObstacleAvoidance:
 	func getSteering():
 		
 		# 1. Calculate the target to delegate to seek
+		cast_direction = Vector2(sin(character.get_rot()),cos(character.get_rot()))
+		cast_direction.normalized()
+		cast_direction *= 50
 		
+		raycast_query.set_cast_to(cast_direction)
 		# Check for collisions
-		if (!raycast_query.empty()):
-			collision_normal = raycast_query.normal
-			collision_position = raycast_query.position
+		if (raycast_query.is_colliding()):
+			collision_normal = raycast_query.get_collision_normal()
+			collision_position = raycast_query.get_collision_point()
 		# if no collision, do nothing
 		else:
 			return steer

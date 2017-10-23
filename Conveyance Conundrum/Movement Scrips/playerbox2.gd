@@ -25,7 +25,7 @@ func _fixed_process(delta):
 	var motion = velocity * delta
 	move(motion)
 	
-	# Slide on terrain collisions
+		# Slide on terrain collisions
 	if (is_colliding()):
 		var n = get_collision_normal()
 		motion = n.slide(motion)

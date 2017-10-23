@@ -5,11 +5,15 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -30, 30, -30, -30, 30, -30, 30, 30 )
+points = Vector2Array( 30, 30, -30, 30, -30, -30, 30, -30 )
 
-[node name="tiles" type="Node2D"]
+[node name="level" type="Node2D"]
 
-[node name="wall" type="StaticBody2D" parent="."]
+[node name="wall" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -22,14 +26,10 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="Sprite" type="Sprite" parent="wall"]
-
-texture = ExtResource( 1 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall/StaticBody2D"]
 
 build_mode = 0
-polygon = Vector2Array( -30, 30, -30, -30, 30, -30, 30, 30 )
+polygon = Vector2Array( 30, -30, -30, -30, -30, 30, 30, 30 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 

@@ -1,240 +1,15 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://kinematic.gd" type="Script" id=2]
-[ext_resource path="res://seek.gd" type="Script" id=3]
-[ext_resource path="res://bomba.png" type="Texture" id=4]
-[ext_resource path="res://flee.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://arrive.gd" type="Script" id=7]
-[ext_resource path="res://wander.gd" type="Script" id=8]
-[ext_resource path="res://vel_matching.gd" type="Script" id=9]
-[ext_resource path="res://pursue.gd" type="Script" id=10]
-[ext_resource path="res://turret.gd" type="Script" id=11]
-[ext_resource path="res://separate.gd" type="Script" id=12]
-[ext_resource path="res://tilemap.tres" type="TileSet" id=13]
-
-[sub_resource type="ConvexPolygonShape2D" id=1]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 0, 30, -30, 0, 0, -30, 30, 0 )
+[ext_resource path="res://tilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://creategraph.gd" type="Script" id=3]
 
 [node name="level" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 540, 390 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
-
-build_mode = 0
-polygon = Vector2Array( -30, -30, 30, -30, 30, 30, -30, 30 )
-shape_range = Vector2( 0, 0 )
-trigger = false
-
-[node name="seeking box" type="KinematicBody2D" parent="."]
-
-transform/pos = Vector2( 860, 210 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 2 )
-maxSpeed = 55.0
-
-[node name="seek" type="KinematicBody2D" parent="seeking box"]
-
-transform/pos = Vector2( 2.11325, 1.93044 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 3 )
-maxSpeed = 55
-
-[node name="Sprite" type="Sprite" parent="seeking box"]
-
-transform/rot = 179.655
-texture = ExtResource( 4 )
-flip_v = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="seeking box"]
-
-build_mode = 0
-polygon = Vector2Array( 0, 30, -30, 0, 0, -30, 30, 0 )
-shape_range = Vector2( 0, 0 )
-trigger = false
-
-[node name="fleeing box" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 250, 640 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 2 )
-maxSpeed = 50.0
-
-[node name="flee" type="KinematicBody2D" parent="fleeing box"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 5 )
-maxSpeed = 55
-
-[node name="Sprite" type="Sprite" parent="fleeing box"]
-
-texture = ExtResource( 6 )
-
-[node name="arriving box" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 250, 640 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 2 )
-maxSpeed = 200.0
-
-[node name="arrive" type="KinematicBody2D" parent="arriving box"]
-
-visibility/visible = false
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 7 )
-maxSpeed = 55
-
-[node name="Sprite" type="Sprite" parent="arriving box"]
-
-texture = ExtResource( 6 )
-
-[node name="wandering box" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 250, 630 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 2 )
-maxSpeed = 55
-
-[node name="wander" type="KinematicBody2D" parent="wandering box"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 8 )
-maxSpeed = 55
-
-[node name="Sprite" type="Sprite" parent="wandering box"]
-
-texture = ExtResource( 6 )
-
-[node name="vel_matching box" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 250, 630 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 2 )
-maxSpeed = 200.0
-
-[node name="vel_matching" type="KinematicBody2D" parent="vel_matching box"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 9 )
-maxSpeed = 55
-
-[node name="Sprite" type="Sprite" parent="vel_matching box"]
-
-texture = ExtResource( 6 )
-
-[node name="pursuing box" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 250, 640 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 2 )
-maxSpeed = 55
-
-[node name="pursue" type="KinematicBody2D" parent="pursuing box"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 10 )
-maxSpeed = 55
-
-[node name="Sprite" type="Sprite" parent="pursuing box"]
-
-transform/pos = Vector2( -3.01465, 1.50735 )
-texture = ExtResource( 6 )
-
-[node name="turret" type="KinematicBody2D" parent="pursuing box"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 11 )
-CD = 400
-
-[node name="separating box" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 250, 640 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 2 )
-maxSpeed = 55
-
-[node name="separate" type="KinematicBody2D" parent="separating box"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 12 )
-maxSpeed = 55
-
-[node name="Sprite" type="Sprite" parent="separating box"]
-
-texture = ExtResource( 6 )
-
 [node name="TileMap" type="TileMap" parent="."]
 
-visibility/behind_parent = true
-transform/pos = Vector2( 1, 1 )
 mode = 0
-tile_set = ExtResource( 13 )
+tile_set = ExtResource( 1 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -247,6 +22,140 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray(  )
+tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 65536, 0, 65552, 0, 131072, 0, 131088, 0, 196608, 0, 196612, 0, 196613, 0, 196619, 0, 196620, 0, 196624, 0, 262144, 0, 262148, 0, 262149, 0, 262155, 0, 262156, 0, 262160, 0, 327680, 0, 327696, 0, 393216, 0, 393232, 0, 458752, 0, 458756, 0, 458757, 0, 458763, 0, 458764, 0, 458768, 0, 524288, 0, 524292, 0, 524293, 0, 524299, 0, 524300, 0, 524304, 0, 589824, 0, 589840, 0, 655360, 0, 655376, 0, 720896, 0, 720897, 0, 720898, 0, 720899, 0, 720900, 0, 720901, 0, 720902, 0, 720903, 0, 720904, 0, 720905, 0, 720906, 0, 720907, 0, 720908, 0, 720909, 0, 720910, 0, 720911, 0, 720912, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 550, 270 )
+
+[node name="geometry graph" type="Node2D" parent="."]
+
+visibility/behind_parent = true
+script/script = ExtResource( 3 )
+
+[node name="0" type="Polygon2D" parent="geometry graph"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 0, 1 )
+polygon = Vector2Array( 60, 60, 260, 200, 60, 200 )
+uv = Vector2Array(  )
+color = Color( 0.225586, 0.34568, 0.515625, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="1" type="Polygon2D" parent="geometry graph"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 0, 1 )
+polygon = Vector2Array( 60, 60, 260, 200, 260, 60 )
+uv = Vector2Array(  )
+color = Color( 0.225586, 0.34568, 0.515625, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="2" type="Polygon2D" parent="geometry graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 260, 60, 260, 190, 380, 60 )
+uv = Vector2Array(  )
+color = Color( 0.225586, 0.34568, 0.515625, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="3" type="Polygon2D" parent="geometry graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 260, 190, 380, 190, 380, 60 )
+uv = Vector2Array(  )
+color = Color( 0.225586, 0.34568, 0.515625, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="4" type="Polygon2D" parent="geometry graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 60, 200, 260, 200, 60, 320 )
+uv = Vector2Array(  )
+color = Color( 0.225586, 0.34568, 0.515625, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="5" type="Polygon2D" parent="geometry graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 60, 320, 260, 200, 260, 320 )
+uv = Vector2Array(  )
+color = Color( 0.225586, 0.34568, 0.515625, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="6" type="Polygon2D" parent="geometry graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 60, 320, 130, 570, 180, 320 )
+uv = Vector2Array(  )
+color = Color( 0.225586, 0.34568, 0.515625, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="7" type="Polygon2D" parent="geometry graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 60, 320, 60, 700, 130, 570 )
+uv = Vector2Array(  )
+color = Color( 0.225586, 0.34568, 0.515625, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
 
 

@@ -38,6 +38,7 @@ var position = self.get_pos()
 var orientation = self.get_rot()
 var steering = SteeringBehavior.new()
 var flight = Flight.new()
+var motion 
 
 func _ready():
 	flight.original_scale = self.get_scale()
@@ -52,6 +53,16 @@ func _fixed_process(delta):
 	# Update character position and orientation
 	position += steering.velocity * delta
 	orientation += steering.rotation * delta
+	motion = steering.velocity * delta
+	move(motion)
+	set_rot(orientation)
+	
+	# Slide on terrain collisions
+	if (is_colliding()):
+		var n = get_collision_normal()
+		motion = n.slide(motion)
+		steering.velocity = n.slide(steering.velocity)
+		move(motion)
 	
 	# and the velocity and rotation
 	steering.velocity += steering.linear * delta
@@ -62,9 +73,7 @@ func _fixed_process(delta):
 		(steering.linear.length() != 0)):
 		steering.velocity = steering.velocity.normalized()
 		steering.velocity *= maxSpeed
-		
-	set_pos(position)
-	set_rot(orientation)
+
 	
 	# Flight data
 	var actual_scale = get_scale()
