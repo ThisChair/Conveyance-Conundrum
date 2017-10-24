@@ -13,7 +13,7 @@ var black = Color(0,0,0)
 var vertex_colors = ColorArray()
 # Graph variables
 var nodes_and_edges
-const INFINITY = 10000
+const INFINITY = 3.402823e+38
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -36,7 +36,7 @@ func _ready():
 	
 	# Create the edges and add it to the graph
 	var graph = Graph.new(centroid_list.size())
-	var edges = [[0,10,1],[0,1,2],[2,1,1],[1,1,3]]
+	var edges = [[0,10,1],[0,1,2],[0,1,3],[0,1,4],[4,1,5],[5,1,6],[6,1,7],[3,1,7]]
 	i = 0
 	while i < edges.size():
 		graph.addConnection(edges[i])

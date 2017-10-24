@@ -33,6 +33,7 @@ transform/pos = Vector2( 550, 270 )
 
 [node name="geometry graph" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/behind_parent = true
 script/script = ExtResource( 3 )
 
