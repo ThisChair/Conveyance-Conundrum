@@ -1,15 +1,16 @@
 extends Node2D
 
 # Implementation of a graph
-# nodes : an array (linked list) of Nodes
-# new_edge : a Edge object
-# i : iterator variable
+# nodes : a 2D array representing the graph structure
+# new_edge : represents an incomplete edge
+# i and j : iterator variables
 class Graph:
 	
 	var nodes = []
 	var new_edge
 	var i
 	var j
+	
 	# Initialization parameters for the graph
 	func _init(vertices):
 		i = 0
@@ -42,7 +43,8 @@ class Graph:
 				j += 1
 			i += 1
 	
-	func getNodesAndEdges():
+	# Returns a 2d array with the graph's structure
+	func getGraph():
 		return nodes
 	
 # Priority Queue implementation with Binary Heap
@@ -55,14 +57,13 @@ class PriorityQueue:
 	
 	var heapList
 	var currentSize
-	var hashmap 
 	
 	# Initialization parameters for the class
 	# heapList's first element is a 0 which is not really used,
 	# but useful for calculating a child's parent node later on
 	func _init():
-		heapList = [[0]]
-		currentSize = 0
+		self.heapList = [[0]]
+		self.currentSize = 0
 	
 	# Percolates up the newly added node until it reaches it's
 	# correct position to maintain the heap property
@@ -90,7 +91,7 @@ class PriorityQueue:
 				var temp = heapList[i]
 				heapList[i] = heapList[mc]
 				heapList[mc] = temp
-				i = mc
+			i = mc
 	
 	# Returns the minimum child of a node
 	func minChild(i):
@@ -108,10 +109,20 @@ class PriorityQueue:
 	func delMin():
 		var root = heapList[1]
 		heapList[1] = heapList[currentSize]
-		heapList.remove(currentSize-1)
+		heapList.pop_back()
 		currentSize -= 1
 		percDown(1)
 		return root
+	
+	# Construcs a binary heap from a given list
+	func buildHeap(aList):
+		var v = floor(aList.size() / 2)
+		self.currentSize = aList.size()
+		aList.push_front([0])
+		self.heapList = aList
+		while (v > 0):
+			percDown(v)
+			v -= 1
 		
 	# Returns if our queue is currently empty
 	func empty():

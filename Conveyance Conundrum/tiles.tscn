@@ -9,6 +9,8 @@ points = Vector2Array( 30, 30, -30, 30, -30, -30, 30, -30 )
 
 [node name="level" type="Node2D"]
 
+transform/pos = Vector2( 70, 50 )
+
 [node name="wall" type="Sprite" parent="."]
 
 texture = ExtResource( 1 )

@@ -12,7 +12,9 @@ var orang = Color(255,0,0)
 var black = Color(0,0,0)
 var vertex_colors = ColorArray()
 # Graph variables
-var nodes_and_edges
+var graph
+var optimal_path = []
+# Priority Queue variables
 const INFINITY = 3.402823e+38
 
 func _ready():
@@ -35,28 +37,27 @@ func _ready():
 		i += 1
 	
 	# Create the edges and add it to the graph
-	var graph = Graph.new(centroid_list.size())
-	var edges = [[0,10,1],[0,1,2],[0,1,3],[0,1,4],[4,1,5],[5,1,6],[6,1,7],[3,1,7]]
+	graph = Graph.new(centroid_list.size())
+	var edges = [[0,10,1],[0,1,2],[0,1,3],[0,1,4],[4,1,5],[5,1,6],[6,1,7],[3,1,7],[3,1,8],[8,1,9]]
 	i = 0
 	while i < edges.size():
 		graph.addConnection(edges[i])
 		i += 1
 	
-	# Get all the connections in the graph
-	nodes_and_edges = graph.getNodesAndEdges()
-	
 	# Calculate the optimal path using A*
-	var optimal_path = A_Star(0,3,nodes_and_edges)
+	optimal_path = A_Star(0,9,graph.getGraph())
+	optimal_path.pop_front()
 	
-	# Print it
-	for nodes in optimal_path:
-		print(nodes)
-		
+	# Replace the nodes with their respective positions in the map
+	for i in range(optimal_path.size()):
+		optimal_path[i] = centroid_list[optimal_path[i]]
+	
 	# _draw() should be drawing after the graph is made
 	
 	set_fixed_process(false)
 	
 func _fixed_process(delta):
+	# Nothing do to here for now
 	pass
 	
 # Finds the centroid of a given triangle
@@ -77,6 +78,7 @@ func _draw():
 		for centroid in centroid_list:
 			draw_circle(centroid,5,black)
 	# Draws the graph's connections
+	var nodes_and_edges = graph.getGraph()
 	if (!nodes_and_edges.empty()):
 		i = 0
 		while i < nodes_and_edges.size():
@@ -162,12 +164,12 @@ func A_Star(start,goal,graph):
 					found = true                    
 				else:
 					a += 1
-				
+			
 			# The distance from start to a neighbor
 			tentative_gScore = gScore[current] + weight
 			if tentative_gScore >= gScore[neighbor]:
 				continue # This is not a better path
-				
+			
 			# This path is the best until now. Let's save it
 			cameFrom[neighbor] = current
 			gScore[neighbor] = tentative_gScore
@@ -175,8 +177,15 @@ func A_Star(start,goal,graph):
 			
 			if !found: # New node discovered, add it to open list
 				openSet.insert([fScore[neighbor],neighbor])
-
-	# We failed to find a path to goal
+			
+			# Reconstruct the binary heap property in case we lost it
+			if !openSet.empty():
+				var currentHeaplist = openSet.heapList
+				currentHeaplist.pop_front()
+				openSet.heapList = []
+				openSet.buildHeap(currentHeaplist) 
+			
+	# We failed to find a path from source to goal
 	return null
 
 # Reconstructs the optimal path using 
@@ -213,3 +222,11 @@ func heuristic_cost_estimate(from,to):
 	var b = vector0.y - vector1.y
 	
 	return sqrt(pow(a,2)+pow(b,2))
+	
+func printPath(path):
+	
+	if path != null:
+		for node in path:
+			print(node)
+	else:
+		print("A* could not find a path in the graph")

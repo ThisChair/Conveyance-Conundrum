@@ -33,7 +33,7 @@ class Flight:
 	export(float) var gravity = 10.0
 
 
-export(float) var maxSpeed = 55
+export(float) var maxSpeed = 50
 var position = self.get_pos()
 var orientation = self.get_rot()
 var steering = SteeringBehavior.new()

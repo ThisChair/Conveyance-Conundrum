@@ -5,7 +5,7 @@ var targetState
 func isTriggered():
 	return false
 
-func setTargetState(state)
+func setTargetState(state):
 	self.targetState = state
 
 func getTargetState():
