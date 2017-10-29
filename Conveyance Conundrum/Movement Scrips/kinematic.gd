@@ -1,3 +1,5 @@
+
+
 extends Node2D
 
 # Class for manually updating the character's attributes
@@ -30,7 +32,7 @@ class Flight:
 	var state_fall = false
 	var original_scale
 	var original_z
-	export(float) var gravity = 10.0
+	export(float) var gravity = 8.0
 
 
 export(float) var maxSpeed = 55
