@@ -14,7 +14,6 @@ func _fixed_process(delta):
 	
 	# Instantiation of new seek class
 	var seek = RadiusSeek.new(get_parent(),get_node("/root/level/player/"))
-	#var look = LookWhereYoureGoing.new(get_parent())
 	
 	# Instantiation of new obstacle avoidance class
 	var obs_avoid = ObstacleAvoidance.new(get_parent(),raycast_query)
@@ -22,7 +21,6 @@ func _fixed_process(delta):
 	# List of steering behaviors with weights
 	var b1 = BehaviorAndWeight.new(seek,1)
 	var b2 = BehaviorAndWeight.new(obs_avoid,1.5)
-	#var b3 = BehaviorAndWeight.new(look,1)
 	var behaviors_list = [b1,b2]
 	
 	# Instantiation of new blended steering class

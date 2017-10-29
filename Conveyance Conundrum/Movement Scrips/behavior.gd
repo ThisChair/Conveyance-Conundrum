@@ -1,12 +1,5 @@
 extends "kinematic.gd"
 
-class DummyObject:
-	
-	extends "kinematic.gd"
-	
-	func _init(pos):
-		self.set_pos(pos)
-		
 class BehaviorAndWeight:
 	var behavior
 	var weight
@@ -247,6 +240,13 @@ class Seek:
 	func _init(ch, tg):
 		self.target = tg
 		self.character = ch 
+		
+	# Function that returns the new orientation to face
+	func getNewOrientation(currentOrientation, velocity):
+		if velocity.length() > 0:
+			return velocity.angle()
+		else:
+			return currentOrientation
 	
 	# Function that calculates and returns the wanted steering
 	func getSteering():
@@ -264,6 +264,9 @@ class Seek:
 		steer.velocity = character.steering.velocity
 		steer.rotation = character.steering.rotation
 		steer.angular = character.steering.angular
+		
+		# Face in the direction we want to move 
+		character.set_rot(getNewOrientation(character.orientation,steer.velocity))
 		
 		return steer
 		

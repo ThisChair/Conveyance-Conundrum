@@ -32,6 +32,7 @@ func _fixed_process(delta):
 			get_parent().flight.acceleration = 1
 
 	velocity -= velocity / 100
+
 	if velocity.length() > 0:
 		get_parent().set_rot(velocity.angle())
 	get_parent().steering.velocity = velocity

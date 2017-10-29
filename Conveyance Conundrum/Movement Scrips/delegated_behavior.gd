@@ -11,6 +11,7 @@ class Pursue:
 	# Instantiation of delegated seek class
 	var seek
 	
+	# Initialization parameters for the class
 	func _init(ch, tg):
 		self.target = tg
 		self.character = ch 
@@ -66,7 +67,6 @@ class Face:
 		explicitTarget.set_rot(atan2(direction.x,direction.y))
 		
 		align = Align.new(character,explicitTarget)
-		var ste = align.getSteering()
 		
 		return align.getSteering()
 	
@@ -102,13 +102,14 @@ class ObstacleAvoidance:
 	# Distance to look ahead for a collision
 	var lookahead = 50
 	
-	# Character data
+	# Character and target data
 	var character
+	var target = Node2D.new()
 	
 	# Raycast
 	var raycast_query
 	
-	# Direction to which to cast the raycast
+	# Direction to which cast the raycast
 	var cast_direction
 	
 	# Collision data
@@ -116,6 +117,7 @@ class ObstacleAvoidance:
 	var collision_position
 	
 	var steer = SteeringBehavior.new()
+	var seek
 	
 	# Initialization parameters for the class
 	func _init(ch,ray):
@@ -132,8 +134,9 @@ class ObstacleAvoidance:
 		cast_direction = Vector2(sin(character.get_rot()),cos(character.get_rot()))
 		cast_direction.normalized()
 		cast_direction *= 50
-		
+
 		raycast_query.set_cast_to(cast_direction)
+
 		# Check for collisions
 		if (raycast_query.is_colliding()):
 			collision_normal = raycast_query.get_collision_normal()
@@ -143,10 +146,78 @@ class ObstacleAvoidance:
 			return steer
 			
 		# Otherwise create a target
-		var target = Node2D.new()
 		target.set_global_pos(collision_position + collision_normal * avoid_distance)
 		
 		# 2. Delegate to seek
-		var seek = Seek.new(character,target)
+		seek = Seek.new(character,target)
+		
+		return seek.getSteering()
+
+class FollowPath:
+	
+	# Character and target data
+	var character
+	var target = Node2D.new()
+	
+	# Path to follow
+	var path
+	var distance
+	
+	# Whenever or not our path is a patrol route (looped)
+	# default value is false
+	var looped = false
+	var current_node
+	
+	# Instantiation of delegated seek class
+	var seek
+	
+	# Admission radius for arriving at a node
+	var radius = 50
+	
+	# Iterator
+	var i = 0
+	
+	# Initialization parameters for the class
+	# ch : character data
+	# p : an array of Vector2() describing a path
+	# l : a boolean indicating if our path has a loop
+	func _init(ch,p,l):
+		self.path = p
+		self.character = ch
+		if l == null:
+			pass
+		else:
+			self.looped = l
+
+	func getSteering():
+		
+		# 1. Calculate the target to delegate to face
+		
+		# We've reached the end of our path, stop
+		if path.empty():
+			var steer = SteeringBehavior.new()
+			steer.nullify()
+			return steer
+		
+		# Calculate the distance to our current path
+		target.set_pos(path[0])
+		distance = target.get_pos() - character.get_pos()
+		
+		# If we're within the acceptance radius, then we've reached
+		# our current target, seek the next one
+		if distance.length() <= radius:
+			# If we don't have a patrol route, then just 
+			# remove the current node from the list
+			if !looped:
+				path.pop_front()
+			# Otherwise remove the current node and
+			# then add it at the end of the list to create a loop
+			else:
+				current_node = path[0]
+				path.pop_front()
+				path.append(current_node)
+		
+		# 2. Delegate to seek
+		seek = Seek.new(character,target)
 		
 		return seek.getSteering()
