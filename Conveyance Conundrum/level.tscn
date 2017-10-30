@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://JumpPad.gd" type="Script" id=7]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 37.394, -35.239, 37.394, 34.761, -42.606, 34.761, -42.606, -35.239, 27.394, -35.239 )
 
 [node name="level" type="Node2D"]
 
@@ -218,6 +223,7 @@ invert/border = 100.0
 
 [node name="pathfollowing box" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 160, 130 )
 input/pickable = false
 collision/layers = 1
@@ -248,12 +254,17 @@ type_mask = 15
 
 [node name="JumpPad" type="Area2D" parent="."]
 
-transform/pos = Vector2( 672.606, 415.239 )
+transform/pos = Vector2( 673.606, 416.239 )
 input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/layers = 2
+collision/mask = 2
 script/script = ExtResource( 7 )
 
 [connection signal="body_enter" from="JumpPad" to="JumpPad" method="_on_JumpPad_body_enter"]

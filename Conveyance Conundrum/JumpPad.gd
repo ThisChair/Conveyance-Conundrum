@@ -9,6 +9,5 @@ func _ready():
 	# Initialization here
 	pass
 
-
 func _on_JumpPad_body_enter( body ):
 	print(str('Body entered: ', body.get_name()))
