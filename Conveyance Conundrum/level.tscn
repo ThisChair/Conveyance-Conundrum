@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://JumpPad.gd" type="Script" id=7]
+[ext_resource path="res://LandPad.gd" type="Script" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -57,7 +58,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="player" parent="." instance=ExtResource( 2 )]
+[node name="player" parent="." groups=[
+"jumper",
+] instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 550, 320 )
 collision/layers = 3
@@ -254,7 +257,8 @@ type_mask = 15
 
 [node name="JumpPad" type="Area2D" parent="."]
 
-transform/pos = Vector2( 673.606, 416.239 )
+transform/pos = Vector2( 689.761, 385.214 )
+transform/scale = Vector2( 0.460542, 1 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -266,7 +270,24 @@ angular_damp = 1.0
 collision/layers = 2
 collision/mask = 2
 script/script = ExtResource( 7 )
+direction = Vector2( 1, 0 )
+minSpeed = 40.0
+
+[node name="LandPad" type="Area2D" parent="."]
+
+transform/pos = Vector2( 736.83, 384.738 )
+transform/scale = Vector2( 1.00518, 1.98537 )
+input/pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 3
+collision/mask = 3
+script/script = ExtResource( 8 )
 
 [connection signal="body_enter" from="JumpPad" to="JumpPad" method="_on_JumpPad_body_enter"]
+
+[connection signal="body_exit" from="LandPad" to="LandPad" method="_on_LandPad_body_exit"]
 
 

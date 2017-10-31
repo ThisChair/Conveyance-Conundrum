@@ -32,7 +32,7 @@ class Flight:
 	var state_fall = false
 	var original_scale
 	var original_z
-	export(float) var gravity = 8.0
+	export(float) var gravity = 3.0
 
 
 export(float) var maxSpeed = 50
@@ -81,7 +81,10 @@ func _fixed_process(delta):
 	var actual_scale = get_scale()
 	if flight.state_fall or flight.state_jump:
 		flight.velocity += (flight.acceleration - flight.gravity) * delta
-		set_scale(actual_scale + Vector2(1,1) * flight.velocity * delta)
+		var new_scale = actual_scale + Vector2(1,1) * flight.velocity * delta
+		if new_scale > flight.original_scale * 1.5:
+			new_scale = flight.original_scale * 1.5
+		set_scale(new_scale)
 	if flight.velocity > 0 and not flight.state_fall:
 		flight.state_jump = true
 		set_z(flight.original_z + 100)
