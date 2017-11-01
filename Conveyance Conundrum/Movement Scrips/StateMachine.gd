@@ -1,7 +1,7 @@
-extends Node2D
+extends "kinematic.gd"
 
 # Lists of states
-var states
+var states = []
 
 # Initial state
 var initialState
@@ -9,12 +9,7 @@ var initialState
 # Current state
 var currentState
 
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
-
-func _update():
+func run(delta):
 	
 	var triggeredTransition
 	
@@ -24,7 +19,7 @@ func _update():
 			break
 	
 	if triggeredTransition:
-		targetState = triggeredTransition.getTargetState()
+		var targetState = triggeredTransition.getTargetState()
 		
 		currentState.getExitAction()
 		triggeredTransition.getAction()
