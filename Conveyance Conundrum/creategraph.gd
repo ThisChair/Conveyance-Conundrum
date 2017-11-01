@@ -38,14 +38,20 @@ func _ready():
 	
 	# Create the edges and add it to the graph
 	graph = Graph.new(centroid_list.size())
-	var edges = [[0,10,1],[0,1,2],[0,1,3],[0,1,4],[4,1,5],[5,1,6],[6,1,7],[3,1,7],[3,1,8],[8,1,9]]
+	var edges = [[0,1,1],[1,1,2],[2,1,3],[0,1,4],[4,1,5],[5,1,6],[6,1,7],[8,1,9],[9,1,8],[6,1,11],[11,1,10],[10,1,12],
+	[12,1,13],[13,1,14],[14,1,9],[3,1,15],[15,1,16],[15,1,8],[8,1,15],[15,1,17],[17,1,19],[19,1,18],[18,1,20],[20,1,21],
+	[18,1,21],[16,1,18],[8,1,24],[9,1,25],[4,1,6],[9,1,29],[29,1,28],[28,1,27],[27,1,26],[25,1,26],[24,1,23],[23,1,22],
+	[19,1,22],[20,1,22],[22,1,26],[17,1,24],[9,1,30],[14,1,30],[30,1,32],[32,1,31],[32,1,33],[33,1,34],[34,1,35],[11,1,36],
+	[36,1,37],[7,1,37],[6,1,37],[37,1,38],[7,1,38],[7,1,39],[39,1,38],[38,1,35],[33,1,40],[34,1,40],[32,1,41],[40,1,41],
+	[41,1,42],[27,1,31],[31,1,41],[31,1,42]]
+	
 	i = 0
 	while i < edges.size():
 		graph.addConnection(edges[i])
 		i += 1
 	
 	# Calculate the optimal path using A*
-	optimal_path = A_Star(0,9,graph.getGraph())
+	optimal_path = A_Star(0,42,graph.getGraph())
 	optimal_path.pop_front()
 	
 	# Replace the nodes with their respective positions in the map
@@ -54,11 +60,14 @@ func _ready():
 	
 	# _draw() should be drawing after the graph is made
 	
-	set_fixed_process(false)
+	set_fixed_process(true)
 	
 func _fixed_process(delta):
 	# Nothing do to here for now
-	pass
+	if (Input.is_action_pressed("Hide_underlying_graph")):
+		hide()
+	elif (Input.is_action_pressed("Show_underlying_graph")):
+		show()
 	
 # Finds the centroid of a given triangle
 # tiangle : an array of points, representing the vertices of the triangle
@@ -96,37 +105,37 @@ func A_Star(start,goal,graph):
 	# The set of nodes already evaluated
 	var closedSet = []
 	
-	# The set of currently discovered nodes that are not evaluated yet
-	# initially, only the start node is known
+	# The set of currently discovered nodes that are not evaluated yet.
+	# Initially, only the start node is known
 	var openSet = PriorityQueue.new()
 	
-	# For each node, which node it can be most efficiently be reached from
+	# For each node, which node it can be most efficiently be reached from.
 	# If a node can be reached from many nodes, cameFrom will eventually
 	# contain the most efficient second step
 	var cameFrom = []
 	
-	# For each node, the cost of getting from the start node to that node
-	# initialized with a default value of infinity for all nodes
+	# For each node, the cost of getting from the start node to that node.
+	# Initialized with a default value of infinity for all nodes
 	var gScore = []
 	var tentative_gScore
 	
 	# For each node, the total cost of getting from the start node to the
-	# goal by passing by that node. That value is partly known, partly heuristic
-	# initialized with a default value of infinity for all nodes
+	# goal by passing by that node. That value is partly known, partly heuristic.
+	# Initialized with a default value of infinity for all nodes
 	var fScore = []
 	
 	var a = 0
-	# Initialization of gScore and fScore values for all nodes
+	# Initialization of gScore and fScore values for all nodes.
 	while a < graph.size():
 		gScore.append(INFINITY)
 		fScore.append(INFINITY)
 		cameFrom.append(null)
 		a += 1
 	
-	# The cost of going from start to start is zero
+	# The cost of going from start to start is zero.
 	gScore[start] = 0
 	
-	# For the first node, fScore is completely heuristic
+	# For the first node, fScore is completely heuristic.
 	fScore[start] = heuristic_cost_estimate(start,goal)
 	
 	start = [fScore[start],start]
@@ -136,17 +145,17 @@ func A_Star(start,goal,graph):
 	var current
 
 	while !openSet.empty():
-		# Get the node with the highest priority in openSet (lowest fScore)
+		# Get the node with the highest priority in openSet (lowest fScore).
 		var temp = openSet.delMin()
 		current = temp[1]
 		
 		if current == goal:
 			return reconstruct_path(cameFrom,current)
 			
-		# Node visited, add it to closed list
+		# Node visited, add it to closed list.
 		closedSet.append(current)
 		
-		# Check the neighbors of our current node
+		# Check the neighbors of our current node.
 		var edgeList = graph[current]
 		for edge in edgeList:
 			
@@ -154,9 +163,9 @@ func A_Star(start,goal,graph):
 			var neighbor = edge[1]
 			
 			if closedSet.find(neighbor) != -1:
-				continue # Ignore the neighbor which is already evaluated
+				continue # Ignore the neighbor which is already evaluated.
 			
-			# Search if our node is already in the open list
+			# Search if our node is already in the open list.
 			a = 1
 			var found = false
 			while a <= openSet.currentSize and !found: 
@@ -165,27 +174,27 @@ func A_Star(start,goal,graph):
 				else:
 					a += 1
 			
-			# The distance from start to a neighbor
+			# The distance from start to a neighbor.
 			tentative_gScore = gScore[current] + weight
 			if tentative_gScore >= gScore[neighbor]:
-				continue # This is not a better path
+				continue # This is not a better path.
 			
-			# This path is the best until now. Let's save it
+			# This path is the best until now. Let's save it.
 			cameFrom[neighbor] = current
 			gScore[neighbor] = tentative_gScore
 			fScore[neighbor] = gScore[neighbor] + heuristic_cost_estimate(neighbor,goal)
 			
-			if !found: # New node discovered, add it to open list
+			if !found: # New node discovered, add it to open list.
 				openSet.insert([fScore[neighbor],neighbor])
 			
-			# Reconstruct the binary heap property in case we lost it
+			# Reconstruct the binary heap property in case we lost it.
 			if !openSet.empty():
 				var currentHeaplist = openSet.heapList
 				currentHeaplist.pop_front()
 				openSet.heapList = []
 				openSet.buildHeap(currentHeaplist) 
 			
-	# We failed to find a path from source to goal
+	# We failed to find a path from source to goal.
 	return null
 
 # Reconstructs the optimal path using 
@@ -194,22 +203,22 @@ func A_Star(start,goal,graph):
 # current : current node
 func reconstruct_path(cameFrom,current):
 	
-	# Container for the path
+	# Container for the path.
 	var total_path = [current]
 	var x = 0
 	
-	# Reconstruct the path from the pointers in the list
+	# Reconstruct the path from the pointers in the list.
 	while x < cameFrom.size() and current != null:
 		current = cameFrom[current]
 		total_path.append(current)
 		x += 1
 		
-	# Invert the path for easy printing later
+	# Invert the path for easy printing later.
 	total_path.invert()
 	
 	return total_path
 
-# Heuristic function to predict the optimal path
+# Heuristic function to predict the optimal path.
 # Current heuristic in use: Euclidean Distance
 # from : source node
 # to : destination node
@@ -222,7 +231,9 @@ func heuristic_cost_estimate(from,to):
 	var b = vector0.y - vector1.y
 	
 	return sqrt(pow(a,2)+pow(b,2))
-	
+
+# Prints a list of nodes representing a given path
+# path : an array of nodes describing a path
 func printPath(path):
 	
 	if path != null:

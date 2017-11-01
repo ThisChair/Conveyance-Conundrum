@@ -6,7 +6,7 @@ onready var raycast_query = get_node("/root/level/pathfollowing box/RayCast2D/")
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	set_fixed_process(false)
+	set_fixed_process(true)
 	
 func _fixed_process(delta):
 	
@@ -20,7 +20,7 @@ func _fixed_process(delta):
 	var path = graph_node.optimal_path
 	
 	# Instantiation of new path following class
-	var path_follow = FollowPath.new(get_node("/root/level/pathfollowing box/"),path,true)
+	var path_follow = FollowPath.new(get_node("/root/level/pathfollowing box/"),path,null)
 	
 	# Instantiation of new obstacle avoidance class
 	var avoid = ObstacleAvoidance.new(get_parent(),raycast_query)

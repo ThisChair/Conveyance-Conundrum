@@ -2,12 +2,17 @@ extends Node2D
 
 # Implementation of a graph
 # nodes : a 2D array representing the graph structure
-# new_edge : represents an incomplete edge
+# node : holds source node of our current complete edge
+# new_edge : represents an edge of the form [weight,dest_node]
+# inv_edge : necessary for adding a two way connection
 # i and j : iterator variables
 class Graph:
 	
 	var nodes = []
+	var source
+	var dest
 	var new_edge
+	var inv_edge
 	var i
 	var j
 	
@@ -25,10 +30,15 @@ class Graph:
 	# - complete_edge[2] = destination node to which the edge arrives
 	func addConnection(complete_edge):
 		
-		var node = complete_edge[0]
+		source = complete_edge[0]
+		dest = complete_edge[2]
 		# Create an edge and add it to it's respective node
-		new_edge = [complete_edge[1],complete_edge[2]]
-		nodes[node].append(new_edge)
+		new_edge = [complete_edge[1],dest]
+		nodes[source].append(new_edge)
+		# For every edge we add, we must add an edge in the opposite
+		# direction
+		inv_edge = [complete_edge[1],source]
+		nodes[dest].append(inv_edge)
 		
 	# Prints the graph, the output has the structure:
 	# 'source node -> destination node'
