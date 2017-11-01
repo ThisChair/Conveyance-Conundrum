@@ -1,31 +1,35 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=2]
-[ext_resource path="res://bomba.png" type="Texture" id=3]
-[ext_resource path="res://Movement Scrips/PatrolBot.gd" type="Script" id=4]
+[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=1]
+[ext_resource path="res://bomba.png" type="Texture" id=2]
+[ext_resource path="res://Movement Scrips/PatrolBot.gd" type="Script" id=3]
+[ext_resource path="res://player.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -30, 30, -30, -30, 30, -30, 30, 30 )
 
 [node name="StateTest" type="Node2D"]
 
 transform/pos = Vector2( 3, 0 )
 
-[node name="player" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 241.289, 196.49 )
-
 [node name="PatrolBot" type="KinematicBody2D" parent="."]
 
 transform/pos = Vector2( 673.629, 314.607 )
 input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 0.704675, 0, 0, 0.736739, 1.26782, 0.947418 )
+shapes/0/trigger = true
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 2 )
+script/script = ExtResource( 1 )
 maxSpeed = 50
 
 [node name="Sprite" type="Sprite" parent="PatrolBot"]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
 [node name="StateMachine" type="KinematicBody2D" parent="PatrolBot"]
 
@@ -33,7 +37,20 @@ input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 4 )
+script/script = ExtResource( 3 )
 maxSpeed = 50
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PatrolBot"]
+
+transform/pos = Vector2( 1.26782, 0.947418 )
+transform/scale = Vector2( 0.704675, 0.736739 )
+build_mode = 0
+polygon = Vector2Array( -30, 30, -30, -30, 30, -30, 30, 30 )
+shape_range = Vector2( 0, 0 )
+trigger = true
+
+[node name="player" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 166.464, 144.904 )
 
 

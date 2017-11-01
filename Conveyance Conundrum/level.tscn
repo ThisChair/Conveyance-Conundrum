@@ -1,14 +1,13 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Prototype Player 1.png" type="Texture" id=3]
-[ext_resource path="res://creategraph.gd" type="Script" id=4]
-[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=5]
-[ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
-[ext_resource path="res://JumpPad.gd" type="Script" id=8]
-[ext_resource path="res://LandPad.gd" type="Script" id=9]
+[ext_resource path="res://creategraph.gd" type="Script" id=3]
+[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=4]
+[ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://JumpPad.gd" type="Script" id=7]
+[ext_resource path="res://LandPad.gd" type="Script" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -63,7 +62,6 @@ __meta__ = {
 "jumper",
 ] instance=ExtResource( 2 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 549, 320 )
 transform/scale = Vector2( 0.96875, 1 )
 collision/layers = 3
@@ -73,11 +71,6 @@ collision/mask = 3
 
 transform/pos = Vector2( 6, -16 )
 transform/scale = Vector2( 1.125, 0.8125 )
-
-[node name="Sprite" parent="player"]
-
-transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="player"]
 
@@ -109,7 +102,7 @@ drag_margin/bottom = 0.2
 
 editor/display_folded = true
 visibility/behind_parent = true
-script/script = ExtResource( 4 )
+script/script = ExtResource( 3 )
 
 [node name="0" type="Polygon2D" parent="geometry graph"]
 
@@ -768,7 +761,7 @@ input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 5 )
+script/script = ExtResource( 4 )
 maxSpeed = 50
 
 [node name="path follow" type="KinematicBody2D" parent="pathfollowing box"]
@@ -777,12 +770,12 @@ input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 6 )
+script/script = ExtResource( 5 )
 maxSpeed = 50
 
 [node name="Sprite" type="Sprite" parent="pathfollowing box"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="RayCast2D" type="RayCast2D" parent="pathfollowing box"]
 
@@ -805,9 +798,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 2
 collision/mask = 2
-script/script = ExtResource( 8 )
+script/script = ExtResource( 7 )
 direction = Vector2( 1, 0 )
-minSpeed = 40.0
+minSpeed = 45.0
 
 [node name="LandPad" type="Area2D" parent="."]
 
@@ -820,7 +813,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 2
 collision/mask = 2
-script/script = ExtResource( 9 )
+script/script = ExtResource( 8 )
 
 [connection signal="body_enter" from="JumpPad" to="JumpPad" method="_on_JumpPad_body_enter"]
 

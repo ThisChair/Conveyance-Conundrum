@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=1]
 [ext_resource path="res://Movement Scrips/playerbox.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Prototype Player 1.png" type="Texture" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -32,6 +32,7 @@ script/script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
+transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

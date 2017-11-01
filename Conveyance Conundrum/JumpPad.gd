@@ -4,7 +4,7 @@ extends Area2D
 # var a = 2
 # var b = "textvar"
 export(Vector2) var direction = Vector2(1,0)
-export(float) var minSpeed = 40.0
+export(float) var minSpeed = 45.0
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
