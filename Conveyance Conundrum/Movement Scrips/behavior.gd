@@ -554,6 +554,89 @@ class Separation:
 				steer.velocity = character.steering.velocity
 				steer.linear += strength * direction
 			
-		# We've gone through all the targets, return the resultç
+		# We've gone through all the targets, return the result
 
 		return steer
+		
+class Flocking:
+	
+	# Computes the aligment acharacter must face 
+	# respective to the flock.
+	# myself : our current character
+	# AgentList : list of agents in the flock.
+	func computeAligment(myself,AgentList):
+		
+		# Computation vector
+		var aligment = Vector2()
+		
+		# Number of neighbors
+		var neighborCount = 0
+		
+		# Distance & direction to the agent
+		var direction
+		var distance
+		
+		# For each agent in the flock, we add it's velocity
+		# to the computation vector, and the neighbor count is 
+		# increased
+		for agent in AgentList:
+			
+			if (agent != myself):
+				
+				direction = agent.get_pos() - myself.get_pos()
+				distance = direction.length()
+				
+				if (distance < 200):
+					
+					aligment.x += agent.steering.velocity.x
+					aligment.y += agent.steering.velocity.y
+					neighborCount += 1
+		
+		# Si no encotramos agentes entonces
+		# devolvemos el vector nulo.
+		if (neighborCount == 0):
+			return aligment
+			
+		aligment.x /= neighborCount
+		aligment.y /= neighborCount
+		aligment.normalized()
+		return aligment
+	
+	func computeCohesion(myself,AgentList):
+		
+		# Computation vector
+		var cohesion = Vector2()
+		
+		# Number of neighbors
+		var neighborCount = 0;
+		
+		# Distance & direction to the agent
+		var direction
+		var distance
+		
+		# For each agent in the flock, we add it's position
+		# to the computation vector, and the neighbor count is 
+		# increased
+		for agent in AgentList:
+			
+			if (agent != myself):
+				
+				direction = agent.get_pos() - myself.get_pos()
+				distance = direction.length()
+				agentpos = agent.get_pos()
+				
+				if (distance < 200):
+					
+					cohesion.x += agentpos.x
+					cohesion.y += agentpos.y
+					neighborCount += 1
+		
+		# Si no encotramos agentes entonces
+		# devolvemos el vector nulo.
+		if (neighborCount == 0):
+			return cohesion
+			
+		cohesion.x /= neighborCount
+		cohesion.y /= neighborCount
+		cohesion.normalized()
+		return cohesion

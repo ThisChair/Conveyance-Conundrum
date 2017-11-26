@@ -67,6 +67,7 @@ __meta__ = {
 "jumper",
 ] instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 549, 320 )
 transform/scale = Vector2( 0.96875, 1 )
 collision/layers = 3

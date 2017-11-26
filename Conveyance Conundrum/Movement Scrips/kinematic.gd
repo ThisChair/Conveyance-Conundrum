@@ -1,5 +1,3 @@
-
-
 extends Node2D
 
 # Class for manually updating the character's attributes

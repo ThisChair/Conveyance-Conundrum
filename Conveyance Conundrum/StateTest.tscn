@@ -17,6 +17,7 @@ transform/pos = Vector2( 3, 0 )
 
 [node name="PatrolBot" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 673.629, 314.607 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
