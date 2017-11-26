@@ -9,10 +9,8 @@ func _ready():
 	pass
 
 func _on_LandPad_body_exit( body ):
-	print("aaaaaaaaaaa")
+	print("z")
 	if body.is_in_group("jumper"):
 		body.set_collision_mask_bit(1, true)
 		body.set_layer_mask_bit (1, true)
 
-func _on_LandPad_body_enter( body ):
-	print("nu")

@@ -32,10 +32,7 @@ class PursueState:
 		character.steering = pursue.getSteering()
 	
 	func getEntryAction():
-		print("RUN.")
-		
-	func getExitAction():
-		print("Well...")
+		character.get_node("SamplePlayer2D").play("alarm")
 
 class TargetClose:
 	extends "Transition.gd"
@@ -51,7 +48,6 @@ class TargetClose:
 	
 	func isTriggered():
 		var distance = (character.get_pos() - target.get_pos()).length()
-		print(distance)
 		return distance <= radius
 		
 	func getAction():

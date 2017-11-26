@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,11 @@
 
 custom_solver_bias = 0.0
 points = Vector2Array( 37.394, -35.239, 37.394, 34.761, -42.606, 34.761, -42.606, -35.239, 27.394, -35.239 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [node name="level" type="Node2D"]
 
@@ -807,17 +812,24 @@ minSpeed = 45.0
 transform/pos = Vector2( 735, 390 )
 transform/scale = Vector2( 1.09375, 1.98537 )
 input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 2.29888, 0, 0, 2.51146, -1.29995, -1.33927 )
+shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 2
-collision/mask = 2
 script/script = ExtResource( 8 )
 
-[connection signal="body_enter" from="JumpPad" to="JumpPad" method="_on_JumpPad_body_enter"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandPad"]
 
-[connection signal="body_enter" from="LandPad" to="LandPad" method="_on_LandPad_body_enter"]
+transform/pos = Vector2( -1.29995, -1.33927 )
+transform/scale = Vector2( 2.29888, 2.51146 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="JumpPad" to="JumpPad" method="_on_JumpPad_body_enter"]
 
 [connection signal="body_exit" from="LandPad" to="LandPad" method="_on_LandPad_body_exit"]
 
