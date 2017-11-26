@@ -36,7 +36,8 @@ func _ready():
 		centroid_list.append(findCentroidTriangle(triangle))
 		i += 1
 	
-	# Create the edges and add it to the graph
+	# Create the edges...
+	# ***REMINDER TO IMPROVE THIS***
 	graph = Graph.new(centroid_list.size())
 	var edges = [[0,1,1],[1,1,2],[2,1,3],[0,1,4],[4,1,5],[5,1,6],[6,1,7],[8,1,9],[9,1,8],[6,1,11],[11,1,10],[10,1,12],
 	[12,1,13],[13,1,14],[14,1,9],[3,1,15],[15,1,16],[15,1,8],[8,1,15],[15,1,17],[17,1,19],[19,1,18],[18,1,20],[20,1,21],
@@ -45,6 +46,7 @@ func _ready():
 	[36,1,37],[7,1,37],[6,1,37],[37,1,38],[7,1,38],[7,1,39],[39,1,38],[38,1,35],[33,1,40],[34,1,40],[32,1,41],[40,1,41],
 	[41,1,42],[27,1,31],[31,1,41],[31,1,42]]
 	
+	# ...and add them to the graph
 	i = 0
 	while i < edges.size():
 		graph.addConnection(edges[i])
@@ -63,7 +65,7 @@ func _ready():
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
-	# Nothing do to here for now
+	# Press 'H' to hide the graph, 'G' to show
 	if (Input.is_action_pressed("Hide_underlying_graph")):
 		hide()
 	elif (Input.is_action_pressed("Show_underlying_graph")):
@@ -124,8 +126,8 @@ func A_Star(start,goal,graph):
 	# Initialized with a default value of infinity for all nodes
 	var fScore = []
 	
-	var a = 0
 	# Initialization of gScore and fScore values for all nodes.
+	var a = 0
 	while a < graph.size():
 		gScore.append(INFINITY)
 		fScore.append(INFINITY)
@@ -138,6 +140,7 @@ func A_Star(start,goal,graph):
 	# For the first node, fScore is completely heuristic.
 	fScore[start] = heuristic_cost_estimate(start,goal)
 	
+	# Initially only the start node is in the open set
 	start = [fScore[start],start]
 	openSet.insert(start)
 	

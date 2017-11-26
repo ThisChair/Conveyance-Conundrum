@@ -60,6 +60,10 @@ class Graph:
 # Priority Queue implementation with Binary Heap
 # Based on the code found in: 
 # http://interactivepython.org/runestone/static/pythonds/Trees/BinaryHeapImplementation.html
+# This queue handles objects of the form [weight,node], where:
+# weight : is the weight of the node
+# node : is the node to where the edge containing the previously mentioned weight arrives
+# This means this priority queue sorts according to edge weight, which is what we want. 
 # ----------------
 # heapList : list containing all the elements in the heap
 # currentSize : heap's current size
@@ -124,7 +128,10 @@ class PriorityQueue:
 		percDown(1)
 		return root
 	
-	# Construcs a binary heap from a given list
+	# Construcs a binary heap from a given list,
+	# normally used in A* for recovering the binary heap
+	# property after updating the weight values of a node
+	# already present in the heap.
 	func buildHeap(aList):
 		var v = floor(aList.size() / 2)
 		self.currentSize = aList.size()

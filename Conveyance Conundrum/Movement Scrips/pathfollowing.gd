@@ -14,7 +14,7 @@ func _fixed_process(delta):
 	raycast_query.add_exception(get_parent())
 	
 	# Get the graph representing the map
-	var graph_node = get_parent().get_node("/root/level/geometry graph/")
+	var graph_node = get_parent().get_node("/root/level/level graph/")
 	
 	# And from there, the optimal path given by A*
 	var path = graph_node.optimal_path
