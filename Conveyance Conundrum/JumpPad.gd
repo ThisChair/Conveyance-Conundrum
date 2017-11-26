@@ -16,5 +16,6 @@ func _on_JumpPad_body_enter( body ):
 		if projection >= minSpeed:
 			body.set_collision_mask_bit(1, false)
 			body.set_layer_mask_bit (1, false)
+			
 			body.flight.velocity = 3
 			body.flight.acceleration = 1

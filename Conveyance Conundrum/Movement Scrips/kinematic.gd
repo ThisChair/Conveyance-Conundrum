@@ -32,6 +32,7 @@ class Flight:
 	var state_fall = false
 	var original_scale
 	var original_z
+	var plane_vel = 0.0
 	export(float) var gravity = 3.0
 
 
@@ -51,13 +52,15 @@ func _fixed_process(delta):
 	
 	position = self.get_pos()
 	orientation = self.get_rot()
-	
 	# Update character position and orientation
-	position += steering.velocity * delta
 	orientation += steering.rotation * delta
+	if flight.state_fall or flight.state_jump:
+		steering.velocity = flight.plane_vel
+		set_rot(orientation)
+	position += steering.velocity * delta
 	motion = steering.velocity * delta
 	move(motion)
-	set_rot(orientation)
+	
 	
 	# Slide on terrain collisions
 	if (is_colliding()):
@@ -86,6 +89,7 @@ func _fixed_process(delta):
 			new_scale = flight.original_scale * 1.5
 		set_scale(new_scale)
 	if flight.velocity > 0 and not flight.state_fall:
+		flight.plane_vel = steering.velocity
 		flight.state_jump = true
 		set_z(flight.original_z + 100)
 	if flight.state_jump:
