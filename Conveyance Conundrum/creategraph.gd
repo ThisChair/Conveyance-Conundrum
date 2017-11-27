@@ -24,11 +24,12 @@ func _ready():
 	# Vertex colors for fanciness
 	vertex_colors.append(orang)
 	
+	var child
 	# Find the centroid of each triangle and save it 
 	while (i < get_child_count()):
 		
 		# Iterate over all children nodes
-		var child = get_child(i)
+		child = get_child(i)
 		# Get the triangle
 		triangle = child.get_polygon()
 		child.set_vertex_colors(vertex_colors)

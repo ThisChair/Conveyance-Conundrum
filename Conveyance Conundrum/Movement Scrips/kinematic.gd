@@ -50,13 +50,16 @@ func _fixed_process(delta):
 	
 	position = self.get_pos()
 	orientation = self.get_rot()
+	
 	# Update character position and orientation
 	orientation += steering.rotation * delta
 	if flight.state_fall or flight.state_jump:
 		steering.velocity = flight.plane_vel
 		set_rot(orientation)
+		
 	position += steering.velocity * delta
 	motion = steering.velocity * delta
+	
 	move(motion)
 	
 	
@@ -72,12 +75,10 @@ func _fixed_process(delta):
 	steering.rotation += steering.angular * delta
 	
 	# limit speed
-	if ((steering.velocity.length() > maxSpeed) and 
-		(steering.linear.length() != 0)):
+	if ((steering.velocity.length() > maxSpeed) and (steering.linear.length() != 0)):
 		steering.velocity = steering.velocity.normalized()
 		steering.velocity *= maxSpeed
 
-	
 	# Flight data
 	var actual_scale = get_scale()
 	if flight.state_fall or flight.state_jump:

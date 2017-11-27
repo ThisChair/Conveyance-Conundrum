@@ -35,3 +35,5 @@ func _fixed_process(delta):
 	
 	# Calculate the new blended steering and give it to the parent
 	get_parent().steering = blended_steer.getSteering()
+	
+	# AND TA-DA IT DOESN'T FUCKING WORK

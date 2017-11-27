@@ -810,6 +810,7 @@ minSpeed = 45.0
 
 [node name="LandPad" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 735, 390 )
 transform/scale = Vector2( 1.09375, 1.98537 )
 input/pickable = true

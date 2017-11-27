@@ -38,7 +38,7 @@ class BlendedSteering:
 		
 		# Crop the result and return
 		if (steer.linear.length() > maxAcceleration):
-			steer.linear.normalized()
+			steer.linear = steer.linear.normalized()
 			steer.linear *= maxAcceleration
 		if (steer.angular > maxRotation):
 			steer.angular = maxRotation
@@ -279,7 +279,7 @@ class RadiusSeek:
 	export(float) var maxAcceleration = 50
 	
 	# Seek radius
-	export(float) var seekRadius = 200
+	export(float) var seekRadius = 100
 	
 	# Intialization parameters for the class
 	func _init(ch, tg):
@@ -469,8 +469,6 @@ class Align:
 		steer.rotation = character.steering.rotation
 		steer.angular = deg2rad(steer.angular)
 		
-		
-		
 		return steer
 		
 class VelocityMatching:
@@ -560,14 +558,22 @@ class Separation:
 		
 class Flocking:
 	
+	var myself
+	var agentList
+	var maxSpeed = 50
+	
+	func _init(me,ag_l):
+		self.myself = me
+		self.agentList = ag_l
+	
 	# Computes the aligment acharacter must face 
 	# respective to the flock.
 	# myself : our current character
 	# AgentList : list of agents in the flock.
-	func computeAligment(myself,AgentList):
+	func computeAligment(Myself,AgentList):
 		
 		# Computation vector
-		var aligment = Vector2()
+		var alignment = Vector2()
 		
 		# Number of neighbors
 		var neighborCount = 0
@@ -580,35 +586,35 @@ class Flocking:
 		# to the computation vector, and the neighbor count is 
 		# increased
 		for agent in AgentList:
-			
-			if (agent != myself):
+
+			if (agent != Myself):
 				
-				direction = agent.get_pos() - myself.get_pos()
+				direction = agent.get_pos() - Myself.get_pos()
 				distance = direction.length()
 				
-				if (distance < 200):
+				if (distance < 500):
 					
-					aligment.x += agent.steering.velocity.x
-					aligment.y += agent.steering.velocity.y
+					alignment.x += agent.steering.velocity.x
+					alignment.y += agent.steering.velocity.y
 					neighborCount += 1
 		
 		# Si no encotramos agentes entonces
 		# devolvemos el vector nulo.
 		if (neighborCount == 0):
-			return aligment
+			return alignment
 			
-		aligment.x /= neighborCount
-		aligment.y /= neighborCount
-		aligment.normalized()
-		return aligment
+		alignment.x /= neighborCount
+		alignment.y /= neighborCount
+		alignment = alignment.normalized()
+		return alignment
 	
-	func computeCohesion(myself,AgentList):
+	func computeCohesion(Myself,AgentList):
 		
 		# Computation vector
 		var cohesion = Vector2()
 		
 		# Number of neighbors
-		var neighborCount = 0;
+		var neighborCount = 0
 		
 		# Distance & direction to the agent
 		var direction
@@ -619,16 +625,15 @@ class Flocking:
 		# increased
 		for agent in AgentList:
 			
-			if (agent != myself):
+			if (agent != Myself):
 				
-				direction = agent.get_pos() - myself.get_pos()
+				direction = agent.get_pos() - Myself.get_pos()
 				distance = direction.length()
-				agentpos = agent.get_pos()
 				
-				if (distance < 200):
-					
-					cohesion.x += agentpos.x
-					cohesion.y += agentpos.y
+				if (distance < 500):
+
+					cohesion.x += agent.get_pos().x
+					cohesion.y += agent.get_pos().y
 					neighborCount += 1
 		
 		# Si no encotramos agentes entonces
@@ -638,5 +643,66 @@ class Flocking:
 			
 		cohesion.x /= neighborCount
 		cohesion.y /= neighborCount
-		cohesion.normalized()
+		cohesion = Vector2(cohesion.x - Myself.get_pos().x, cohesion.y - Myself.get_pos().y)
+		cohesion = cohesion.normalized()
 		return cohesion
+		
+	func computeSeparation(Myself,AgentList):
+		
+		# Computation vector
+		var separation = Vector2()
+		
+		# Numbers of neighbors
+		var neighborCount = 0
+		
+		# Distance & direction to the agent
+		var direction
+		var distance
+		
+		# For each agent in the flock, we add the distance from
+		# the agent to the neighbor to the computation vector,
+		# and the neighbor count is increased
+		for agent in AgentList:
+			
+			if (agent != Myself):
+				
+				direction = agent.get_pos() - Myself.get_pos()
+				distance = direction.length()
+				
+				if (distance < 500):
+					
+					separation.x += agent.get_pos().x - Myself.get_pos().x
+					separation.y += agent.get_pos().y - Myself.get_pos().y
+					neighborCount += 1
+		
+		# Si no encotramos agentes entonces
+		# devolvemos el vector nulo.
+		if (neighborCount == 0):
+			return separation
+			
+		separation.x /= neighborCount
+		separation.y /= neighborCount
+		separation *= -1
+		separation = separation.normalized()
+		return separation
+		
+	func getSteering():
+		
+		var alignment = computeAligment(myself,agentList)
+		var cohesion = computeCohesion(myself,agentList)
+		var separation = computeSeparation(myself,agentList)
+		
+		# Output structure
+		var steer = SteeringBehavior.new()
+
+		steer.velocity.x = alignment.x + cohesion.x + separation.x*1.1
+		steer.velocity.y = alignment.y + cohesion.y + separation.y*1.1
+		
+		steer.velocity = steer.velocity.normalized()
+		steer.velocity *= maxSpeed
+		
+		steer.linear = myself.steering.linear
+		steer.rotation = myself.steering.rotation
+		steer.angular = myself.steering.angular
+		
+		return steer 
