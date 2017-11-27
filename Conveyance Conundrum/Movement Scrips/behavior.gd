@@ -603,8 +603,7 @@ class Flocking:
 		if (neighborCount == 0):
 			return alignment
 			
-		alignment.x /= neighborCount
-		alignment.y /= neighborCount
+		alignment /= neighborCount
 		alignment = alignment.normalized()
 		return alignment
 	
@@ -641,8 +640,7 @@ class Flocking:
 		if (neighborCount == 0):
 			return cohesion
 			
-		cohesion.x /= neighborCount
-		cohesion.y /= neighborCount
+		cohesion /= neighborCount + 1
 		cohesion = Vector2(cohesion.x - Myself.get_pos().x, cohesion.y - Myself.get_pos().y)
 		cohesion = cohesion.normalized()
 		return cohesion
@@ -680,8 +678,7 @@ class Flocking:
 		if (neighborCount == 0):
 			return separation
 			
-		separation.x /= neighborCount
-		separation.y /= neighborCount
+		separation /= neighborCount
 		separation *= -1
 		separation = separation.normalized()
 		return separation
@@ -695,8 +692,8 @@ class Flocking:
 		# Output structure
 		var steer = SteeringBehavior.new()
 
-		steer.velocity.x = alignment.x + cohesion.x + separation.x*1.1
-		steer.velocity.y = alignment.y + cohesion.y + separation.y*1.1
+		steer.velocity.x = alignment.x + cohesion.x + separation.x
+		steer.velocity.y = alignment.y + cohesion.y + separation.y
 		
 		steer.velocity = steer.velocity.normalized()
 		steer.velocity *= maxSpeed
