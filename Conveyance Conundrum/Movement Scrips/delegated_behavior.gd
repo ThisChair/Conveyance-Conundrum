@@ -132,7 +132,7 @@ class ObstacleAvoidance:
 		
 		# 1. Calculate the target to delegate to seek
 		cast_direction = Vector2(sin(character.get_rot()),cos(character.get_rot()))
-		cast_direction.normalized()
+		cast_direction = cast_direction.normalized()
 		cast_direction *= 50
 
 		raycast_query.set_cast_to(cast_direction)

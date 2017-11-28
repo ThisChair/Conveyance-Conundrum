@@ -548,7 +548,7 @@ class Separation:
 				strength = min(decay_coefficient / (distance * distance), maxAcceleration)
 				
 				# Add the acceleration
-				direction.normalized()
+				direction = direction.normalized()
 				steer.velocity = character.steering.velocity
 				steer.linear += strength * direction
 			
@@ -558,15 +558,25 @@ class Separation:
 		
 class Flocking:
 	
+	# Character data
 	var myself
+	
+	# List of agents in the flock
 	var agentList
+	
+	# Maximum speed allowed
 	var maxSpeed = 50
 	
-	func _init(me,ag_l):
+	# Point to seek
+	var currentCenterOfMass
+	
+	# Initialization parameters for the class
+	func _init(cm,me,ag_l):
 		self.myself = me
 		self.agentList = ag_l
+		self.currentCenterOfMass = cm
 	
-	# Computes the aligment acharacter must face 
+	# Computes the aligment a character must face 
 	# respective to the flock.
 	# myself : our current character
 	# AgentList : list of agents in the flock.
@@ -591,15 +601,15 @@ class Flocking:
 				
 				direction = agent.get_pos() - Myself.get_pos()
 				distance = direction.length()
-				
-				if (distance < 500):
-					
-					alignment.x += agent.steering.velocity.x
-					alignment.y += agent.steering.velocity.y
+				# Get the distance and see if it's our agent 
+				# is inside the flock
+				if (distance < 200):
+					# Save the agent velocity in the computation vector
+					alignment += agent.steering.velocity
 					neighborCount += 1
 		
-		# Si no encotramos agentes entonces
-		# devolvemos el vector nulo.
+		# If we are alone in the flock,
+		# return the null vector
 		if (neighborCount == 0):
 			return alignment
 			
@@ -607,10 +617,18 @@ class Flocking:
 		alignment = alignment.normalized()
 		return alignment
 	
-	func computeCohesion(Myself,AgentList):
+	# Computes the cohesion a character must apply to
+	# remain in the flock.
+	# proxyCenterOfMass : in case we wanna flock to a certain point.
+	# myself : our current character
+	# AgentList: list of agents in the flock
+	func computeCohesion(proxyCenterOfMass,Myself,AgentList):
 		
-		# Computation vector
-		var cohesion = Vector2()
+		# Flock's center of mass
+		var centerOfMass = Vector2()
+		
+		# Direction to the center of mass
+		var forceVector = Vector2()
 		
 		# Number of neighbors
 		var neighborCount = 0
@@ -628,22 +646,32 @@ class Flocking:
 				
 				direction = agent.get_pos() - Myself.get_pos()
 				distance = direction.length()
-				
-				if (distance < 500):
-
-					cohesion.x += agent.get_pos().x
-					cohesion.y += agent.get_pos().y
+				# Get the distance and see if our agent
+				# is inside the flock
+				if (distance < 200):
+					# Save the agent position in the computation vector
+					centerOfMass += agent.get_pos()
 					neighborCount += 1
 		
-		# Si no encotramos agentes entonces
-		# devolvemos el vector nulo.
+		# If we are alone in the flock,
+		# return the null vector
 		if (neighborCount == 0):
-			return cohesion
-			
-		cohesion /= neighborCount + 1
-		cohesion = Vector2(cohesion.x - Myself.get_pos().x, cohesion.y - Myself.get_pos().y)
-		cohesion = cohesion.normalized()
-		return cohesion
+			return centerOfMass
+		
+		# If we're using a proxy center of mass to
+		# flock to, then calculate the force vector
+		# to it.
+		if (proxyCenterOfMass != null):
+			forceVector = proxyCenterOfMass - Myself.get_pos()
+			forceVector = forceVector.normalized()
+			return forceVector
+		
+		# Otherwise calculate the force vector pointing
+		# to the flock's center of mass.
+		centerOfMass /= neighborCount+1
+		forceVector = centerOfMass - Myself.get_pos()
+		forceVector = forceVector.normalized()
+		return forceVector
 		
 	func computeSeparation(Myself,AgentList):
 		
@@ -666,15 +694,16 @@ class Flocking:
 				
 				direction = agent.get_pos() - Myself.get_pos()
 				distance = direction.length()
-				
-				if (distance < 500):
-					
-					separation.x += agent.get_pos().x - Myself.get_pos().x
-					separation.y += agent.get_pos().y - Myself.get_pos().y
+				# Get the distance and see if our agent
+				# is inside the flock
+				if (distance < 50):
+					# Save the direction from our agent to the 
+					# target agent in the computation vector
+					separation += direction
 					neighborCount += 1
 		
-		# Si no encotramos agentes entonces
-		# devolvemos el vector nulo.
+		# If we are alone in the flock,
+		# return the null vector
 		if (neighborCount == 0):
 			return separation
 			
@@ -685,16 +714,18 @@ class Flocking:
 		
 	func getSteering():
 		
+		# Calculate the 3 necessary behaviours
 		var alignment = computeAligment(myself,agentList)
-		var cohesion = computeCohesion(myself,agentList)
+		var cohesion = computeCohesion(currentCenterOfMass,myself,agentList)
 		var separation = computeSeparation(myself,agentList)
 		
 		# Output structure
 		var steer = SteeringBehavior.new()
-
-		steer.velocity.x = alignment.x + cohesion.x + separation.x
-		steer.velocity.y = alignment.y + cohesion.y + separation.y
 		
+		# Blend the behaviours into a single steering
+		steer.velocity += alignment + cohesion + separation
+		
+		# Crop it to a maximum speed
 		steer.velocity = steer.velocity.normalized()
 		steer.velocity *= maxSpeed
 		

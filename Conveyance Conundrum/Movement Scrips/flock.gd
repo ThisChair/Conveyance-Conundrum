@@ -16,19 +16,12 @@ func _fixed_process(delta):
 	var flockNode = get_parent().get_parent()
 	var agentList = flockNode.agentList
 	
-	var flock = Flocking.new(get_parent(),agentList)
-	#var seek = Seek.new(get_parent(),seekPoint)
+	var flock = Flocking.new(seekPoint.get_pos(),get_parent(),agentList)
 	
-	#var b1 = BehaviorAndWeight.new(flock,1)
-	#var b2 = BehaviorAndWeight.new(seek,1)
-	#var behaviors_list = [b1,b2]
-	
-	#var blended_steer = BlendedSteering.new(behaviors_list)
-	
-	#get_parent().steering = blended_steer.getSteering()
 	get_parent().steering = flock.getSteering()
 	
 func _input(event):
 	# Mouse in viewport coordinates
 	if (event.type==InputEvent.MOUSE_BUTTON):
+		print(event.pos)
 		seekPoint.set_pos(event.pos)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=1]
+[ext_resource path="res://china_honk.png" type="Texture" id=2]
+[ext_resource path="res://Movement Scrips/flock.gd" type="Script" id=3]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+
+transform/pos = Vector2( 330, 210 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+maxSpeed = 50
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 3 )
+maxSpeed = 50
+
+
