@@ -48,7 +48,16 @@ class TargetClose:
 	
 	func isTriggered():
 		var distance = (character.get_pos() - target.get_pos()).length()
-		return distance <= radius
+		if distance <= radius:
+			var space_state = character.get_world_2d().get_direct_space_state()
+			var result = space_state.intersect_ray(
+				character.get_pos(),
+				target.get_pos(),
+				[character, target]
+			)
+			print(result.size())
+			return result.empty()
+		return false
 		
 	func getAction():
 		var sprite = character.get_node("Sprite")

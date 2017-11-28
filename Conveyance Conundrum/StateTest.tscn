@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=1]
 [ext_resource path="res://bomba.png" type="Texture" id=2]
 [ext_resource path="res://Movement Scrips/PatrolBot.gd" type="Script" id=3]
 [ext_resource path="res://StateTest.tres" type="SampleLibrary" id=4]
 [ext_resource path="res://player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tilemap.tres" type="TileSet" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -17,7 +18,6 @@ transform/pos = Vector2( 3, 0 )
 
 [node name="PatrolBot" type="KinematicBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 673.629, 314.607 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -65,5 +65,23 @@ config/pitch_random = 0.0
 [node name="player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 166.464, 144.904 )
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 6 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 131081, 0, 196617, 0, 262153, 0, 327689, 0, 393225, 0, 458761, 0 )
 
 
