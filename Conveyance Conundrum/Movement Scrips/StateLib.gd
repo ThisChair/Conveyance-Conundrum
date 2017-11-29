@@ -34,6 +34,32 @@ class PursueState:
 	func getEntryAction():
 		character.get_node("SamplePlayer2D").play("alarm")
 
+class TargetHidden:
+	extends "Transition.gd"
+	
+	var target
+	var radius
+	var character
+	
+	func _init(ch, tg):
+		self.character = ch
+		self.target = tg
+	
+	func isTriggered():
+		var space_state = character.get_world_2d().get_direct_space_state()
+		var result = space_state.intersect_ray(
+			character.get_pos(),
+			target.get_pos(),
+			[character, target]
+		)
+		return not result.empty()
+
+	func getAction():
+		var sprite = character.get_node("Sprite")
+		sprite.set_texture(load("res://bomba.png"))
+		character.get_node("SamplePlayer2D").stop_all()
+		character.steering = SteeringBehavior.new()
+
 class TargetClose:
 	extends "Transition.gd"
 	
@@ -55,7 +81,6 @@ class TargetClose:
 				target.get_pos(),
 				[character, target]
 			)
-			print(result.size())
 			return result.empty()
 		return false
 		
