@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://creategraph.gd" type="Script" id=3]
-[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=4]
-[ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://JumpPad.gd" type="Script" id=7]
-[ext_resource path="res://LandPad.gd" type="Script" id=8]
+[ext_resource path="res://createsoundgraph.gd" type="Script" id=4]
+[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=5]
+[ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://JumpPad.gd" type="Script" id=8]
+[ext_resource path="res://LandPad.gd" type="Script" id=9]
+[ext_resource path="res://bomba.png" type="Texture" id=10]
+[ext_resource path="res://SoundExpansion.gd" type="Script" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -749,15 +752,672 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
+[node name="sound graph" type="Node2D" parent="."]
+
+visibility/visible = false
+visibility/behind_parent = true
+script/script = ExtResource( 4 )
+
+[node name="0" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 0, 1 )
+polygon = Vector2Array( 60, 60, 260, 200, 60, 200 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="1" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 0, 1 )
+polygon = Vector2Array( 60, 60, 260, 200, 260, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="2" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 260, 60, 260, 190, 380, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="3" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 260, 190, 380, 190, 380, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="4" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 60, 200, 260, 200, 60, 320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="5" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 60, 320, 260, 200, 260, 320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="6" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 60, 320, 130, 540, 180, 320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="7" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 60, 320, 60, 700, 130, 540 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="8" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 380, 190, 500, 280, 380, 320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="9" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 380, 320, 380, 450, 500, 280 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="10" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 180, 320, 260, 320, 260, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="11" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 180, 320, 260, 450, 150, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="12" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 260, 320, 320, 320, 260, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="13" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -0.0574646, -1.27353 )
+polygon = Vector2Array( 320, 320, 380, 450, 260, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="14" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 320, 320, 380, 320, 380, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="15" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 0, 1 )
+polygon = Vector2Array( 380, 60, 380, 190, 500, 280 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="16" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 380, 60, 520, 60, 460, 210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="17" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 520, 60, 460, 210, 500, 280 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="18" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 520, 60, 640, 60, 600, 210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="19" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 520, 60, 600, 210, 500, 280 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="20" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 640, 60, 700, 210, 600, 210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="21" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 640, 60, 700, 210, 700, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="22" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 700, 210, 700, 320, 600, 210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="23" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 700, 320, 580, 320, 600, 210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="24" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 600, 210, 580, 320, 500, 280 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="25" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -6.10352e-05, 0 )
+polygon = Vector2Array( 500, 280, 700, 380, 430, 380 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="26" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 700, 320, 700, 380, 580, 320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="27" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 700, 380, 610, 450, 540, 380 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="28" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 610, 450, 540, 380, 470, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="29" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 540, 380, 430, 380, 470, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="30" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 430, 380, 380, 450, 470, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="31" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 700, 380, 700, 570, 450, 570 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="32" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 380, 450, 610, 450, 450, 570 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="33" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 380, 450, 450, 570, 380, 710 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="34" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 1.52588e-05, -32.353 )
+transform/scale = Vector2( 1, 1.05882 )
+polygon = Vector2Array( 380, 570, 380, 700, 230, 700 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="35" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 370, 580, 240, 580, 230, 710 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="36" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 250, 450, 250, 580, 150, 450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="37" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 150, 450, 250, 580, 110, 590 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="38" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 110, 590, 230, 710, 240, 580 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="39" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 110, 580, 50, 710, 230, 710 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="40" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 450, 570, 380, 710, 610, 710 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="41" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 450, 570, 700, 570, 610, 710 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="42" type="Polygon2D" parent="sound graph"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 700, 570, 700, 710, 610, 710 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
 [node name="pathfollowing box" type="KinematicBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 140, 130 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 maxSpeed = 50
 
 [node name="path follow" type="KinematicBody2D" parent="pathfollowing box"]
@@ -766,12 +1426,12 @@ input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 5 )
+script/script = ExtResource( 6 )
 maxSpeed = 50
 
 [node name="Sprite" type="Sprite" parent="pathfollowing box"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="RayCast2D" type="RayCast2D" parent="pathfollowing box"]
 
@@ -794,7 +1454,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 2
 collision/mask = 2
-script/script = ExtResource( 7 )
+script/script = ExtResource( 8 )
 direction = Vector2( 1, 0 )
 minSpeed = 45.0
 
@@ -811,7 +1471,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 8 )
+script/script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandPad"]
 
@@ -820,6 +1480,22 @@ transform/scale = Vector2( 2.29888, 2.51146 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
+
+[node name="Emissor" type="Sprite" parent="."]
+
+transform/pos = Vector2( 289.817, 105.258 )
+texture = ExtResource( 10 )
+script/script = ExtResource( 11 )
+
+[node name="Receptor1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 643.288, 140.42 )
+texture = ExtResource( 10 )
+
+[node name="Receptor2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 337.934, 654.313 )
+texture = ExtResource( 10 )
 
 [connection signal="body_enter" from="JumpPad" to="JumpPad" method="_on_JumpPad_body_enter"]
 
