@@ -2,6 +2,7 @@ extends Node2D
 
 # Variables
 var agentList = []
+var seekPoint = Vector2()
 # Iterator
 var i = 0
 
@@ -20,3 +21,10 @@ func _ready():
 		i += 1
 		
 	# Our work here is done
+	set_process_input(true)
+	
+func _input(event):
+	# Mouse in viewport coordinates
+	if (event.type==InputEvent.MOUSE_BUTTON):
+		# On mouse click, get click position
+		seekPoint = event.pos

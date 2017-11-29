@@ -6,9 +6,9 @@ var i = 0
 var j = 0
 # Polygon variables
 var triangle
+var triangle_list = []
 var centroid_list = []
 # Color variables
-var orang = Color(255,0,0)
 var black = Color(0,0,0)
 var vertex_colors = ColorArray()
 # Graph variables
@@ -21,9 +21,6 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	
-	# Vertex colors for fanciness
-	vertex_colors.append(orang)
-	
 	var child
 	# Find the centroid of each triangle and save it 
 	while (i < get_child_count()):
@@ -32,7 +29,8 @@ func _ready():
 		child = get_child(i)
 		# Get the triangle
 		triangle = child.get_polygon()
-		child.set_vertex_colors(vertex_colors)
+		# Add it to the list of triangles (for drawing later!)
+		triangle_list.append(triangle)
 		# Append the centroid to the centroids list
 		centroid_list.append(findCentroidTriangle(triangle))
 		i += 1
@@ -46,6 +44,12 @@ func _ready():
 	[19,1,22],[20,1,22],[22,1,26],[17,1,24],[9,1,30],[14,1,30],[30,1,32],[32,1,31],[32,1,33],[33,1,34],[34,1,35],[11,1,36],
 	[36,1,37],[7,1,37],[6,1,37],[37,1,38],[7,1,38],[7,1,39],[39,1,38],[38,1,35],[33,1,40],[34,1,40],[32,1,41],[40,1,41],
 	[41,1,42],[27,1,31],[31,1,41],[31,1,42]]
+	
+	var direction
+	# Replace the default distance with the true distance
+	for edge in edges:
+		direction = centroid_list[edge[0]] - centroid_list[edge[2]]
+		edge[1] = direction.length()
 	
 	# ...and add them to the graph
 	i = 0
@@ -85,10 +89,19 @@ func findCentroidTriangle(triangle):
 # Fun fuction for drawing all sorts of stuff, 
 # all drawing submethods go here
 func _draw():
+	# Draws the triangles
+	for triangle in triangle_list:
+		# Draw each vertex connection
+		for i in range(1,triangle.size()):
+			draw_line(triangle[i-1],triangle[i],black,1)
+		# Connect the last vertex to the first one
+		draw_line(triangle[triangle.size()-1],triangle[0],black,1)
+		
 	# Draws the centroids of the triangles
 	if (!centroid_list.empty()):
 		for centroid in centroid_list:
 			draw_circle(centroid,5,black)
+			
 	# Draws the graph's connections
 	var nodes_and_edges = graph.getGraph()
 	if (!nodes_and_edges.empty()):
@@ -96,7 +109,7 @@ func _draw():
 		while i < nodes_and_edges.size():
 			var edges = nodes_and_edges[i]
 			for edge in edges:
-				draw_line(centroid_list[i],centroid_list[edge[1]],black,1)
+				draw_line(centroid_list[i],centroid_list[edge[1]],black,3)
 			i += 1
 
 # Implementation of A*, for finding 

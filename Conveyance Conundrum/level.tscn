@@ -67,26 +67,15 @@ __meta__ = {
 "jumper",
 ] instance=ExtResource( 2 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 549, 320 )
 transform/scale = Vector2( 0.96875, 1 )
 collision/layers = 3
 collision/mask = 3
 
-[node name="input movement" parent="player"]
-
-transform/pos = Vector2( 6, -16 )
-transform/scale = Vector2( 1.125, 0.8125 )
-
-[node name="CollisionPolygon2D" parent="player"]
-
-transform/pos = Vector2( 10, -10 )
-transform/rot = -179.942
-transform/scale = Vector2( 1.5, 1 )
-polygon = Vector2Array( -19.9865, -20.0303, 26.6801, -19.9595, 26.6464, 30.0404, -20.0202, 29.9696 )
-
 [node name="Camera2D" type="Camera2D" parent="player"]
 
+transform/pos = Vector2( 6.19354, -9.99999 )
+transform/scale = Vector2( 1.12903, 0.9375 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -107,6 +96,7 @@ drag_margin/bottom = 0.2
 [node name="level graph" type="Node2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 visibility/behind_parent = true
 script/script = ExtResource( 3 )
 
@@ -836,4 +826,3 @@ _update_shape_index = 0
 [connection signal="body_exit" from="LandPad" to="LandPad" method="_on_LandPad_body_exit"]
 
 
-[editable path="player"]

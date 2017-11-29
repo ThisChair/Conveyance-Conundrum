@@ -4,7 +4,7 @@
 [ext_resource path="res://china_honk.png" type="Texture" id=2]
 [ext_resource path="res://Movement Scrips/flock.gd" type="Script" id=3]
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="flockbot" type="KinematicBody2D"]
 
 transform/pos = Vector2( 330, 210 )
 input/pickable = false
@@ -19,7 +19,7 @@ maxSpeed = 50
 transform/scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="flock" type="KinematicBody2D" parent="."]
 
 input/pickable = false
 collision/layers = 1

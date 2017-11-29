@@ -62,7 +62,6 @@ func _fixed_process(delta):
 	
 	move(motion)
 	
-	
 	# Slide on terrain collisions
 	if (is_colliding()):
 		var n = get_collision_normal()
