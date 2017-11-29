@@ -754,6 +754,7 @@ invert/border = 100.0
 
 [node name="sound graph" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 visibility/behind_parent = true
 script/script = ExtResource( 4 )

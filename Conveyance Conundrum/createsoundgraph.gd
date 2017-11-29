@@ -11,11 +11,12 @@ var centroid_list = []
 # Color variables
 var black = Color(0,0,0)
 var vertex_colors = ColorArray()
-# Graph variables
-var graph
-var optimal_path = [[],[]]
 # Priority Queue variables
 const INFINITY = 3.402823e+38
+# Graph variables
+var graph
+var optimal_path = []
+var optimal_path_cost = INFINITY
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -60,13 +61,32 @@ func _ready():
 	# Calculate the optimal path using A*
 	var temp_path = A_Star(2,20,graph.getGraph())
 	temp_path.pop_front()
-	for node in temp_path:
-		optimal_path[0].append(edges[node]) #Find a way to select edge
+	
+	# Cost of the minimum path, default is INFINITY
+	var optimal_path_cost = INFINITY
+
+	if temp_path != null:
+		optimal_path_cost = 0
+		i = 0
+		# Using the centroid list, find the distance from each
+		# point in the path to the next.
+		while (i < temp_path.size()-1):
+			direction = centroid_list[temp_path[i]] - centroid_list[temp_path[i+1]]
+			optimal_path_cost += direction.length()
+			i += 1
+	
+	# Here it is (?)
+	print(optimal_path_cost)
+		
+	#for node in temp_path:
+	#	optimal_path[0].append(edges[node]) #Find a way to select edge
+		
 	var temp_path = A_Star(2,35,graph.getGraph())
 	temp_path.pop_front()
-	for node in temp_path:
-		print(edges[node])
-		optimal_path[1].append(edges[node]) #Find a way to select edge
+	
+	#for node in temp_path:
+	#	print(edges[node])
+	#	optimal_path[1].append(edges[node]) #Find a way to select edge
 	
 	# Replace the nodes with their respective positions in the map
 	#for i in range(optimal_path.size()):
