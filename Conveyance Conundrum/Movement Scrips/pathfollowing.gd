@@ -2,10 +2,16 @@ extends "delegated_behavior.gd"
 
 # Variables
 onready var raycast_query = get_node("/root/level/pathfollowing box/RayCast2D/")
-
+var path
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+		# Get the graph representing the map
+	var graph_node = get_parent().get_node("/root/level/level graph/")
+	
+	# And from there, the optimal path given by A*
+	path = graph_node.optimalPath(0,42)
+	
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
@@ -13,13 +19,7 @@ func _fixed_process(delta):
 	# Add an exception so that it doesn't collide with it's own collider
 	raycast_query.add_exception(get_parent())
 	
-	# Get the graph representing the map
-	var graph_node = get_parent().get_node("/root/level/level graph/")
 	
-	# And from there, the optimal path given by A*
-	var path = graph_node.optimalPath(0,42)
-	
-	print(path)
 	
 	# Instantiation of new path following class
 	var path_follow = FollowPath.new(get_node("/root/level/pathfollowing box/"),path,null)
