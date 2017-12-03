@@ -12,8 +12,19 @@ func _fixed_process(delta):
 	
 	# And from there, the optimal path given by A*
 	var paths = graph_node.optimal_path
-	var cost
-	for path in paths:
-		cost = 0
-		for edge in path:
-			cost += edge[1]
+	
+	print(paths[0].size())
+	print(paths[1].size())
+	if (Input.is_action_pressed("ui_select")):
+		get_node("SamplePlayer2D").play("signal")
+		var receptors = []
+		if paths[0].size() < 8:
+			receptors.append(
+				get_parent().get_node("/root/level/Receptor1/")
+			)
+		if paths[1].size() < 8:
+			receptors.append(
+				get_parent().get_node("/root/level/Receptor2/")
+			)
+		for receptor in receptors:
+			receptor.set_texture(load("res://bomba_ANGERY.png"))

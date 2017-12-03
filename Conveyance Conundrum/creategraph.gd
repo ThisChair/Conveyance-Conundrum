@@ -13,7 +13,6 @@ var black = Color(0,0,0)
 var vertex_colors = ColorArray()
 # Graph variables
 var graph
-var optimal_path = []
 # Priority Queue variables
 const INFINITY = 3.402823e+38
 
@@ -56,14 +55,6 @@ func _ready():
 	while i < edges.size():
 		graph.addConnection(edges[i])
 		i += 1
-	
-	# Calculate the optimal path using A*
-	optimal_path = A_Star(0,42,graph.getGraph())
-	optimal_path.pop_front()
-	
-	# Replace the nodes with their respective positions in the map
-	for i in range(optimal_path.size()):
-		optimal_path[i] = centroid_list[optimal_path[i]]
 	
 	# _draw() should be drawing after the graph is made
 	
@@ -258,3 +249,14 @@ func printPath(path):
 			print(node)
 	else:
 		print("A* could not find a path in the graph")
+# Calculate optimal path
+func optimalPath(initial,final):
+	var optimal_path = []
+		# Calculate the optimal path using A*
+	optimal_path = A_Star(initial,final,graph.getGraph())
+	optimal_path.pop_front()
+	
+	# Replace the nodes with their respective positions in the map
+	for i in range(optimal_path.size()):
+		optimal_path[i] = centroid_list[optimal_path[i]]
+	return optimal_path

@@ -15,7 +15,7 @@ var vertex_colors = ColorArray()
 const INFINITY = 3.402823e+38
 # Graph variables
 var graph
-var optimal_path = []
+var optimal_path = [[],[]]
 var optimal_path_cost = INFINITY
 
 func _ready():
@@ -81,12 +81,15 @@ func _ready():
 	#for node in temp_path:
 	#	optimal_path[0].append(edges[node]) #Find a way to select edge
 		
-	var temp_path = A_Star(2,35,graph.getGraph())
+	var temp_path = A_Star(2,20,graph.getGraph())
 	temp_path.pop_front()
 	
-	#for node in temp_path:
-	#	print(edges[node])
-	#	optimal_path[1].append(edges[node]) #Find a way to select edge
+	optimal_path[0] = temp_path
+	
+	temp_path = A_Star(2,35,graph.getGraph())
+	temp_path.pop_front()
+	
+	optimal_path[1] = temp_path
 	
 	# Replace the nodes with their respective positions in the map
 	#for i in range(optimal_path.size()):

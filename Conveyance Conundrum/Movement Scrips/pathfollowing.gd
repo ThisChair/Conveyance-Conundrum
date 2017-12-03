@@ -17,7 +17,9 @@ func _fixed_process(delta):
 	var graph_node = get_parent().get_node("/root/level/level graph/")
 	
 	# And from there, the optimal path given by A*
-	var path = graph_node.optimal_path
+	var path = graph_node.optimalPath(0,42)
+	
+	print(path)
 	
 	# Instantiation of new path following class
 	var path_follow = FollowPath.new(get_node("/root/level/pathfollowing box/"),path,null)
