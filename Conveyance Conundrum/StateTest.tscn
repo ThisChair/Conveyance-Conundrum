@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=1]
-[ext_resource path="res://bomba.png" type="Texture" id=2]
-[ext_resource path="res://Movement Scrips/PatrolBot.gd" type="Script" id=3]
-[ext_resource path="res://StateTest.tres" type="SampleLibrary" id=4]
-[ext_resource path="res://player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://tilemap.tres" type="TileSet" id=6]
+[ext_resource path="res://tilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=2]
+[ext_resource path="res://bomba.png" type="Texture" id=3]
+[ext_resource path="res://Movement Scrips/PatrolBot.gd" type="Script" id=4]
+[ext_resource path="res://StateTest.tres" type="SampleLibrary" id=5]
+[ext_resource path="res://alert.png" type="Texture" id=6]
+[ext_resource path="res://player.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -15,6 +16,25 @@ points = Vector2Array( -30, 30, -30, -30, 30, -30, 30, 30 )
 [node name="StateTest" type="Node2D"]
 
 transform/pos = Vector2( 3, 0 )
+
+[node name="TileMap" type="TileMap" parent="."]
+
+transform/pos = Vector2( 161.123, -450.641 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 2, 9, 2, 10, 2, 11, 2, 12, 2, 13, 2, 65536, 2, 65537, 2, 65538, 2, 65539, 2, 65540, 2, 65541, 2, 65542, 2, 65543, 2, 65544, 2, 65545, 2, 65546, 2, 65547, 2, 65548, 2, 65549, 2, 131072, 2, 131073, 2, 131074, 2, 131075, 2, 131076, 2, 131077, 2, 131078, 2, 131079, 2, 131080, 2, 131081, 0, 131082, 0, 131083, 2, 131084, 2, 131085, 2, 196608, 2, 196609, 2, 196610, 2, 196611, 2, 196612, 2, 196613, 2, 196614, 2, 196615, 2, 196616, 0, 196617, 0, 196618, 2, 196619, 2, 196620, 2, 196621, 2, 262144, 2, 262145, 2, 262146, 2, 262147, 2, 262148, 2, 262149, 2, 262150, 2, 262151, 0, 262152, 0, 262153, 2, 262154, 2, 262155, 2, 262156, 2, 262157, 2, 327680, 2, 327681, 2, 327682, 2, 327683, 2, 327684, 2, 327685, 2, 327686, 2, 327687, 0, 327688, 0, 327689, 2, 327690, 2, 327691, 2, 327692, 2, 327693, 2, 393216, 2, 393217, 2, 393218, 2, 393219, 2, 393220, 2, 393221, 2, 393222, 2, 393223, 2, 393224, 0, 393225, 0, 393226, 2, 393227, 2, 393228, 2, 393229, 2, 458752, 2, 458753, 2, 458754, 2, 458755, 2, 458756, 2, 458757, 2, 458758, 2, 458759, 2, 458760, 2, 458761, 2, 458762, 2, 458763, 2, 458764, 2, 458765, 2, 524288, 2, 524289, 2, 524290, 2, 524291, 2, 524292, 2, 524293, 2, 524294, 2, 524295, 2, 524296, 2, 524297, 2, 524298, 2, 524299, 2, 524300, 2, 524301, 2 )
 
 [node name="PatrolBot" type="KinematicBody2D" parent="."]
 
@@ -26,12 +46,12 @@ shapes/0/trigger = true
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 1 )
+script/script = ExtResource( 2 )
 maxSpeed = 50
 
 [node name="Sprite" type="Sprite" parent="PatrolBot"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="StateMachine" type="KinematicBody2D" parent="PatrolBot"]
 
@@ -39,7 +59,7 @@ input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 3 )
+script/script = ExtResource( 4 )
 maxSpeed = 50
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PatrolBot"]
@@ -59,29 +79,34 @@ params/attenuation/min_distance = 1.0
 params/attenuation/max_distance = 2048.0
 params/attenuation/distance_exp = 1.0
 config/polyphony = 1
-config/samples = ExtResource( 4 )
+config/samples = ExtResource( 5 )
 config/pitch_random = 0.0
 
-[node name="player" parent="." instance=ExtResource( 5 )]
+[node name="Light2D" type="Light2D" parent="PatrolBot"]
+
+visibility/blend_mode = 1
+enabled = true
+editor_only = false
+texture = ExtResource( 6 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.7
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = true
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="player" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 166.464, 144.904 )
-
-[node name="TileMap" type="TileMap" parent="."]
-
-mode = 0
-tile_set = ExtResource( 6 )
-cell/size = Vector2( 64, 64 )
-cell/quadrant_size = 16
-cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-cell/half_offset = 2
-cell/tile_origin = 0
-cell/y_sort = false
-collision/use_kinematic = false
-collision/friction = 1.0
-collision/bounce = 0.0
-collision/layers = 1
-collision/mask = 1
-occluder/light_mask = 1
-tile_data = IntArray( 131081, 0, 131082, 0, 196616, 0, 196617, 0, 262151, 0, 262152, 0, 327687, 0, 327688, 0, 393224, 0, 393225, 0 )
 
 

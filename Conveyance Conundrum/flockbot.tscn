@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=1]
-[ext_resource path="res://china_honk.png" type="Texture" id=2]
+[ext_resource path="res://buddy.png" type="Texture" id=2]
 [ext_resource path="res://Movement Scrips/flock.gd" type="Script" id=3]
 
 [node name="flockbot" type="KinematicBody2D"]
