@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://wall.png" type="Texture" id=1]
 [ext_resource path="res://hole.png" type="Texture" id=2]
+[ext_resource path="res://floor.png" type="Texture" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -60,5 +61,10 @@ build_mode = 0
 polygon = Vector2Array( 30, -30, -30, -30, -30, 30, 30, 30 )
 shape_range = Vector2( 0, 0 )
 trigger = false
+
+[node name="floor" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136.895, 1.50061 )
+texture = ExtResource( 3 )
 
 

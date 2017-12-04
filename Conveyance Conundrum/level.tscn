@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=17 format=1]
 
-[ext_resource path="res://tilemap.tres" type="TileSet" id=1]
-[ext_resource path="res://player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://creategraph.gd" type="Script" id=3]
-[ext_resource path="res://createsoundgraph.gd" type="Script" id=4]
-[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=5]
-[ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
-[ext_resource path="res://JumpPad.gd" type="Script" id=8]
-[ext_resource path="res://LandPad.gd" type="Script" id=9]
-[ext_resource path="res://bomba.png" type="Texture" id=10]
-[ext_resource path="res://SoundExpansion.gd" type="Script" id=11]
-[ext_resource path="res://signal.smp" type="Sample" id=12]
+[ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tilemap.tres" type="TileSet" id=2]
+[ext_resource path="res://player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://creategraph.gd" type="Script" id=4]
+[ext_resource path="res://createsoundgraph.gd" type="Script" id=5]
+[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=6]
+[ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://JumpPad.gd" type="Script" id=9]
+[ext_resource path="res://LandPad.gd" type="Script" id=10]
+[ext_resource path="res://bomba.png" type="Texture" id=11]
+[ext_resource path="res://SoundExpansion.gd" type="Script" id=12]
+[ext_resource path="res://signal.smp" type="Sample" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -29,36 +30,19 @@ samples/signal = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 12 )
+"sample": ExtResource( 13 )
 }
 
 [node name="level" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
 
-mode = 0
-tile_set = ExtResource( 1 )
-cell/size = Vector2( 64, 64 )
-cell/quadrant_size = 16
-cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-cell/half_offset = 2
-cell/tile_origin = 0
-cell/y_sort = false
-collision/use_kinematic = false
-collision/friction = 1.0
-collision/bounce = 0.0
-collision/layers = 3
-collision/mask = 3
-occluder/light_mask = 1
-tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 65536, 0, 65552, 0, 131072, 0, 131088, 0, 196608, 0, 196612, 0, 196613, 0, 196619, 0, 196620, 0, 196624, 0, 262144, 0, 262148, 0, 262149, 0, 262155, 0, 262156, 0, 262160, 0, 327680, 0, 327696, 0, 393216, 0, 393232, 0, 458752, 0, 458756, 0, 458757, 0, 458763, 0, 458764, 0, 458768, 0, 524288, 0, 524292, 0, 524293, 0, 524299, 0, 524300, 0, 524304, 0, 589824, 0, 589840, 0, 655360, 0, 655376, 0, 720896, 0, 720897, 0, 720898, 0, 720899, 0, 720900, 0, 720901, 0, 720902, 0, 720903, 0, 720904, 0, 720905, 0, 720906, 0, 720907, 0, 720908, 0, 720909, 0, 720910, 0, 720911, 0, 720912, 0 )
-__meta__ = {
-"_edit_lock_": true
-}
+tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 65536, 0, 65537, 2, 65538, 2, 65539, 2, 65540, 2, 65541, 2, 65542, 2, 65543, 2, 65544, 2, 65545, 2, 65546, 2, 65548, 2, 65549, 2, 65550, 2, 65551, 2, 65552, 0, 131072, 0, 131073, 2, 131074, 2, 131075, 2, 131076, 2, 131077, 2, 131078, 2, 131079, 2, 131080, 2, 131081, 2, 131082, 2, 131084, 2, 131085, 2, 131086, 2, 131087, 2, 131088, 0, 196608, 0, 196609, 2, 196610, 2, 196611, 2, 196612, 0, 196613, 0, 196614, 2, 196615, 2, 196616, 2, 196617, 2, 196618, 2, 196619, 0, 196620, 0, 196621, 2, 196622, 2, 196623, 2, 196624, 0, 262144, 0, 262145, 2, 262146, 2, 262147, 2, 262148, 0, 262149, 0, 262150, 2, 262151, 2, 262152, 2, 262153, 2, 262154, 2, 262155, 0, 262156, 0, 262157, 2, 262158, 2, 262159, 2, 262160, 0, 327680, 0, 327681, 2, 327682, 2, 327683, 2, 327684, 2, 327685, 2, 327686, 2, 327687, 2, 327688, 2, 327689, 2, 327690, 2, 327692, 2, 327693, 2, 327694, 2, 327695, 2, 327696, 0, 393216, 0, 393217, 2, 393218, 2, 393219, 2, 393220, 2, 393221, 2, 393222, 2, 393223, 2, 393224, 2, 393225, 2, 393226, 2, 393228, 2, 393229, 2, 393230, 2, 393231, 2, 393232, 0, 458752, 0, 458753, 2, 458754, 2, 458755, 2, 458756, 0, 458757, 0, 458758, 2, 458759, 2, 458760, 2, 458761, 2, 458762, 2, 458763, 0, 458764, 0, 458765, 2, 458766, 2, 458767, 2, 458768, 0, 524288, 0, 524289, 2, 524290, 2, 524291, 2, 524292, 0, 524293, 0, 524294, 2, 524295, 2, 524296, 2, 524297, 2, 524298, 2, 524299, 0, 524300, 0, 524301, 2, 524302, 2, 524303, 2, 524304, 0, 589824, 0, 589825, 2, 589826, 2, 589827, 2, 589828, 2, 589829, 2, 589830, 2, 589831, 2, 589832, 2, 589833, 2, 589834, 2, 589835, 2, 589836, 2, 589837, 2, 589838, 2, 589839, 2, 589840, 0, 655360, 0, 655361, 2, 655362, 2, 655363, 2, 655364, 2, 655365, 2, 655366, 2, 655367, 2, 655368, 2, 655369, 2, 655370, 2, 655371, 2, 655372, 2, 655373, 2, 655374, 2, 655375, 2, 655376, 0, 720896, 0, 720897, 0, 720898, 0, 720899, 0, 720900, 0, 720901, 0, 720902, 0, 720903, 0, 720904, 0, 720905, 0, 720906, 0, 720907, 0, 720908, 0, 720909, 0, 720910, 0, 720911, 0, 720912, 0 )
 
 [node name="Jumpable" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -76,9 +60,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="player" parent="." groups=[
-"jumper",
-] instance=ExtResource( 2 )]
+[node name="player" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 549, 320 )
 transform/scale = Vector2( 0.96875, 1 )
@@ -111,7 +93,7 @@ drag_margin/bottom = 0.2
 editor/display_folded = true
 visibility/visible = false
 visibility/behind_parent = true
-script/script = ExtResource( 3 )
+script/script = ExtResource( 4 )
 
 [node name="0" type="Polygon2D" parent="level graph"]
 
@@ -767,7 +749,7 @@ invert/border = 100.0
 editor/display_folded = true
 visibility/visible = false
 visibility/behind_parent = true
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 
 [node name="0" type="Polygon2D" parent="sound graph"]
 
@@ -1429,7 +1411,7 @@ input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 5 )
+script/script = ExtResource( 6 )
 maxSpeed = 50
 
 [node name="path follow" type="KinematicBody2D" parent="pathfollowing box"]
@@ -1438,12 +1420,12 @@ input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
 maxSpeed = 50
 
 [node name="Sprite" type="Sprite" parent="pathfollowing box"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="RayCast2D" type="RayCast2D" parent="pathfollowing box"]
 
@@ -1466,7 +1448,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 2
 collision/mask = 2
-script/script = ExtResource( 8 )
+script/script = ExtResource( 9 )
 direction = Vector2( 1, 0 )
 minSpeed = 45.0
 
@@ -1483,7 +1465,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 9 )
+script/script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandPad"]
 
@@ -1496,8 +1478,8 @@ _update_shape_index = 0
 [node name="Emissor" type="Sprite" parent="."]
 
 transform/pos = Vector2( 289.817, 105.258 )
-texture = ExtResource( 10 )
-script/script = ExtResource( 11 )
+texture = ExtResource( 11 )
+script/script = ExtResource( 12 )
 
 [node name="SamplePlayer2D" type="SamplePlayer2D" parent="Emissor"]
 
@@ -1514,12 +1496,12 @@ config/pitch_random = 0.0
 [node name="Receptor1" type="Sprite" parent="."]
 
 transform/pos = Vector2( 643.288, 140.42 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="Receptor2" type="Sprite" parent="."]
 
 transform/pos = Vector2( 337.934, 654.313 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [connection signal="body_enter" from="JumpPad" to="JumpPad" method="_on_JumpPad_body_enter"]
 
