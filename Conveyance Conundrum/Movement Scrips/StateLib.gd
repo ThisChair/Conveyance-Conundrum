@@ -33,6 +33,7 @@ class PursueState:
 	
 	func getEntryAction():
 		character.get_node("SamplePlayer2D").play("alarm")
+		character.get_node("Light2D").show()
 
 class TargetHidden:
 	extends "Transition.gd"
@@ -58,6 +59,7 @@ class TargetHidden:
 		var sprite = character.get_node("Sprite")
 		sprite.set_texture(load("res://bomba.png"))
 		character.get_node("SamplePlayer2D").stop_all()
+		character.get_node("Light2D").hide()
 		character.steering = SteeringBehavior.new()
 
 class TargetClose:
