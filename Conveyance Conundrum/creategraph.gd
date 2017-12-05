@@ -263,3 +263,14 @@ func optimalPath(initial,final):
 		optimal_path[i] = centroid_list[optimal_path[i]]
 
 	return optimal_path
+# Find the triangle for any given position
+func findTriangle(position):
+	var distance = INFINITY
+	var result
+	var v
+	for i in range(centroid_list.size()):
+		v = centroid_list[i] - position
+		if v.length() < distance:
+			distance = v.length()
+			result = i
+	return result

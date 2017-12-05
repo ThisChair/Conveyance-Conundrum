@@ -1,17 +1,8 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=3]
-[ext_resource path="res://bomba.png" type="Texture" id=4]
-[ext_resource path="res://Movement Scrips/PatrolBot.gd" type="Script" id=5]
-[ext_resource path="res://StateTest.tres" type="SampleLibrary" id=6]
-[ext_resource path="res://alert.png" type="Texture" id=7]
-
-[sub_resource type="ConvexPolygonShape2D" id=1]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -30, 30, -30, -30, 30, -30, 30, 30 )
+[ext_resource path="res://PatrolBot.tscn" type="PackedScene" id=3]
 
 [node name="StateTest" type="Node2D"]
 
@@ -40,75 +31,6 @@ tile_data = IntArray( 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 2, 9, 2
 
 transform/pos = Vector2( 166.464, 144.904 )
 
-[node name="PatrolBot" type="KinematicBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 673.629, 314.607 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.704675, 0, 0, 0.736739, 1.26782, 0.947418 )
-shapes/0/trigger = true
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 3 )
-maxSpeed = 50
-
-[node name="Sprite" type="Sprite" parent="PatrolBot"]
-
-texture = ExtResource( 4 )
-
-[node name="StateMachine" type="KinematicBody2D" parent="PatrolBot"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 5 )
-maxSpeed = 50
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PatrolBot"]
-
-transform/pos = Vector2( 1.26782, 0.947418 )
-transform/scale = Vector2( 0.704675, 0.736739 )
-build_mode = 0
-polygon = Vector2Array( -30, 30, -30, -30, 30, -30, 30, 30 )
-shape_range = Vector2( 0, 0 )
-trigger = true
-
-[node name="SamplePlayer2D" type="SamplePlayer2D" parent="PatrolBot"]
-
-params/volume_db = -9.99
-params/pitch_scale = 1.0
-params/attenuation/min_distance = 1.0
-params/attenuation/max_distance = 2048.0
-params/attenuation/distance_exp = 1.0
-config/polyphony = 1
-config/samples = ExtResource( 6 )
-config/pitch_random = 0.0
-
-[node name="Light2D" type="Light2D" parent="PatrolBot"]
-
-visibility/visible = false
-visibility/blend_mode = 1
-enabled = true
-editor_only = false
-texture = ExtResource( 7 )
-offset = Vector2( 0, 0 )
-scale = 1.51
-color = Color( 1, 1, 1, 1 )
-energy = 2.27
-mode = 0
-range/height = 0.0
-range/z_min = -1024
-range/z_max = 1024
-range/layer_min = 0
-range/layer_max = 0
-range/item_mask = 1
-shadow/enabled = true
-shadow/color = Color( 0, 0, 0, 0 )
-shadow/buffer_size = 2048
-shadow/esm_multiplier = 80.0
-shadow/item_mask = 1
+[node name="PatrolBot" parent="." instance=ExtResource( 3 )]
 
 

@@ -10,9 +10,9 @@ func _ready():
 	# Initialization here
 	# Get the graph representing the map
 	graph_node = get_parent().get_node("/root/level/level graph/")
-	
+	var initial = graph_node.findTriangle(get_global_pos())
 	# And from there, the optimal path given by A*
-	path = graph_node.optimalPath(0,42)
+	path = graph_node.optimalPath(initial,42)
 	set_fixed_process(true)
 	
 func _fixed_process(delta):

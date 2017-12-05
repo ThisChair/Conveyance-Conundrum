@@ -88,4 +88,6 @@ class TargetClose:
 		
 	func getAction():
 		var sprite = character.get_node("Sprite")
+		var light = character.get_node("Light2D")
+		light.show()
 		sprite.set_texture(load("res://bomba_ANGERY.png"))
