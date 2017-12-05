@@ -9,4 +9,4 @@ func _ready():
 
 func _fixed_process(delta):
 	self.set_global_rot(0)
-	print(get_global_rot())
+	#print(get_global_rot())

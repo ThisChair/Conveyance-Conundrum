@@ -13,8 +13,8 @@ func _fixed_process(delta):
 	# And from there, the optimal path given by A*
 	var paths = graph_node.optimal_path
 	
-	print(paths[0].size())
-	print(paths[1].size())
+	#print(paths[0].size())
+	#print(paths[1].size())
 	if (Input.is_action_pressed("ui_select")):
 		get_node("SamplePlayer2D").play("signal")
 		var receptors = []

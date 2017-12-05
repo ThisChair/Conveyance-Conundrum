@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tilemap.tres" type="TileSet" id=2]
@@ -8,12 +8,11 @@
 [ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=6]
 [ext_resource path="res://Movement Scrips/pathfollowing.gd" type="Script" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
-[ext_resource path="res://ls.png" type="Texture" id=9]
-[ext_resource path="res://JumpPad.gd" type="Script" id=10]
-[ext_resource path="res://LandPad.gd" type="Script" id=11]
-[ext_resource path="res://bomba.png" type="Texture" id=12]
-[ext_resource path="res://SoundExpansion.gd" type="Script" id=13]
-[ext_resource path="res://signal.smp" type="Sample" id=14]
+[ext_resource path="res://JumpPad.gd" type="Script" id=9]
+[ext_resource path="res://LandPad.gd" type="Script" id=10]
+[ext_resource path="res://bomba.png" type="Texture" id=11]
+[ext_resource path="res://SoundExpansion.gd" type="Script" id=12]
+[ext_resource path="res://signal.smp" type="Sample" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -31,7 +30,7 @@ samples/signal = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 14 )
+"sample": ExtResource( 13 )
 }
 
 [node name="level" type="Node2D"]
@@ -1434,33 +1433,10 @@ cast_to = Vector2( 0, 50 )
 layer_mask = 1
 type_mask = 15
 
-[node name="Light2D" type="Light2D" parent="pathfollowing box"]
-
-visibility/blend_mode = 1
-enabled = true
-editor_only = false
-texture = ExtResource( 9 )
-offset = Vector2( 0, 0 )
-scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.28
-mode = 0
-range/height = 0.0
-range/z_min = -1024
-range/z_max = 1024
-range/layer_min = 0
-range/layer_max = 0
-range/item_mask = 1
-shadow/enabled = true
-shadow/color = Color( 0, 0, 0, 0 )
-shadow/buffer_size = 2048
-shadow/esm_multiplier = 80.0
-shadow/item_mask = 1
-
 [node name="JumpPad" type="Area2D" parent="."]
 
-transform/pos = Vector2( 689.761, 384.124 )
-transform/scale = Vector2( 0.460542, 0.173132 )
+transform/pos = Vector2( 689.761, 385.084 )
+transform/scale = Vector2( 0.460542, 0.652241 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -1471,7 +1447,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 2
 collision/mask = 2
-script/script = ExtResource( 10 )
+script/script = ExtResource( 9 )
 direction = Vector2( 1, 0 )
 minSpeed = 45.0
 
@@ -1488,7 +1464,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 11 )
+script/script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandPad"]
 
@@ -1501,8 +1477,8 @@ _update_shape_index = 0
 [node name="Emissor" type="Sprite" parent="."]
 
 transform/pos = Vector2( 289.817, 105.258 )
-texture = ExtResource( 12 )
-script/script = ExtResource( 13 )
+texture = ExtResource( 11 )
+script/script = ExtResource( 12 )
 
 [node name="SamplePlayer2D" type="SamplePlayer2D" parent="Emissor"]
 
@@ -1519,12 +1495,12 @@ config/pitch_random = 0.0
 [node name="Receptor1" type="Sprite" parent="."]
 
 transform/pos = Vector2( 643.288, 140.42 )
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
 [node name="Receptor2" type="Sprite" parent="."]
 
 transform/pos = Vector2( 337.934, 654.313 )
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
 [connection signal="body_enter" from="JumpPad" to="JumpPad" method="_on_JumpPad_body_enter"]
 
