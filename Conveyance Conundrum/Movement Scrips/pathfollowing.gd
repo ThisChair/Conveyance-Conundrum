@@ -18,10 +18,10 @@ func _ready():
 func _fixed_process(delta):
 	
 	# Add an exception so that it doesn't collide with it's own collider
-	raycast_query.add_exception(get_parent())
+	#raycast_query.add_exception(get_parent())
 	
 	# Instantiation of new path following class
-	var path_follow = FollowPath.new(get_node("/root/level/pathfollowing box/"),path,null)
+	var path_follow = FollowPath.new(get_node("/root/Demo/pathbot/"),path,null)
 	
 	# Instantiation of new obstacle avoidance class
 	#var avoid = ObstacleAvoidance.new(get_parent(),raycast_query)
