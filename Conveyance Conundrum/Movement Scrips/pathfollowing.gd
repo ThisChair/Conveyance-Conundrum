@@ -26,6 +26,7 @@ func _fixed_process(delta):
 		var path_follow = FollowPath.new(get_node("/root/level/pathfollowing box/"),path,null)
 		# Calculate the new blended steering and give it to the parent
 		get_parent().steering = path_follow.getSteering()	
+
 	# Instantiation of new obstacle avoidance class
 	#var avoid = ObstacleAvoidance.new(get_parent(),raycast_query)
 	
