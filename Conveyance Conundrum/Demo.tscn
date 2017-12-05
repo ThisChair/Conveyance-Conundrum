@@ -23,11 +23,14 @@ collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray( -1638416, 0, -1638415, 0, -1638414, 0, -1638413, 0, -1638412, 0, -1638411, 0, -1638410, 0, -1638409, 0, -1638408, 0, -1638407, 0, -1638406, 0, -1638405, 0, -1638404, 0, -1638403, 0, -1638402, 0, -1638401, 0, -1703936, 0, -1703935, 0, -1703934, 0, -1703933, 0, -1703932, 0, -1703931, 0, -1703930, 0, -1572880, 0, -1572879, 2, -1572878, 2, -1572877, 2, -1572876, 0, -1572875, 2, -1572874, 2, -1572873, 2, -1572872, 2, -1572871, 2, -1572870, 2, -1572869, 2, -1572868, 2, -1572867, 2, -1572866, 2, -1572865, 2, -1638400, 2, -1638399, 2, -1638398, 2, -1638397, 2, -1638396, 2, -1638395, 2, -1638394, 0, -1507344, 0, -1507343, 2, -1507342, 2, -1507341, 2, -1507340, 0, -1507339, 2, -1507338, 2, -1507337, 2, -1507336, 2, -1507335, 2, -1507334, 2, -1507333, 2, -1507332, 2, -1507331, 2, -1507330, 2, -1507329, 2, -1572864, 2, -1572863, 2, -1572862, 2, -1572861, 2, -1572860, 2, -1572859, 2, -1572858, 0, -1441808, 0, -1441807, 2, -1441806, 2, -1441805, 2, -1441804, 0, -1441803, 2, -1441802, 2, -1441801, 2, -1441800, 2, -1441799, 2, -1441798, 2, -1441797, 2, -1441796, 2, -1441795, 2, -1441794, 2, -1441793, 2, -1507328, 2, -1507327, 2, -1507326, 2, -1507325, 2, -1507324, 2, -1507323, 2, -1507322, 0, -1507321, 0, -1376272, 0, -1376271, 2, -1376270, 2, -1376269, 2, -1376268, 2, -1376267, 2, -1376266, 2, -1376265, 2, -1376264, 0, -1376263, 0, -1376262, 0, -1376261, 0, -1376260, 0, -1376259, 0, -1376258, 0, -1376257, 0, -1441792, 0, -1441791, 2, -1441790, 2, -1441789, 2, -1441788, 0, -1441787, 0, -1441786, 0, -1441785, 0, -1441784, 0, -1441783, 0, -1441782, 0, -1441781, 0, -1441780, 0, -1441779, 0, -1441778, 0, -1310736, 0, -1310735, 2, -1310734, 2, -1310733, 2, -1310732, 2, -1310731, 2, -1310730, 2, -1310729, 2, -1310728, 0, -1310727, 2, -1310726, 2, -1310725, 2, -1310724, 0, -1310723, 0, -1310722, 2, -1310721, 2, -1376256, 2, -1376255, 2, -1376254, 2, -1376253, 2, -1376252, 2, -1376251, 2, -1376250, 2, -1376249, 2, -1376248, 2, -1376247, 2, -1376246, 2, -1376245, 2, -1376244, 2, -1376243, 2, -1376242, 0, -1245200, 0, -1245199, 2, -1245198, 2, -1245197, 2, -1245196, 2, -1245195, 2, -1245194, 2, -1245193, 2, -1245192, 0, -1245191, 2, -1245190, 2, -1245189, 2, -1245188, 0, -1245187, 0, -1245186, 2, -1245185, 2, -1310720, 2, -1310719, 2, -1310718, 2, -1310717, 2, -1310716, 2, -1310715, 2, -1310714, 2, -1310713, 2, -1310712, 2, -1310711, 2, -1310710, 2, -1310709, 2, -1310708, 2, -1310707, 2, -1310706, 0, -1179664, 0, -1179663, 2, -1179662, 2, -1179661, 2, -1179660, 0, -1179659, 2, -1179658, 2, -1179657, 2, -1179656, 0, -1179655, 2, -1179654, 2, -1179653, 2, -1179652, 0, -1179651, 0, -1179650, 2, -1179649, 2, -1245184, 2, -1245183, 2, -1245182, 2, -1245181, 2, -1245180, 2, -1245179, 2, -1245178, 2, -1245177, 2, -1245176, 2, -1245175, 2, -1245174, 2, -1245173, 2, -1245172, 2, -1245171, 2, -1245170, 0, -1114128, 0, -1114127, 2, -1114126, 2, -1114125, 2, -1114124, 0, -1114123, 2, -1114122, 2, -1114121, 2, -1114120, 2, -1114119, 2, -1114118, 2, -1114117, 2, -1114116, 0, -1114115, 0, -1114114, 2, -1114113, 2, -1179648, 2, -1179647, 0, -1179646, 0, -1179645, 0, -1179644, 0, -1179643, 2, -1179642, 2, -1179641, 0, -1179640, 0, -1179639, 0, -1179638, 0, -1179637, 2, -1179636, 2, -1179635, 2, -1179634, 0, -1048592, 0, -1048591, 2, -1048590, 2, -1048589, 2, -1048588, 0, -1048587, 2, -1048586, 2, -1048585, 2, -1048584, 2, -1048583, 2, -1048582, 2, -1048581, 2, -1048580, 0, -1048579, 0, -1048578, 2, -1048577, 2, -1114112, 2, -1114111, 0, -1114110, 2, -1114109, 2, -1114108, 2, -1114107, 2, -1114106, 2, -1114105, 2, -1114104, 2, -1114103, 2, -1114102, 0, -1114101, 2, -1114100, 2, -1114099, 2, -1114098, 0, -983056, 0, -983055, 2, -983054, 2, -983053, 2, -983052, 0, -983051, 2, -983050, 2, -983049, 2, -983048, 2, -983047, 2, -983046, 2, -983045, 2, -983044, 0, -983043, 0, -983042, 2, -983041, 2, -1048576, 2, -1048575, 0, -1048574, 2, -1048573, 2, -1048572, 2, -1048571, 2, -1048570, 2, -1048569, 2, -1048568, 2, -1048567, 2, -1048566, 0, -1048565, 2, -1048564, 2, -1048563, 2, -1048562, 0, -917520, 0, -917519, 2, -917518, 2, -917517, 2, -917516, 0, -917515, 2, -917514, 2, -917513, 2, -917512, 0, -917511, 2, -917510, 2, -917509, 2, -917508, 0, -917507, 0, -917506, 2, -917505, 2, -983040, 2, -983039, 0, -983038, 2, -983037, 2, -983036, 0, -983035, 0, -983034, 0, -983033, 0, -983032, 2, -983031, 2, -983030, 0, -983029, 2, -983028, 2, -983027, 2, -983026, 0, -851984, 0, -851983, 2, -851982, 2, -851981, 2, -851980, 2, -851979, 2, -851978, 2, -851977, 2, -851976, 0, -851975, 2, -851974, 2, -851973, 2, -851972, 0, -851971, 0, -851970, 2, -851969, 2, -917504, 2, -917503, 0, -917502, 2, -917501, 2, -917500, 2, -917499, 2, -917498, 2, -917497, 2, -917496, 2, -917495, 2, -917494, 0, -917493, 2, -917492, 2, -917491, 2, -917490, 0, -786448, 0, -786447, 2, -786446, 2, -786445, 2, -786444, 2, -786443, 2, -786442, 2, -786441, 2, -786440, 0, -786439, 2, -786438, 2, -786437, 2, -786436, 0, -786435, 0, -786434, 2, -786433, 2, -851968, 2, -851967, 0, -851966, 2, -851965, 2, -851964, 2, -851963, 2, -851962, 2, -851961, 2, -851960, 2, -851959, 2, -851958, 0, -851957, 2, -851956, 2, -851955, 2, -851954, 0, -720912, 0, -720911, 2, -720910, 2, -720909, 2, -720908, 2, -720907, 2, -720906, 2, -720905, 2, -720904, 0, -720903, 2, -720902, 2, -720901, 2, -720900, 0, -720899, 0, -720898, 2, -720897, 2, -786432, 2, -786431, 0, -786430, 0, -786429, 0, -786428, 0, -786427, 2, -786426, 2, -786425, 0, -786424, 0, -786423, 0, -786422, 0, -786421, 2, -786420, 2, -786419, 2, -786418, 0, -655376, 0, -655375, 2, -655374, 2, -655373, 2, -655372, 2, -655371, 2, -655370, 2, -655369, 2, -655368, 0, -655367, 2, -655366, 2, -655365, 2, -655364, 0, -655363, 0, -655362, 2, -655361, 2, -720896, 2, -720895, 2, -720894, 2, -720893, 2, -720892, 2, -720891, 2, -720890, 2, -720889, 2, -720888, 2, -720887, 2, -720886, 2, -720885, 2, -720884, 2, -720883, 2, -720882, 0, -589840, 0, -589839, 2, -589838, 2, -589837, 2, -589836, 0, -589835, 2, -589834, 2, -589833, 2, -589832, 0, -589831, 2, -589830, 2, -589829, 2, -589828, 0, -589827, 0, -589826, 2, -589825, 2, -655360, 2, -655359, 2, -655358, 2, -655357, 2, -655356, 2, -655355, 2, -655354, 2, -655353, 2, -655352, 2, -655351, 2, -655350, 2, -655349, 2, -655348, 2, -655347, 2, -655346, 0, -524304, 0, -524303, 2, -524302, 2, -524301, 2, -524300, 0, -524299, 2, -524298, 2, -524297, 2, -524296, 2, -524295, 2, -524294, 2, -524293, 2, -524292, 0, -524291, 0, -524290, 2, -524289, 2, -589824, 2, -589823, 2, -589822, 2, -589821, 2, -589820, 2, -589819, 2, -589818, 2, -589817, 2, -589816, 2, -589815, 2, -589814, 2, -589813, 2, -589812, 2, -589811, 2, -589810, 0, -458768, 0, -458767, 2, -458766, 2, -458765, 2, -458764, 0, -458763, 2, -458762, 2, -458761, 2, -458760, 2, -458759, 2, -458758, 2, -458757, 2, -458756, 0, -458755, 0, -458754, 0, -458753, 0, -524288, 0, -524287, 0, -524286, 2, -524285, 2, -524284, 2, -524283, 0, -524282, 0, -524281, 0, -524280, 0, -524279, 0, -524278, 0, -524277, 0, -524276, 0, -524275, 0, -524274, 0, -393232, 0, -393231, 2, -393230, 2, -393229, 2, -393228, 0, -393227, 2, -393226, 2, -393225, 2, -393224, 2, -393223, 2, -393222, 2, -393221, 2, -393220, 0, -393219, 2, -393218, 2, -393217, 2, -458752, 2, -458751, 2, -458750, 2, -458749, 2, -458748, 2, -458747, 2, -458746, 2, -458745, 2, -458744, 2, -458743, 2, -458742, 2, -458741, 2, -458740, 2, -458739, 2, -458738, 0, -327696, 0, -327695, 2, -327694, 2, -327693, 2, -327692, 0, -327691, 2, -327690, 2, -327689, 2, -327688, 0, -327687, 2, -327686, 2, -327685, 2, -327684, 0, -327683, 2, -327682, 2, -327681, 2, -393216, 2, -393215, 2, -393214, 2, -393213, 2, -393212, 2, -393211, 2, -393210, 2, -393209, 2, -393208, 2, -393207, 2, -393206, 2, -393205, 2, -393204, 2, -393203, 2, -393202, 0, -262160, 0, -262159, 2, -262158, 2, -262157, 2, -262156, 2, -262155, 2, -262154, 2, -262153, 2, -262152, 0, -262151, 2, -262150, 2, -262149, 2, -262148, 0, -262147, 2, -262146, 2, -262145, 0, -327680, 0, -327679, 0, -327678, 0, -327677, 0, -327676, 0, -327675, 0, -327674, 0, -327673, 0, -327672, 0, -327671, 0, -327670, 0, -327669, 2, -327668, 2, -327667, 2, -327666, 0, -196624, 0, -196623, 2, -196622, 2, -196621, 2, -196620, 2, -196619, 2, -196618, 2, -196617, 2, -196616, 0, -196615, 2, -196614, 2, -196613, 2, -196612, 0, -196611, 2, -196610, 2, -196609, 0, -262144, 0, -262143, 0, -262142, 0, -262141, 0, -262140, 0, -262139, 0, -262138, 0, -262137, 0, -262136, 0, -262135, 0, -262134, 0, -262133, 2, -262132, 2, -262131, 2, -262130, 0, -131088, 0, -131087, 2, -131086, 2, -131085, 2, -131084, 2, -131083, 2, -131082, 2, -131081, 2, -131080, 0, -131079, 0, -131078, 0, -131077, 0, -131076, 0, -131075, 2, -131074, 2, -131073, 0, -196608, 0, -196607, 0, -196606, 0, -196605, 0, -196604, 0, -196603, 0, -196602, 0, -196601, 0, -196600, 0, -196599, 0, -196598, 0, -196597, 2, -196596, 2, -196595, 2, -196594, 0, -65552, 0, -65551, 2, -65550, 2, -65549, 2, -65548, 0, -65547, 2, -65546, 2, -65545, 2, -65544, 2, -65543, 2, -65542, 2, -65541, 2, -65540, 2, -65539, 2, -65538, 2, -65537, 2, -131072, 2, -131071, 2, -131070, 2, -131069, 2, -131068, 2, -131067, 2, -131066, 2, -131065, 2, -131064, 2, -131063, 2, -131062, 2, -131061, 2, -131060, 2, -131059, 2, -131058, 0, -16, 0, -15, 2, -14, 2, -13, 2, -12, 0, -11, 2, -10, 2, -9, 2, -8, 2, -7, 2, -6, 2, -5, 2, -4, 2, -3, 2, -2, 2, -1, 2, -65536, 2, -65535, 2, -65534, 2, -65533, 2, -65532, 2, -65531, 2, -65530, 2, -65529, 2, -65528, 2, -65527, 2, -65526, 2, -65525, 2, -65524, 2, -65523, 2, -65522, 0, 65520, 0, 65521, 2, 65522, 2, 65523, 2, 65524, 0, 65525, 2, 65526, 2, 65527, 2, 65528, 2, 65529, 2, 65530, 2, 65531, 2, 65532, 2, 65533, 2, 65534, 2, 65535, 2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 2, 9, 2, 10, 2, 11, 2, 12, 2, 13, 2, 14, 0, 131056, 0, 131057, 0, 131058, 0, 131059, 0, 131060, 0, 131061, 0, 131062, 0, 131063, 0, 131064, 0, 131065, 0, 131066, 0, 131067, 0, 131068, 0, 131069, 0, 131070, 0, 131071, 0, 65536, 0, 65537, 0, 65538, 0, 65539, 0, 65540, 0, 65541, 2, 65542, 2, 65543, 2, 65544, 0, 65545, 0, 65546, 0, 65547, 0, 65548, 0, 65549, 0, 65550, 0, 131072, 0, 131073, 0, 131074, 0, 131075, 0, 131076, 0, 131077, 2, 131078, 2, 131079, 2, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 0, 196609, 0, 196610, 0, 196611, 0, 196612, 2, 196613, 2, 196614, 2, 196615, 2, 196616, 2, 196617, 0, 196618, 0, 196619, 0, 262145, 0, 262146, 0, 262147, 2, 262148, 2, 262149, 2, 262150, 2, 262151, 2, 262152, 2, 262153, 2, 262154, 0, 262155, 0, 327681, 0, 327682, 2, 327683, 2, 327684, 2, 327685, 2, 327686, 2, 327687, 2, 327688, 2, 327689, 2, 327690, 2, 327691, 0, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
 editor/display_folded = true
-transform/pos = Vector2( -630, -950 )
+transform/pos = Vector2( 570, -1220 )
 
 [node name="Light2D" parent="player/Camera2D"]
 
@@ -454,7 +457,7 @@ invert/border = 100.0
 
 [node name="27" type="Polygon2D" parent="level graph"]
 
-polygon = Vector2Array( -860, -20, -960, 50, -770, 50 )
+polygon = Vector2Array( -860, -20, -960, 60, -770, 60 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = ColorArray(  )
@@ -832,7 +835,7 @@ invert/border = 100.0
 
 [node name="54" type="Polygon2D" parent="level graph"]
 
-polygon = Vector2Array( -610, -1060, -700, -1210, -520, -1210 )
+polygon = Vector2Array( -610, -1060, -700, -1210, -510, -1210 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = ColorArray(  )
@@ -846,7 +849,7 @@ invert/border = 100.0
 
 [node name="55" type="Polygon2D" parent="level graph"]
 
-polygon = Vector2Array( -450, -1060, -550, -950, -610, -1060 )
+polygon = Vector2Array( -450, -1060, -510, -960, -610, -1060 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = ColorArray(  )
@@ -860,7 +863,403 @@ invert/border = 100.0
 
 [node name="56" type="Polygon2D" parent="level graph"]
 
-polygon = Vector2Array( -450, -1060, -550, -1160, -610, -1060 )
+polygon = Vector2Array( -450, -1060, -510, -1150, -610, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="57" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -960, -900, -770, -900, -860, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="58" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -860, -1060, -960, -1210, -770, -1210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="59" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -960, -1210, -770, -1210, -810, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="60" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -810, -1310, -770, -1410, -960, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="61" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -710, -1410, -710, -1210, -810, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="62" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -960, -1410, -770, -1410, -860, -1490 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="63" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -860, -1490, -960, -1600, -770, -1600 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="64" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -510, -1210, -710, -1310, -700, -1210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="65" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -710, -1310, -700, -1410, -510, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="66" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -710, -1310, -550, -1390, -550, -1230 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="67" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -510, -1410, -600, -1490, -700, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="68" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -600, -1490, -460, -1600, -510, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="69" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -510, -1410, -460, -1600, -390, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="70" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -390, -1500, -240, -1600, -240, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="71" type="Polygon2D" parent="level graph"]
+
+transform/pos = Vector2( 10, 0 )
+transform/scale = Vector2( 1.05556, 1 )
+polygon = Vector2Array( -240, -1600, -240, -1410, -104.211, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="72" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( -100, -1500, 50, -1600, 50, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="73" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 50, -1500, 270, -1500, 160, -1600 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="74" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 50, -1500, 160, -1350, 270, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="75" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 270, -1500, 380, -1600, 380, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="76" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 60, -1340, 160, -1250, 60, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="77" type="Polygon2D" parent="level graph"]
+
+transform/pos = Vector2( 10, 0 )
+polygon = Vector2Array( 150, -1250, 250, -1340, 250, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="78" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 260, -1340, 260, -1150, 380, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="79" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 380, -1250, 510, -1340, 510, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="80" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 510, -1340, 510, -1150, 640, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="81" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 640, -1250, 840, -1340, 710, -1140 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="82" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 840, -1340, 840, -1110, 710, -1140 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="83" type="Polygon2D" parent="level graph"]
+
+polygon = Vector2Array( 800, -1120, 710, -960, 890, -960 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="84" type="Polygon2D" parent="level graph"]
+
+transform/pos = Vector2( 0, -10 )
+polygon = Vector2Array( 710, -950, 890, -950, 800, -790 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = ColorArray(  )
