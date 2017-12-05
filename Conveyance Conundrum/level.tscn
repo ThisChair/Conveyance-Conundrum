@@ -1406,7 +1406,7 @@ invert/border = 100.0
 
 [node name="pathfollowing box" type="KinematicBody2D" parent="."]
 
-transform/pos = Vector2( 140, 130 )
+transform/pos = Vector2( 441.653, 152.208 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -1443,7 +1443,7 @@ texture = ExtResource( 9 )
 offset = Vector2( 0, 0 )
 scale = 1.0
 color = Color( 1, 1, 1, 1 )
-energy = 1.71
+energy = 1.83
 mode = 0
 range/height = 0.0
 range/z_min = -1024
