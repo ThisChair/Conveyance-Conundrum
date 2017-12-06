@@ -27,6 +27,7 @@ tile_data = IntArray( -1638416, 0, -1638415, 0, -1638414, 0, -1638413, 0, -16384
 [node name="level graph" type="Node2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 script/script = ExtResource( 2 )
 
 [node name="00" type="Polygon2D" parent="level graph"]
@@ -3189,12 +3190,7 @@ transform/pos = Vector2( 0, 0 )
 
 [node name="Camera2D" parent="human"]
 
-editor/display_folded = false
 transform/pos = Vector2( 0, 0 )
-
-[node name="Light2D" parent="human/Camera2D"]
-
-visibility/visible = false
 
 
 [editable path="human"]
