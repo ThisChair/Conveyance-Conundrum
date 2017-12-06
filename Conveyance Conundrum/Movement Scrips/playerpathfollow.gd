@@ -1,7 +1,6 @@
 extends "delegated_behavior.gd"
 
 # Variables
-onready var raycast_query = get_node("/root/level/pathfollowing box/RayCast2D/")
 var graph_node
 var path = []
 
@@ -18,25 +17,10 @@ func _ready():
 	
 func _fixed_process(delta):
 	
-	# Add an exception so that it doesn't collide with it's own collider
-	raycast_query.add_exception(get_parent())
-	
-	#if not path.empty():
 	# Instantiation of new path following class
-	var path_follow = FollowPath.new(get_node("/root/level/pathfollowing box/"),path,null)
+	var path_follow = FollowPath.new(get_node("/root/level/human/"),path,null)
 	# Calculate the new blended steering and give it to the parent
 	get_parent().steering = path_follow.getSteering()	
-
-	# Instantiation of new obstacle avoidance class
-	#var avoid = ObstacleAvoidance.new(get_parent(),raycast_query)
-	
-	# List of steering behaviors with weights
-	#var b1 = BehaviorAndWeight.new(path_follow,1)
-	#var b2 = BehaviorAndWeight.new(avoid,1)
-	#var behaviors_list = [b1,b2]
-	
-	# Instantiation of new blended steering class
-	#var blended_steer = BlendedSteering.new(behaviors_list)
 	
 func _input(event):
 	# Mouse in viewport coordinates
