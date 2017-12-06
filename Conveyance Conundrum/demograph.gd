@@ -388,6 +388,7 @@ func optimalPath(initial,final):
 		optimal_path[i] = centroid_list[optimal_path[i]]
 
 	return optimal_path
+	
 # Find the triangle for any given position
 func findTriangle(position):
 	var distance = INFINITY
