@@ -288,3 +288,27 @@ func printPath(path):
 			print(node)
 	else:
 		print("A* could not find a path in the graph")
+# Calculate optimal path
+func optimalPath(initial,final):
+	
+	var optimal_path = []
+		# Calculate the optimal path using A*
+	optimal_path = A_Star(initial,final,graph.getGraph())
+	optimal_path.pop_front()
+	
+	# Replace the nodes with their respective positions in the map
+	for i in range(optimal_path.size()):
+		optimal_path[i] = centroid_list[optimal_path[i]]
+
+	return optimal_path
+# Find the triangle for any given position
+func findTriangle(position):
+	var distance = INFINITY
+	var result
+	var v
+	for i in range(centroid_list.size()):
+		v = centroid_list[i] - position
+		if v.length() < distance:
+			distance = v.length()
+			result = i
+	return result
