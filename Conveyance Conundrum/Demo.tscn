@@ -2,7 +2,7 @@
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://demograph.gd" type="Script" id=2]
-[ext_resource path="res://Human.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player.tscn" type="PackedScene" id=3]
 
 [node name="Demo" type="Node2D"]
 
@@ -3185,6 +3185,6 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="human" parent="." instance=ExtResource( 3 )]
+[node name="Human" parent="." instance=ExtResource( 3 )]
 
 

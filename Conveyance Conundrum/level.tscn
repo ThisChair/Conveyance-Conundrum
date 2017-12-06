@@ -66,6 +66,7 @@ __meta__ = {
 [node name="level graph" type="Node2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 visibility/behind_parent = true
 script/script = ExtResource( 4 )
 
@@ -1379,6 +1380,7 @@ invert/border = 100.0
 
 [node name="pathfollowing box" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 441.653, 152.208 )
 input/pickable = false
 collision/layers = 1
