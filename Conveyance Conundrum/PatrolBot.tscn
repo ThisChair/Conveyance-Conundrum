@@ -17,7 +17,7 @@ transform/pos = Vector2( 673.629, 314.607 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 0.704675, 0, 0, 0.736739, 1.26782, 0.947418 )
-shapes/0/trigger = true
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
@@ -44,7 +44,7 @@ transform/scale = Vector2( 0.704675, 0.736739 )
 build_mode = 0
 polygon = Vector2Array( -30, 30, -30, -30, 30, -30, 30, 30 )
 shape_range = Vector2( 0, 0 )
-trigger = true
+trigger = false
 
 [node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
 

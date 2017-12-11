@@ -12,7 +12,7 @@ var currentState
 func run(delta):
 	
 	var triggeredTransition
-	
+	currentState.getAction()
 	for transition in currentState.getTransitions():
 		if transition.isTriggered():
 			triggeredTransition = transition
@@ -26,5 +26,3 @@ func run(delta):
 		targetState.getEntryAction()
 		
 		currentState = targetState
-	else:
-		currentState.getAction()

@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://demograph.gd" type="Script" id=2]
-[ext_resource path="res://Human.tscn" type="PackedScene" id=3]
+[ext_resource path="res://demosoundgraph.gd" type="Script" id=3]
+[ext_resource path="res://Human.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PatrolBot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Buddy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ls.png" type="Texture" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
 
 [node name="Demo" type="Node2D"]
+
+transform/pos = Vector2( -9.25308, -14.8049 )
 
 [node name="TileMap" type="TileMap" parent="."]
 
@@ -22,12 +29,11 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -1638416, 0, -1638415, 0, -1638414, 0, -1638413, 0, -1638412, 0, -1638411, 0, -1638410, 0, -1638409, 0, -1638408, 0, -1638407, 0, -1638406, 0, -1638405, 0, -1638404, 0, -1638403, 0, -1638402, 0, -1638401, 0, -1703936, 0, -1703935, 0, -1703934, 0, -1703933, 0, -1703932, 0, -1703931, 0, -1703930, 0, -1572880, 0, -1572879, 2, -1572878, 2, -1572877, 2, -1572876, 0, -1572875, 2, -1572874, 2, -1572873, 2, -1572872, 2, -1572871, 2, -1572870, 2, -1572869, 2, -1572868, 2, -1572867, 2, -1572866, 2, -1572865, 2, -1638400, 2, -1638399, 2, -1638398, 2, -1638397, 2, -1638396, 2, -1638395, 2, -1638394, 0, -1507344, 0, -1507343, 2, -1507342, 2, -1507341, 2, -1507340, 0, -1507339, 2, -1507338, 2, -1507337, 2, -1507336, 2, -1507335, 2, -1507334, 2, -1507333, 2, -1507332, 2, -1507331, 2, -1507330, 2, -1507329, 2, -1572864, 2, -1572863, 2, -1572862, 2, -1572861, 2, -1572860, 2, -1572859, 2, -1572858, 0, -1441808, 0, -1441807, 2, -1441806, 2, -1441805, 2, -1441804, 0, -1441803, 2, -1441802, 2, -1441801, 2, -1441800, 2, -1441799, 2, -1441798, 2, -1441797, 2, -1441796, 2, -1441795, 2, -1441794, 2, -1441793, 2, -1507328, 2, -1507327, 2, -1507326, 2, -1507325, 2, -1507324, 2, -1507323, 2, -1507322, 0, -1507321, 0, -1376272, 0, -1376271, 2, -1376270, 2, -1376269, 2, -1376268, 2, -1376267, 2, -1376266, 2, -1376265, 2, -1376264, 0, -1376263, 0, -1376262, 0, -1376261, 0, -1376260, 0, -1376259, 0, -1376258, 0, -1376257, 0, -1441792, 0, -1441791, 2, -1441790, 2, -1441789, 2, -1441788, 0, -1441787, 0, -1441786, 0, -1441785, 0, -1441784, 0, -1441783, 0, -1441782, 0, -1441781, 0, -1441780, 0, -1441779, 0, -1441778, 0, -1310736, 0, -1310735, 2, -1310734, 2, -1310733, 2, -1310732, 2, -1310731, 2, -1310730, 2, -1310729, 2, -1310728, 0, -1310727, 2, -1310726, 2, -1310725, 2, -1310724, 0, -1310723, 0, -1310722, 2, -1310721, 2, -1376256, 2, -1376255, 2, -1376254, 2, -1376253, 2, -1376252, 2, -1376251, 2, -1376250, 2, -1376249, 2, -1376248, 2, -1376247, 2, -1376246, 2, -1376245, 2, -1376244, 2, -1376243, 2, -1376242, 0, -1245200, 0, -1245199, 2, -1245198, 2, -1245197, 2, -1245196, 2, -1245195, 2, -1245194, 2, -1245193, 2, -1245192, 0, -1245191, 2, -1245190, 2, -1245189, 2, -1245188, 0, -1245187, 0, -1245186, 2, -1245185, 2, -1310720, 2, -1310719, 2, -1310718, 2, -1310717, 2, -1310716, 2, -1310715, 2, -1310714, 2, -1310713, 2, -1310712, 2, -1310711, 2, -1310710, 2, -1310709, 2, -1310708, 2, -1310707, 2, -1310706, 0, -1179664, 0, -1179663, 2, -1179662, 2, -1179661, 2, -1179660, 0, -1179659, 2, -1179658, 2, -1179657, 2, -1179656, 0, -1179655, 2, -1179654, 2, -1179653, 2, -1179652, 0, -1179651, 0, -1179650, 2, -1179649, 2, -1245184, 2, -1245183, 2, -1245182, 2, -1245181, 2, -1245180, 2, -1245179, 2, -1245178, 2, -1245177, 2, -1245176, 2, -1245175, 2, -1245174, 2, -1245173, 2, -1245172, 2, -1245171, 2, -1245170, 0, -1114128, 0, -1114127, 2, -1114126, 2, -1114125, 2, -1114124, 0, -1114123, 2, -1114122, 2, -1114121, 2, -1114120, 2, -1114119, 2, -1114118, 2, -1114117, 2, -1114116, 0, -1114115, 0, -1114114, 2, -1114113, 2, -1179648, 2, -1179647, 0, -1179646, 0, -1179645, 0, -1179644, 0, -1179643, 2, -1179642, 2, -1179641, 0, -1179640, 0, -1179639, 0, -1179638, 0, -1179637, 2, -1179636, 2, -1179635, 2, -1179634, 0, -1048592, 0, -1048591, 2, -1048590, 2, -1048589, 2, -1048588, 0, -1048587, 2, -1048586, 2, -1048585, 2, -1048584, 2, -1048583, 2, -1048582, 2, -1048581, 2, -1048580, 0, -1048579, 0, -1048578, 2, -1048577, 2, -1114112, 2, -1114111, 0, -1114110, 2, -1114109, 2, -1114108, 2, -1114107, 2, -1114106, 2, -1114105, 2, -1114104, 2, -1114103, 2, -1114102, 0, -1114101, 2, -1114100, 2, -1114099, 2, -1114098, 0, -983056, 0, -983055, 2, -983054, 2, -983053, 2, -983052, 0, -983051, 2, -983050, 2, -983049, 2, -983048, 2, -983047, 2, -983046, 2, -983045, 2, -983044, 0, -983043, 0, -983042, 2, -983041, 2, -1048576, 2, -1048575, 0, -1048574, 2, -1048573, 2, -1048572, 2, -1048571, 2, -1048570, 2, -1048569, 2, -1048568, 2, -1048567, 2, -1048566, 0, -1048565, 2, -1048564, 2, -1048563, 2, -1048562, 0, -917520, 0, -917519, 2, -917518, 2, -917517, 2, -917516, 0, -917515, 2, -917514, 2, -917513, 2, -917512, 0, -917511, 2, -917510, 2, -917509, 2, -917508, 0, -917507, 0, -917506, 2, -917505, 2, -983040, 2, -983039, 0, -983038, 2, -983037, 2, -983036, 0, -983035, 0, -983034, 0, -983033, 0, -983032, 2, -983031, 2, -983030, 0, -983029, 2, -983028, 2, -983027, 2, -983026, 0, -851984, 0, -851983, 2, -851982, 2, -851981, 2, -851980, 2, -851979, 2, -851978, 2, -851977, 2, -851976, 0, -851975, 2, -851974, 2, -851973, 2, -851972, 0, -851971, 0, -851970, 2, -851969, 2, -917504, 2, -917503, 0, -917502, 2, -917501, 2, -917500, 2, -917499, 2, -917498, 2, -917497, 2, -917496, 2, -917495, 2, -917494, 0, -917493, 2, -917492, 2, -917491, 2, -917490, 0, -786448, 0, -786447, 2, -786446, 2, -786445, 2, -786444, 2, -786443, 2, -786442, 2, -786441, 2, -786440, 0, -786439, 2, -786438, 2, -786437, 2, -786436, 0, -786435, 0, -786434, 2, -786433, 2, -851968, 2, -851967, 0, -851966, 2, -851965, 2, -851964, 2, -851963, 2, -851962, 2, -851961, 2, -851960, 2, -851959, 2, -851958, 0, -851957, 2, -851956, 2, -851955, 2, -851954, 0, -720912, 0, -720911, 2, -720910, 2, -720909, 2, -720908, 2, -720907, 2, -720906, 2, -720905, 2, -720904, 0, -720903, 2, -720902, 2, -720901, 2, -720900, 0, -720899, 0, -720898, 2, -720897, 2, -786432, 2, -786431, 0, -786430, 0, -786429, 0, -786428, 0, -786427, 2, -786426, 2, -786425, 0, -786424, 0, -786423, 0, -786422, 0, -786421, 2, -786420, 2, -786419, 2, -786418, 0, -655376, 0, -655375, 2, -655374, 2, -655373, 2, -655372, 2, -655371, 2, -655370, 2, -655369, 2, -655368, 0, -655367, 2, -655366, 2, -655365, 2, -655364, 0, -655363, 0, -655362, 2, -655361, 2, -720896, 2, -720895, 2, -720894, 2, -720893, 2, -720892, 2, -720891, 2, -720890, 2, -720889, 2, -720888, 2, -720887, 2, -720886, 2, -720885, 2, -720884, 2, -720883, 2, -720882, 0, -589840, 0, -589839, 2, -589838, 2, -589837, 2, -589836, 0, -589835, 2, -589834, 2, -589833, 2, -589832, 0, -589831, 2, -589830, 2, -589829, 2, -589828, 0, -589827, 0, -589826, 2, -589825, 2, -655360, 2, -655359, 2, -655358, 2, -655357, 2, -655356, 2, -655355, 2, -655354, 2, -655353, 2, -655352, 2, -655351, 2, -655350, 2, -655349, 2, -655348, 2, -655347, 2, -655346, 0, -524304, 0, -524303, 2, -524302, 2, -524301, 2, -524300, 0, -524299, 2, -524298, 2, -524297, 2, -524296, 2, -524295, 2, -524294, 2, -524293, 2, -524292, 0, -524291, 0, -524290, 2, -524289, 2, -589824, 2, -589823, 2, -589822, 2, -589821, 2, -589820, 2, -589819, 2, -589818, 2, -589817, 2, -589816, 2, -589815, 2, -589814, 2, -589813, 2, -589812, 2, -589811, 2, -589810, 0, -458768, 0, -458767, 2, -458766, 2, -458765, 2, -458764, 0, -458763, 2, -458762, 2, -458761, 2, -458760, 2, -458759, 2, -458758, 2, -458757, 2, -458756, 0, -458755, 0, -458754, 0, -458753, 0, -524288, 0, -524287, 0, -524286, 2, -524285, 2, -524284, 2, -524283, 0, -524282, 0, -524281, 0, -524280, 0, -524279, 0, -524278, 0, -524277, 0, -524276, 0, -524275, 0, -524274, 0, -393232, 0, -393231, 2, -393230, 2, -393229, 2, -393228, 0, -393227, 2, -393226, 2, -393225, 2, -393224, 2, -393223, 2, -393222, 2, -393221, 2, -393220, 0, -393219, 2, -393218, 2, -393217, 2, -458752, 2, -458751, 2, -458750, 2, -458749, 2, -458748, 2, -458747, 2, -458746, 2, -458745, 2, -458744, 2, -458743, 2, -458742, 2, -458741, 2, -458740, 2, -458739, 2, -458738, 0, -327696, 0, -327695, 2, -327694, 2, -327693, 2, -327692, 0, -327691, 2, -327690, 2, -327689, 2, -327688, 0, -327687, 2, -327686, 2, -327685, 2, -327684, 0, -327683, 2, -327682, 2, -327681, 2, -393216, 2, -393215, 2, -393214, 2, -393213, 2, -393212, 2, -393211, 2, -393210, 2, -393209, 2, -393208, 2, -393207, 2, -393206, 2, -393205, 2, -393204, 2, -393203, 2, -393202, 0, -262160, 0, -262159, 2, -262158, 2, -262157, 2, -262156, 2, -262155, 2, -262154, 2, -262153, 2, -262152, 0, -262151, 2, -262150, 2, -262149, 2, -262148, 0, -262147, 2, -262146, 2, -262145, 0, -327680, 0, -327679, 0, -327678, 0, -327677, 0, -327676, 0, -327675, 0, -327674, 0, -327673, 0, -327672, 0, -327671, 0, -327670, 0, -327669, 2, -327668, 2, -327667, 2, -327666, 0, -196624, 0, -196623, 2, -196622, 2, -196621, 2, -196620, 2, -196619, 2, -196618, 2, -196617, 2, -196616, 0, -196615, 2, -196614, 2, -196613, 2, -196612, 0, -196611, 2, -196610, 2, -196609, 0, -262144, 0, -262143, 0, -262142, 0, -262141, 0, -262140, 0, -262139, 0, -262138, 0, -262137, 0, -262136, 0, -262135, 0, -262134, 0, -262133, 2, -262132, 2, -262131, 2, -262130, 0, -131088, 0, -131087, 2, -131086, 2, -131085, 2, -131084, 2, -131083, 2, -131082, 2, -131081, 2, -131080, 0, -131079, 0, -131078, 0, -131077, 0, -131076, 0, -131075, 2, -131074, 2, -131073, 0, -196608, 0, -196607, 0, -196606, 0, -196605, 0, -196604, 0, -196603, 0, -196602, 0, -196601, 0, -196600, 0, -196599, 0, -196598, 0, -196597, 2, -196596, 2, -196595, 2, -196594, 0, -65552, 0, -65551, 2, -65550, 2, -65549, 2, -65548, 0, -65547, 2, -65546, 2, -65545, 2, -65544, 2, -65543, 2, -65542, 2, -65541, 2, -65540, 2, -65539, 2, -65538, 2, -65537, 2, -131072, 2, -131071, 2, -131070, 2, -131069, 2, -131068, 2, -131067, 2, -131066, 2, -131065, 2, -131064, 2, -131063, 2, -131062, 2, -131061, 2, -131060, 2, -131059, 2, -131058, 0, -16, 0, -15, 2, -14, 2, -13, 2, -12, 0, -11, 2, -10, 2, -9, 2, -8, 2, -7, 2, -6, 2, -5, 2, -4, 2, -3, 2, -2, 2, -1, 2, -65536, 2, -65535, 2, -65534, 2, -65533, 2, -65532, 2, -65531, 2, -65530, 2, -65529, 2, -65528, 2, -65527, 2, -65526, 2, -65525, 2, -65524, 2, -65523, 2, -65522, 0, 65520, 0, 65521, 2, 65522, 2, 65523, 2, 65524, 0, 65525, 2, 65526, 2, 65527, 2, 65528, 2, 65529, 2, 65530, 2, 65531, 2, 65532, 2, 65533, 2, 65534, 2, 65535, 2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 2, 9, 2, 10, 2, 11, 2, 12, 2, 13, 2, 14, 0, 131056, 0, 131057, 0, 131058, 0, 131059, 0, 131060, 0, 131061, 0, 131062, 0, 131063, 0, 131064, 0, 131065, 0, 131066, 0, 131067, 0, 131068, 0, 131069, 0, 131070, 0, 131071, 0, 65536, 0, 65537, 0, 65538, 0, 65539, 0, 65540, 0, 65541, 2, 65542, 2, 65543, 2, 65544, 0, 65545, 0, 65546, 0, 65547, 0, 65548, 0, 65549, 0, 65550, 0, 131072, 0, 131073, 0, 131074, 0, 131075, 0, 131076, 0, 131077, 2, 131078, 2, 131079, 2, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 0, 196609, 0, 196610, 0, 196611, 0, 196612, 2, 196613, 2, 196614, 2, 196615, 2, 196616, 2, 196617, 0, 196618, 0, 196619, 0, 262145, 0, 262146, 0, 262147, 2, 262148, 2, 262149, 2, 262150, 2, 262151, 2, 262152, 2, 262153, 2, 262154, 0, 262155, 0, 327681, 0, 327682, 2, 327683, 2, 327684, 2, 327685, 2, 327686, 2, 327687, 2, 327688, 2, 327689, 2, 327690, 2, 327691, 0, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 0 )
+tile_data = IntArray( -1638416, 0, -1638415, 0, -1638414, 0, -1638413, 0, -1638412, 0, -1638411, 0, -1638410, 0, -1638409, 0, -1638408, 0, -1638407, 0, -1638406, 0, -1638405, 0, -1638404, 0, -1638403, 0, -1638402, 0, -1638401, 0, -1703936, 0, -1703935, 0, -1703934, 0, -1703933, 0, -1703932, 0, -1703931, 0, -1703930, 0, -1572880, 0, -1572879, 2, -1572878, 2, -1572877, 2, -1572876, 0, -1572875, 2, -1572874, 2, -1572873, 2, -1572872, 2, -1572871, 2, -1572870, 2, -1572869, 2, -1572868, 2, -1572867, 2, -1572866, 2, -1572865, 2, -1638400, 2, -1638399, 2, -1638398, 2, -1638397, 2, -1638396, 2, -1638395, 2, -1638394, 0, -1507344, 0, -1507343, 2, -1507342, 2, -1507341, 2, -1507340, 0, -1507339, 2, -1507338, 2, -1507337, 2, -1507336, 2, -1507335, 2, -1507334, 2, -1507333, 2, -1507332, 2, -1507331, 2, -1507330, 2, -1507329, 2, -1572864, 2, -1572863, 2, -1572862, 2, -1572861, 2, -1572860, 2, -1572859, 2, -1572858, 0, -1441808, 0, -1441807, 2, -1441806, 2, -1441805, 2, -1441804, 0, -1441803, 2, -1441802, 2, -1441801, 2, -1441800, 2, -1441799, 2, -1441798, 2, -1441797, 2, -1441796, 2, -1441795, 2, -1441794, 2, -1441793, 2, -1507328, 2, -1507327, 2, -1507326, 2, -1507325, 2, -1507324, 2, -1507323, 2, -1507322, 0, -1507321, 0, -1376272, 0, -1376271, 2, -1376270, 2, -1376269, 2, -1376268, 2, -1376267, 2, -1376266, 2, -1376265, 2, -1376264, 0, -1376263, 0, -1376262, 0, -1376261, 0, -1376260, 0, -1376259, 0, -1376258, 0, -1376257, 0, -1441792, 0, -1441791, 2, -1441790, 2, -1441789, 2, -1441788, 0, -1441787, 0, -1441786, 0, -1441785, 0, -1441784, 0, -1441783, 0, -1441782, 0, -1441781, 0, -1441780, 0, -1441779, 0, -1441778, 0, -1310736, 0, -1310735, 2, -1310734, 2, -1310733, 2, -1310732, 2, -1310731, 2, -1310730, 2, -1310729, 2, -1310728, 0, -1310727, 2, -1310726, 2, -1310725, 2, -1310724, 0, -1310723, 0, -1310722, 2, -1310721, 2, -1376256, 2, -1376255, 2, -1376254, 2, -1376253, 2, -1376252, 2, -1376251, 2, -1376250, 2, -1376249, 2, -1376248, 2, -1376247, 2, -1376246, 2, -1376245, 2, -1376244, 2, -1376243, 2, -1376242, 0, -1245200, 0, -1245199, 2, -1245198, 2, -1245197, 2, -1245196, 2, -1245195, 2, -1245194, 2, -1245193, 2, -1245192, 0, -1245191, 2, -1245190, 2, -1245189, 2, -1245188, 0, -1245187, 0, -1245186, 2, -1245185, 2, -1310720, 2, -1310719, 2, -1310718, 2, -1310717, 2, -1310716, 2, -1310715, 2, -1310714, 2, -1310713, 2, -1310712, 2, -1310711, 2, -1310710, 2, -1310709, 2, -1310708, 2, -1310707, 2, -1310706, 0, -1179664, 0, -1179663, 2, -1179662, 2, -1179661, 2, -1179660, 0, -1179659, 2, -1179658, 2, -1179657, 2, -1179656, 0, -1179655, 2, -1179654, 2, -1179653, 2, -1179652, 0, -1179651, 0, -1179650, 2, -1179649, 2, -1245184, 2, -1245183, 2, -1245182, 2, -1245181, 2, -1245180, 2, -1245179, 2, -1245178, 2, -1245177, 2, -1245176, 2, -1245175, 2, -1245174, 2, -1245173, 2, -1245172, 2, -1245171, 2, -1245170, 0, -1114128, 0, -1114127, 2, -1114126, 2, -1114125, 2, -1114124, 0, -1114123, 2, -1114122, 2, -1114121, 2, -1114120, 2, -1114119, 2, -1114118, 2, -1114117, 2, -1114116, 0, -1114115, 0, -1114114, 2, -1114113, 2, -1179648, 2, -1179647, 0, -1179646, 0, -1179645, 0, -1179644, 0, -1179643, 1, -1179642, 1, -1179641, 0, -1179640, 0, -1179639, 0, -1179638, 0, -1179637, 2, -1179636, 2, -1179635, 2, -1179634, 0, -1048592, 0, -1048591, 2, -1048590, 2, -1048589, 2, -1048588, 0, -1048587, 2, -1048586, 2, -1048585, 2, -1048584, 2, -1048583, 2, -1048582, 2, -1048581, 2, -1048580, 0, -1048579, 0, -1048578, 2, -1048577, 2, -1114112, 2, -1114111, 0, -1114110, 1, -1114109, 1, -1114108, 1, -1114107, 1, -1114106, 1, -1114105, 1, -1114104, 1, -1114103, 1, -1114102, 0, -1114101, 2, -1114100, 2, -1114099, 2, -1114098, 0, -983056, 0, -983055, 2, -983054, 2, -983053, 2, -983052, 0, -983051, 2, -983050, 2, -983049, 2, -983048, 2, -983047, 2, -983046, 2, -983045, 2, -983044, 0, -983043, 0, -983042, 2, -983041, 2, -1048576, 2, -1048575, 0, -1048574, 1, -1048573, 1, -1048572, 1, -1048571, 1, -1048570, 1, -1048569, 1, -1048568, 1, -1048567, 1, -1048566, 0, -1048565, 2, -1048564, 2, -1048563, 2, -1048562, 0, -917520, 0, -917519, 2, -917518, 2, -917517, 2, -917516, 0, -917515, 2, -917514, 2, -917513, 2, -917512, 0, -917511, 2, -917510, 2, -917509, 2, -917508, 0, -917507, 0, -917506, 2, -917505, 2, -983040, 2, -983039, 0, -983038, 1, -983037, 1, -983036, 0, -983035, 0, -983034, 0, -983033, 0, -983032, 1, -983031, 1, -983030, 0, -983029, 2, -983028, 2, -983027, 2, -983026, 0, -851984, 0, -851983, 2, -851982, 2, -851981, 2, -851980, 2, -851979, 2, -851978, 2, -851977, 2, -851976, 0, -851975, 2, -851974, 2, -851973, 2, -851972, 0, -851971, 0, -851970, 2, -851969, 2, -917504, 2, -917503, 0, -917502, 1, -917501, 1, -917500, 1, -917499, 1, -917498, 1, -917497, 1, -917496, 1, -917495, 1, -917494, 0, -917493, 2, -917492, 2, -917491, 2, -917490, 0, -786448, 0, -786447, 2, -786446, 2, -786445, 2, -786444, 2, -786443, 2, -786442, 2, -786441, 2, -786440, 0, -786439, 2, -786438, 2, -786437, 2, -786436, 0, -786435, 0, -786434, 2, -786433, 2, -851968, 2, -851967, 0, -851966, 1, -851965, 1, -851964, 1, -851963, 1, -851962, 1, -851961, 1, -851960, 1, -851959, 1, -851958, 0, -851957, 2, -851956, 2, -851955, 2, -851954, 0, -720912, 0, -720911, 2, -720910, 2, -720909, 2, -720908, 2, -720907, 2, -720906, 2, -720905, 2, -720904, 0, -720903, 2, -720902, 2, -720901, 2, -720900, 0, -720899, 0, -720898, 2, -720897, 2, -786432, 2, -786431, 0, -786430, 0, -786429, 0, -786428, 0, -786427, 1, -786426, 1, -786425, 0, -786424, 0, -786423, 0, -786422, 0, -786421, 2, -786420, 2, -786419, 2, -786418, 0, -655376, 0, -655375, 2, -655374, 2, -655373, 2, -655372, 2, -655371, 2, -655370, 2, -655369, 2, -655368, 0, -655367, 2, -655366, 2, -655365, 2, -655364, 0, -655363, 0, -655362, 2, -655361, 2, -720896, 2, -720895, 2, -720894, 2, -720893, 2, -720892, 2, -720891, 2, -720890, 2, -720889, 2, -720888, 2, -720887, 2, -720886, 2, -720885, 2, -720884, 2, -720883, 2, -720882, 0, -589840, 0, -589839, 2, -589838, 2, -589837, 2, -589836, 0, -589835, 2, -589834, 2, -589833, 2, -589832, 0, -589831, 2, -589830, 2, -589829, 2, -589828, 0, -589827, 0, -589826, 2, -589825, 2, -655360, 2, -655359, 2, -655358, 2, -655357, 2, -655356, 2, -655355, 2, -655354, 2, -655353, 2, -655352, 2, -655351, 2, -655350, 2, -655349, 2, -655348, 2, -655347, 2, -655346, 0, -524304, 0, -524303, 2, -524302, 2, -524301, 2, -524300, 0, -524299, 2, -524298, 2, -524297, 2, -524296, 2, -524295, 2, -524294, 2, -524293, 2, -524292, 0, -524291, 0, -524290, 2, -524289, 2, -589824, 2, -589823, 2, -589822, 2, -589821, 2, -589820, 2, -589819, 2, -589818, 2, -589817, 2, -589816, 2, -589815, 2, -589814, 2, -589813, 2, -589812, 2, -589811, 2, -589810, 0, -458768, 0, -458767, 2, -458766, 2, -458765, 2, -458764, 0, -458763, 2, -458762, 2, -458761, 2, -458760, 2, -458759, 2, -458758, 2, -458757, 2, -458756, 0, -458755, 0, -458754, 0, -458753, 0, -524288, 0, -524287, 0, -524286, 2, -524285, 2, -524284, 2, -524283, 0, -524282, 0, -524281, 0, -524280, 0, -524279, 0, -524278, 0, -524277, 0, -524276, 0, -524275, 0, -524274, 0, -393232, 0, -393231, 2, -393230, 2, -393229, 2, -393228, 0, -393227, 2, -393226, 2, -393225, 2, -393224, 2, -393223, 2, -393222, 2, -393221, 2, -393220, 0, -393219, 2, -393218, 2, -393217, 2, -458752, 2, -458751, 2, -458750, 2, -458749, 2, -458748, 2, -458747, 2, -458746, 2, -458745, 2, -458744, 2, -458743, 2, -458742, 2, -458741, 2, -458740, 2, -458739, 2, -458738, 0, -327696, 0, -327695, 2, -327694, 2, -327693, 2, -327692, 0, -327691, 2, -327690, 2, -327689, 2, -327688, 0, -327687, 2, -327686, 2, -327685, 2, -327684, 0, -327683, 2, -327682, 2, -327681, 2, -393216, 2, -393215, 2, -393214, 2, -393213, 2, -393212, 2, -393211, 2, -393210, 2, -393209, 2, -393208, 2, -393207, 2, -393206, 2, -393205, 2, -393204, 2, -393203, 2, -393202, 0, -262160, 0, -262159, 2, -262158, 2, -262157, 2, -262156, 2, -262155, 2, -262154, 2, -262153, 2, -262152, 0, -262151, 2, -262150, 2, -262149, 2, -262148, 0, -262147, 2, -262146, 2, -262145, 0, -327680, 0, -327679, 0, -327678, 0, -327677, 0, -327676, 0, -327675, 0, -327674, 0, -327673, 0, -327672, 0, -327671, 0, -327670, 0, -327669, 2, -327668, 2, -327667, 2, -327666, 0, -196624, 0, -196623, 2, -196622, 2, -196621, 2, -196620, 2, -196619, 2, -196618, 2, -196617, 2, -196616, 0, -196615, 2, -196614, 2, -196613, 2, -196612, 0, -196611, 2, -196610, 2, -196609, 0, -262144, 0, -262143, 0, -262142, 0, -262141, 0, -262140, 0, -262139, 0, -262138, 0, -262137, 0, -262136, 0, -262135, 0, -262134, 0, -262133, 2, -262132, 2, -262131, 2, -262130, 0, -131088, 0, -131087, 2, -131086, 2, -131085, 2, -131084, 2, -131083, 2, -131082, 2, -131081, 2, -131080, 0, -131079, 0, -131078, 0, -131077, 0, -131076, 0, -131075, 2, -131074, 2, -131073, 0, -196608, 0, -196607, 0, -196606, 0, -196605, 0, -196604, 0, -196603, 0, -196602, 0, -196601, 0, -196600, 0, -196599, 0, -196598, 0, -196597, 2, -196596, 2, -196595, 2, -196594, 0, -65552, 0, -65551, 2, -65550, 2, -65549, 2, -65548, 0, -65547, 2, -65546, 2, -65545, 2, -65544, 2, -65543, 2, -65542, 2, -65541, 2, -65540, 2, -65539, 2, -65538, 2, -65537, 2, -131072, 2, -131071, 2, -131070, 2, -131069, 2, -131068, 2, -131067, 2, -131066, 2, -131065, 2, -131064, 2, -131063, 2, -131062, 2, -131061, 2, -131060, 2, -131059, 2, -131058, 0, -16, 0, -15, 2, -14, 2, -13, 2, -12, 0, -11, 2, -10, 2, -9, 2, -8, 2, -7, 2, -6, 2, -5, 2, -4, 2, -3, 2, -2, 2, -1, 2, -65536, 2, -65535, 2, -65534, 2, -65533, 2, -65532, 2, -65531, 2, -65530, 2, -65529, 2, -65528, 2, -65527, 2, -65526, 2, -65525, 2, -65524, 2, -65523, 2, -65522, 0, 65520, 0, 65521, 2, 65522, 2, 65523, 2, 65524, 0, 65525, 2, 65526, 2, 65527, 2, 65528, 2, 65529, 2, 65530, 2, 65531, 2, 65532, 2, 65533, 2, 65534, 2, 65535, 2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 2, 9, 2, 10, 2, 11, 2, 12, 2, 13, 2, 14, 0, 131056, 0, 131057, 0, 131058, 0, 131059, 0, 131060, 0, 131061, 0, 131062, 0, 131063, 0, 131064, 0, 131065, 0, 131066, 0, 131067, 0, 131068, 0, 131069, 0, 131070, 0, 131071, 0, 65536, 0, 65537, 0, 65538, 0, 65539, 0, 65540, 0, 65541, 2, 65542, 2, 65543, 2, 65544, 0, 65545, 0, 65546, 0, 65547, 0, 65548, 0, 65549, 0, 65550, 0, 131072, 0, 131073, 0, 131074, 0, 131075, 0, 131076, 0, 131077, 2, 131078, 2, 131079, 2, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 0, 196609, 0, 196610, 0, 196611, 0, 196612, 2, 196613, 2, 196614, 2, 196615, 2, 196616, 2, 196617, 0, 196618, 0, 196619, 0, 262145, 0, 262146, 0, 262147, 2, 262148, 2, 262149, 2, 262150, 2, 262151, 2, 262152, 2, 262153, 2, 262154, 0, 262155, 0, 327681, 0, 327682, 2, 327683, 2, 327684, 2, 327685, 2, 327686, 2, 327687, 2, 327688, 2, 327689, 2, 327690, 2, 327691, 0, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 0 )
 
 [node name="level graph" type="Node2D" parent="."]
 
 editor/display_folded = true
-visibility/visible = false
 script/script = ExtResource( 2 )
 
 [node name="00" type="Polygon2D" parent="level graph"]
@@ -3179,7 +3185,3162 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="human" parent="." instance=ExtResource( 3 )]
+[node name="sound" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+script/script = ExtResource( 3 )
+
+[node name="00" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 59.1304, 29.2174 )
+transform/scale = Vector2( 0.826087, 0.886957 )
+polygon = Vector2Array( 85.7895, 395.49, 315.79, 181.275, 315.79, 395.49 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="01" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 50, 30 )
+transform/scale = Vector2( 0.826087, 0.886957 )
+polygon = Vector2Array( 435.79, 293.137, 326.842, 180.392, 326.842, 394.608 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="02" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 320, 380, 410, 290, 510, 380 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="03" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -1.67017, -1.67017 )
+polygon = Vector2Array( 320, 190, 510, 190, 410, 290 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="04" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 510, 190, 510, 380, 410, 290 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="05" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 510, 190, 700, 380, 510, 380 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="06" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 320, 190, 410, 50, 510, 190 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="07" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 410, 50, 300, 60, 300, -130 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="08" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 410, 50, 300, -130, 530, -130 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="09" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 410, 50, 530, 60, 530, -130 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="10" type="Polygon2D" parent="sound"]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 300, -130, 300, 60, 180, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="11" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 180, -30, 60, -130, 60, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="12" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -130, -60, -30, 60, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="13" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -130, -60, -30, -130, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="14" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -130, -30, -200, -130, -60, -130 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="15" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -200, -130, -130, -30, -200, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="16" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -30, -130, 30, -200, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="17" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -320, 60, -320, -130, -200, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="18" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -320, -130, -320, 60, -440, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="19" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -440, -30, -510, -130, -510, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="20" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -130, -610, -30, -510, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="21" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -130, -610, -30, -700, -130 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="22" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -700, -130, -510, -130, -610, -250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="23" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -610, -250, -710, -320, -710, -120 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="24" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -710, -320, -710, -130, -830, -220 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="25" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -830, -220, -960, -100, -770, -100 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="26" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -960, -100, -770, -100, -860, -20 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="27" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -860, -20, -960, 60, -770, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="28" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -770, -330, -960, -330, -830, -220 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="29" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -830, -220, -960, -330, -960, -100 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="30" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -770, -330, -960, -330, -860, -490 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="31" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -860, -490, -960, -640, -770, -640 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="32" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -770, -640, -810, -770, -960, -640 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="33" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -810, -770, -770, -900, -960, -900 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="34" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -810, -770, -770, -900, -600, -770 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="35" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -810, -770, -770, -640, -600, -770 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="36" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -610, -250, -510, -320, -710, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="37" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -320, -700, -320, -600, -480 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="38" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -600, -480, -700, -610, -510, -610 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="39" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -610, -510, -320, -600, -480 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="40" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -580, -400, -480, -510, -380 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="41" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -400, -480, -440, -380, -260, -380 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="42" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -440, -380, -260, -380, -350, -290 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="43" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -350, -290, -440, -200, -260, -200 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="44" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -400, -480, -440, -580, -260, -580 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="45" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -440, -580, -260, -580, -350, -760 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="46" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -350, -760, -450, -960, -260, -960 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="47" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -260, -960, -450, -1060, -510, -960 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="48" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -450, -1060, -510, -1150, -260, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="49" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -450, -1150, -260, -1150, -350, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="50" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -350, -1250, -450, -1340, -260, -1340 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="51" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -610, -700, -610, -600, -770 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="52" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -600, -770, -700, -900, -510, -900 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="53" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -700, -900, -610, -1060, -510, -900 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="54" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -610, -1060, -700, -1210, -510, -1210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="55" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -450, -1060, -510, -960, -610, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="56" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -450, -1060, -510, -1150, -610, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="57" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -960, -900, -770, -900, -860, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="58" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -860, -1060, -960, -1210, -770, -1210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="59" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -960, -1210, -770, -1210, -810, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="60" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -810, -1310, -770, -1410, -960, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="61" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -710, -1410, -710, -1210, -810, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="62" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -960, -1410, -770, -1410, -860, -1490 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="63" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -860, -1490, -960, -1600, -770, -1600 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="64" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -1210, -710, -1310, -700, -1210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="65" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -710, -1310, -700, -1410, -510, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="66" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( 146, 0 )
+transform/scale = Vector2( 1.2, 1 )
+polygon = Vector2Array( -713.333, -1310, -546.667, -1410, -546.667, -1210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="67" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -1410, -600, -1490, -700, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="68" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -600, -1490, -460, -1600, -510, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="69" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -1410, -460, -1600, -390, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="70" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -390, -1500, -240, -1600, -240, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="71" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( 10, 0 )
+transform/scale = Vector2( 1.05556, 1 )
+polygon = Vector2Array( -236.841, -1600, -236.841, -1410, -104.211, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="72" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -100, -1500, 50, -1600, 50, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="73" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 50, -1500, 270, -1500, 160, -1600 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="74" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 50, -1500, 160, -1350, 270, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="75" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 270, -1500, 380, -1600, 380, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="76" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -1340, 160, -1250, 60, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="77" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( 10, 0 )
+polygon = Vector2Array( 150, -1250, 250, -1340, 250, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="78" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 260, -1340, 260, -1150, 380, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="79" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 380, -1250, 510, -1340, 510, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="80" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 510, -1340, 510, -1150, 640, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="81" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 640, -1250, 840, -1340, 710, -1140 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="82" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 840, -1340, 840, -1110, 710, -1140 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="83" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -1120, 710, -960, 890, -960 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="84" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( 0, -10 )
+polygon = Vector2Array( 710, -950, 890, -950, 800, -790 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="85" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -800, 710, -700, 890, -700 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="86" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 890, -700, 710, -700, 800, -600 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="87" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 710, -700, 710, -520, 800, -600 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="88" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 710, -700, 710, -520, 580, -610 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="89" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 580, -610, 450, -700, 450, -520 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="90" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( 10, 0 )
+polygon = Vector2Array( 440, -700, 440, -520, 310, -610 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="91" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 320, -610, 230, -700, 230, -510 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="92" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 120, -520, 330, -520, 230, -390 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="93" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 230, -510, 230, -700, 130, -610 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="94" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 130, -610, 60, -700, 60, -520 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="95" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -520, -130, -650, 60, -700 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="96" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -30, -680, -120, -830, 60, -830 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="97" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -120, -830, 60, -830, -30, -1000 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="98" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -30, -1000, 60, -1150, -130, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="99" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -1150, -40, -1250, -130, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="100" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -40, -1250, 60, -1340, 60, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="101" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 230, -390, 130, -450, 130, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="102" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( 10, 0 )
+polygon = Vector2Array( 220, -390, 320, -450, 320, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="103" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 330, -450, 330, -320, 450, -390 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="104" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( -20, 0 )
+polygon = Vector2Array( 470, -390, 590, -450, 590, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="105" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 570, -450, 690, -390, 570, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="106" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -450, 690, -390, 800, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="107" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -320, 710, -230, 890, -230 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="108" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 710, -230, 890, -230, 800, -130 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="109" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 700, -130, 890, -130, 800, -20 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="110" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -20, 700, -130, 700, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="111" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 700, -130, 700, 60, 530, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="112" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 130, -450, 130, -320, 30, -390 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="113" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 30, -390, -60, -450, -60, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="114" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -320, -100, -450, -190, -370 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="115" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -320, -190, -320, -130, -230 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="116" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -130, -230, -190, -130, -70, -130 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="117" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 320, 60, 410, 50, 320, 190 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="118" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 410, 50, 510, 60, 510, 190 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="119" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 300, 60, 180, -30, 60, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="120" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -130, 300, -130, 180, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="121" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -130, 60, -130, -60, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="122" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -30, 60, 60, -60, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="123" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -30, -60, 60, -130, 30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="124" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -130, 30, -200, -30, -200, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="125" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, 60, -130, 30, -200, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="126" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -200, -30, -200, 60, -320, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="127" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -200, -130, -320, -130, -200, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="128" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -320, -130, -510, -130, -440, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="129" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -440, -30, -320, 60, -510, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="130" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, 60, -700, -130, -700, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="131" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -770, -100, -710, -130, -830, -220 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="132" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( -10, 0 )
+polygon = Vector2Array( -760, -100, -760, 60, -850, -20 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="133" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -860, -20, -960, -100, -960, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="134" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -770, -330, -710, -320, -830, -220 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="135" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -320, -510, -130, -610, -250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="136" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -440, -380, -440, -200, -350, -290 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="137" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -350, -290, -260, -380, -260, -200 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="138" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -380, -440, -380, -400, -480 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="139" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -400, -480, -260, -580, -260, -380 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="140" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -580, -440, -580, -400, -480 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="141" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -440, -580, -440, -940, -350, -760 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="142" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -260, -580, -350, -760, -260, -960 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="143" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -260, -960, -450, -1060, -260, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="144" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -700, -610, -600, -480, -700, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="145" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -770, -640, -770, -330, -860, -490 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="146" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -960, -640, -960, -330, -860, -490 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="147" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -700, -610, -770, -640, -600, -770 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="148" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -610, -600, -770, -510, -900 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="149" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -900, -510, -960, -610, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="150" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -600, -770, -700, -900, -770, -900 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="151" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -810, -770, -960, -900, -960, -640 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="152" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -960, -1210, -960, -900, -860, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="153" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -770, -1210, -770, -900, -860, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="154" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -700, -900, -610, -1060, -700, -1210 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="155" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -1210, -510, -1150, -610, -1060 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="156" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -700, -1210, -710, -1210, -710, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="157" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -710, -1410, -700, -1410, -710, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="158" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -710, -1410, -770, -1410, -810, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="159" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -710, -1210, -770, -1210, -810, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="160" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -960, -1410, -960, -1210, -810, -1310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="161" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -960, -1600, -960, -1410, -860, -1490 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="162" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -770, -1600, -770, -1410, -860, -1490 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="163" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -260, -1150, -260, -1340, -350, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="164" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -450, -1340, -450, -1150, -350, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="165" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -460, -1600, -700, -1600, -700, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="166" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -510, -1410, -390, -1500, -240, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="167" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -460, -1600, -240, -1600, -390, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="168" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -240, -1600, 50, -1600, -100, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="169" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -240, -1410, -100, -1500, 50, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="170" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 50, -1600, 160, -1600, 50, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="171" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 160, -1350, 50, -1350, 50, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="172" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 270, -1500, 160, -1350, 270, -1350 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="173" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 160, -1600, 380, -1600, 270, -1500 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="174" type="Polygon2D" parent="sound"]
+
+transform/pos = Vector2( 0, -10 )
+polygon = Vector2Array( 50, -1340, 270, -1340, 160, -1240 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="175" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 510, -1340, 260, -1340, 380, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="176" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -130, -1150, -130, -1340, 60, -1340 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="177" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -1150, 160, -1250, 260, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="178" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 510, -1150, 380, -1250, 260, -1150 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="179" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 840, -1340, 510, -1340, 640, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="180" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 710, -1150, 510, -1150, 640, -1250 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="181" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 840, -1340, 890, -1220, 840, -1110 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="182" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 840, -1340, 890, -1340, 890, -1220 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="183" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 890, -1220, 890, -1110, 840, -1110 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="184" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -1120, 890, -1110, 890, -960 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="185" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -1120, 710, -1140, 710, -960 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="186" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 380, -1410, 270, -1500, 270, -1410 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="187" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 890, -960, 890, -700, 800, -800 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="188" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -800, 710, -960, 710, -700 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="189" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 890, -700, 710, -520, 890, -520 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="190" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 710, -700, 450, -700, 580, -610 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="191" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 580, -610, 710, -520, 450, -520 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="192" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 450, -700, 230, -700, 320, -610 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="193" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 450, -520, 320, -610, 230, -510 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="194" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 230, -510, 130, -610, 60, -520 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="195" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -130, -1150, -120, -830, -30, -1000 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="196" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -1150, 60, -830, -30, -1000 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="197" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -120, -830, -130, -650, -30, -680 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="198" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -830, 60, -700, -30, -680 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="199" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -700, 230, -700, 130, -610 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="200" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 60, -520, -130, -520, -130, -650 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="201" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 130, -510, 130, -450, 230, -390 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="202" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 320, -510, 230, -390, 320, -440 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="203" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -190, -130, -190, -320, -130, -230 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="204" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -70, -130, -130, -230, -70, -310 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="205" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -320, -190, -370, -190, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="206" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -100, -450, -190, -450, -190, -370 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="207" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -100, -450, -60, -450, -60, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="208" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 130, -450, -60, -450, 30, -390 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="209" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( -60, -320, 30, -390, 130, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="210" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 130, -320, 230, -390, 330, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="211" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 330, -450, 570, -450, 450, -390 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="212" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 330, -320, 450, -390, 570, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="213" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 570, -450, 800, -450, 690, -390 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="214" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 570, -320, 800, -320, 690, -390 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="215" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 890, -450, 800, -320, 800, -450 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="216" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 890, -450, 890, -230, 800, -320 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="217" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -320, 710, -320, 710, -230 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="218" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 890, -230, 890, -130, 800, -130 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="219" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 800, -130, 710, -130, 710, -230 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="220" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 700, -130, 530, -130, 530, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="221" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 890, -130, 700, 60, 890, 60 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="222" type="Polygon2D" parent="sound"]
+
+polygon = Vector2Array( 700, 60, 530, 60, 530, -30 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="human" parent="." instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 380, 270 )
@@ -3191,6 +6352,142 @@ transform/pos = Vector2( 0, 0 )
 [node name="Camera2D" parent="human"]
 
 transform/pos = Vector2( 0, 0 )
+
+[node name="PatrolBot" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -355.745, -230.838 )
+
+[node name="PatrolBot1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -349.594, -1301.22 )
+
+[node name="PatrolBot2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 800.21, -1251.77 )
+
+[node name="PatrolBot3" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 794.028, -602.687 )
+
+[node name="PatrolBot4" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -856.496, -30.8759 )
+
+[node name="PatrolBot5" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -868.86, -1505.22 )
+
+[node name="PatrolBot6" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 793.324, -221.318 )
+
+[node name="Buddy" parent="." instance=ExtResource( 6 )]
+
+[node name="Light2D 2" type="Light2D" parent="Buddy"]
+
+transform/pos = Vector2( 0.000152588, 0 )
+enabled = true
+editor_only = false
+texture = ExtResource( 7 )
+offset = Vector2( 0, 0 )
+scale = 2.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = true
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="Buddy1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -30.7582, -613.113 )
+
+[node name="Light2D 2" type="Light2D" parent="Buddy1"]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 7 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = true
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="Buddy2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -654.124, -773.056 )
+
+[node name="Light2D 2" type="Light2D" parent="Buddy2"]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 7 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = true
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="Buddy3" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -604.793, -1309.48 )
+
+[node name="Light2D 2" type="Light2D" parent="Buddy3"]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 7 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="icon" type="Sprite" parent="."]
+
+transform/pos = Vector2( -159.278, -1506.29 )
+texture = ExtResource( 8 )
 
 
 [editable path="human"]

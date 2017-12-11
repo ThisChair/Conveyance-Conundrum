@@ -3,12 +3,13 @@ extends "delegated_behavior.gd"
 # Variables
 var graph_node
 var path = []
-
+var sound_graph
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	# Get the graph representing the map
 	graph_node = get_parent().get_parent().get_node("/root/Demo/level graph/")
+	sound_graph = get_parent().get_parent().get_node("/root/Demo/sound/")
 #	var initial = graph_node.findTriangle(get_global_pos())
 	# And from there, the optimal path given by A*
 #	path = graph_node.optimalPath(initial,42)
@@ -29,3 +30,29 @@ func _input(event):
 		var initial = graph_node.findTriangle(get_global_pos())
 		var final = graph_node.findTriangle(get_global_mouse_pos())
 		path = graph_node.optimalPath(initial,final)
+	if (event.type==InputEvent.KEY):
+		if event.scancode==KEY_Q:
+			get_parent().get_node("SamplePlayer2D").play("signal")
+			var friends = get_tree().get_nodes_in_group("friendly")
+			for f in friends:
+				var initial = sound_graph.findTriangle(get_global_pos())
+				var final = sound_graph.findTriangle(f.get_global_pos())
+				if sound_graph.optimalCost(initial,final) < 800:
+					f.get_node("BuddyCalls").called = true
+		if event.scancode==KEY_W:
+			get_parent().get_node("SamplePlayer2D").play("signal")
+			var friends = get_tree().get_nodes_in_group("friendly")
+			print("KEY  W PRESSED")
+			for f in friends:
+				var initial = sound_graph.findTriangle(get_global_pos())
+				var final = sound_graph.findTriangle(f.get_global_pos())
+				if sound_graph.optimalCost(initial,final) < 800:
+					f.get_node("BuddyCalls").follow = true
+		if event.scancode==KEY_E:
+			get_parent().get_node("SamplePlayer2D").play("signal")
+			var friends = get_tree().get_nodes_in_group("friendly")
+			for f in friends:
+				var initial = sound_graph.findTriangle(get_global_pos())
+				var final = sound_graph.findTriangle(f.get_global_pos())
+				if sound_graph.optimalCost(initial,final) < 800:
+					f.get_node("BuddyCalls").explore = true

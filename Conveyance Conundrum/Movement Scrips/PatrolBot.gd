@@ -1,7 +1,7 @@
 extends "StateLib.gd"
 
 func _ready():
-	var player = get_node("/root/StateTest/player")
+	var player = get_node("/root/Demo/human")
 	states = []
 	states.append(IdleState.new())
 	states.append(PursueState.new(get_parent(), player))

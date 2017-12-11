@@ -16,7 +16,7 @@ func _fixed_process(delta):
 	#print(paths[0].size())
 	#print(paths[1].size())
 	if (Input.is_action_pressed("ui_select")):
-		get_node("SamplePlayer2D").play("signal")
+		get_parent().get_node("SamplePlayer2D").play("signal")
 		var receptors = []
 		if paths[0].size() < 8:
 			receptors.append(

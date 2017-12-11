@@ -1,15 +1,25 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=1]
 [ext_resource path="res://Movement Scrips/playerpathfollow.gd" type="Script" id=2]
 [ext_resource path="res://Prototype Player 1.png" type="Texture" id=3]
 [ext_resource path="res://light.png" type="Texture" id=4]
 [ext_resource path="res://Light.gd" type="Script" id=5]
+[ext_resource path="res://signal.smp" type="Sample" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -30, -30, 0, -40, 10, -40, 40, -30, 40, 20, -30, 20 )
+
+[sub_resource type="SampleLibrary" id=2]
+
+samples/signal = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
 
 [node name="human" type="KinematicBody2D" groups=[
 "jumper",
@@ -93,5 +103,16 @@ shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
 script/script = ExtResource( 5 )
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 2 )
+config/pitch_random = 0.0
 
 

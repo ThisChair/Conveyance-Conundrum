@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Movement Scrips/kinematic.gd" type="Script" id=1]
+[ext_resource path="res://buddy.png" type="Texture" id=2]
+[ext_resource path="res://BuddyState.gd" type="Script" id=3]
+[ext_resource path="res://ls.png" type="Texture" id=4]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 124.012, -121.973, -2.15808, 125.965, -125.394, -119.039 )
+
+[node name="Buddy" type="KinematicBody2D" groups=[
+"friendly",
+]]
+
+transform/scale = Vector2( 0.2, 0.2 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+maxSpeed = 50
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( -125.394, -119.039, -2.15808, 125.965, 124.012, -121.973 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="BuddyCalls" type="KinematicBody2D" parent="."]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 3 )
+maxSpeed = 50
+
+[node name="Light2D" type="Light2D" parent="."]
+
+visibility/blend_mode = 1
+transform/scale = Vector2( 1.5, 1.5 )
+z/z = 12
+enabled = true
+editor_only = false
+texture = ExtResource( 4 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.83
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+
